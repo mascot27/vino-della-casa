@@ -217,6 +217,190 @@ code {
   margin-top: var(--space-5);
 }
 
+/* ——— Home hero (full-bleed cellar app landing) ——— */
+.content:has(> .home-hero) {
+  max-width: none;
+  padding: 0;
+  width: 100%;
+}
+
+.home-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: min(72vh, 36rem);
+  padding: var(--space-6) var(--space-5);
+  overflow: hidden;
+  color: var(--text);
+}
+
+.home-hero-ambiance {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.home-hero-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 70% at 15% 20%, rgba(107, 30, 42, 0.55), transparent 55%),
+    radial-gradient(ellipse 60% 50% at 85% 75%, rgba(201, 162, 39, 0.18), transparent 50%),
+    linear-gradient(160deg, #4A1520 0%, #6B1E2A 28%, #A67C52 62%, #F7F3EE 100%);
+}
+
+.home-hero-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.28;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+.home-hero-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(31, 26, 23, 0.18) 0%, transparent 35%, rgba(247, 243, 238, 0.35) 100%),
+    radial-gradient(ellipse at center, transparent 40%, rgba(31, 26, 23, 0.22) 100%);
+}
+
+.home-hero-layout {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.home-hero-card {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(229, 221, 211, 0.85);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow-lift);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.home-hero-kicker {
+  margin: 0 0 var(--space-3);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+}
+
+.home-hero-card h1 {
+  margin: 0 0 var(--space-3);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--burgundy);
+}
+
+.home-hero-tagline {
+  margin: 0;
+  font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+  line-height: 1.45;
+  color: var(--text);
+  max-width: 28ch;
+}
+
+.home-hero-card .hero-cta {
+  margin-top: var(--space-5);
+}
+
+.home-hero-card .btn-secondary {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.home-hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+  opacity: 0.92;
+}
+
+.home-features {
+  background: var(--bg);
+  padding: var(--space-6) var(--space-5);
+  border-top: 1px solid var(--border);
+}
+
+.home-features-inner {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.home-feature-card {
+  margin: 0;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.home-feature-card:hover {
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-2px);
+}
+
+.home-feature-card h2 {
+  margin: 0 0 var(--space-2);
+  font-size: 1.05rem;
+  color: var(--burgundy);
+}
+
+.home-feature-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 800px) {
+  .home-features-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-hero {
+    min-height: auto;
+    padding: var(--space-5) var(--space-3);
+  }
+
+  .home-hero-card .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .home-hero-card .hero-cta .btn,
+  .home-hero-card .hero-cta .btn-secondary {
+    text-align: center;
+  }
+
+  .home-features {
+    padding: var(--space-5) var(--space-3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-feature-card {
+    transition: none;
+  }
+
+  .home-feature-card:hover {
+    transform: none;
+  }
+}
+
 .muted {
   color: var(--muted);
   font-size: 0.95rem;
