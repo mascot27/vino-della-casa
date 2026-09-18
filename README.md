@@ -6,6 +6,10 @@ Local-first Blazor WebAssembly wine cellar: track stock and bin locations, searc
 
 ## Screenshots
 
+Accueil:
+
+![Accueil](docs/screenshots/home-hero.png)
+
 Cellar — bottle cards:
 
 ![Cellar — bottle cards](docs/screenshots/cave.png)
@@ -13,8 +17,6 @@ Cellar — bottle cards:
 Drink tonight — ranked ready bottles:
 
 ![Drink tonight — ranked ready bottles](docs/screenshots/drink-tonight.png)
-
-> Screenshots: drop real captures at the paths above (`docs/screenshots/`). Placeholders may be empty until webdesigner/VinoDev land the PNGs.
 
 ## What it does
 
