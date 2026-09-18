@@ -1,7 +1,7 @@
 @using VinoDellaCasa.Domain.Entities
 @using VinoDellaCasa.Web
 
-<article class="bottle-card bottle-card--@ColorCss" style="@EnterDelay" @onclick="OnCardClick" @onkeydown="OnKeyDown" tabindex="@(OnSelect.HasDelegate ? 0 : -1)" role="@(OnSelect.HasDelegate ? "button" : null)">
+<article class="bottle-card bottle-card--prestige bottle-card--@ColorCss" style="@EnterDelay" @onclick="OnCardClick" @onkeydown="OnKeyDown" tabindex="@(OnSelect.HasDelegate ? 0 : -1)" role="@(OnSelect.HasDelegate ? "button" : null)">
     @if (Rank is int r)
     {
         <div class="bottle-card-rank">#@r</div>
@@ -31,10 +31,6 @@
             <p class="bottle-vintage">@UiLabels.VintageLine(Bottle.Vintage, AsOfYear)</p>
             <p class="bottle-appellation muted">
                 @(string.IsNullOrWhiteSpace(Bottle.Region) ? "—" : Bottle.Region)
-                @if (!string.IsNullOrWhiteSpace(Bottle.Producer))
-                {
-                    <span class="producer"> · @Bottle.Producer</span>
-                }
             </p>
 
             <div class="bottle-card-meta">
@@ -43,9 +39,17 @@
                     <span class="meta-chip bottle-bin">Casier @Bottle.Bin</span>
                 }
                 <span class="meta-chip">×@Bottle.Quantity</span>
+                @if (DrinkTag is string tag)
+                {
+                    <span class="meta-chip meta-chip--tag">@tag</span>
+                }
+                else if (ShortVarietal is string v)
+                {
+                    <span class="meta-chip meta-chip--varietal">@v</span>
+                }
                 @if (ShowPrice && Bottle.PriceChf is decimal price)
                 {
-                    <span class="meta-chip">@price.ToString("0.##") CHF</span>
+                    <span class="meta-chip meta-chip--price">@price.ToString("0.##") CHF</span>
                 }
             </div>
 
@@ -70,6 +74,7 @@
     [Parameter] public int? Rank { get; set; }
     [Parameter] public string? Why { get; set; }
     [Parameter] public int EnterIndex { get; set; }
+    /// <summary>Default false — Cave face stays prestige without big price.</summary>
     [Parameter] public bool ShowPrice { get; set; }
     [Parameter] public EventCallback OnSelect { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
@@ -78,6 +83,46 @@
 
     private string EnterDelay =>
         EnterIndex > 0 ? $"animation-delay: {Math.Min(EnterIndex, 12) * 40}ms" : string.Empty;
+
+    /// <summary>ReadyToDrink → Facile; !Ready with vintage → Garde; else null.</summary>
+    private string? DrinkTag
+    {
+        get
+        {
+            if (Bottle.ReadyToDrink)
+            {
+                return "Facile";
+            }
+
+            if (Bottle.Vintage is not null)
+            {
+                return "Garde";
+            }
+
+            return null;
+        }
+    }
+
+    private string? ShortVarietal
+    {
+        get
+        {
+            if (DrinkTag is not null || string.IsNullOrWhiteSpace(Bottle.Varietal))
+            {
+                return null;
+            }
+
+            var v = Bottle.Varietal.Trim();
+            if (v.Length <= 22)
+            {
+                return v;
+            }
+
+            var cut = v.AsSpan(0, 20);
+            var last = cut.LastIndexOf(' ');
+            return (last > 8 ? cut[..last].ToString() : cut.ToString()) + "…";
+        }
+    }
 
     private async Task OnCardClick()
     {

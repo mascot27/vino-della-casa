@@ -11,7 +11,7 @@ public class ToolHandlersParityTests
     private static JsonElement Parse(string json) => JsonDocument.Parse(json).RootElement;
 
     [Fact]
-    public void ListSeedBottles_2026_MatchesDemoSample50()
+    public void ListSeedBottles_2026_MatchesDemoSample()
     {
         var json = ToolHandlers.ListSeedBottles(new ListSeedBottlesInput { AsOfYear = 2026 });
         var root = Parse(json);
@@ -19,11 +19,11 @@ public class ToolHandlersParityTests
         var ready = domain.Count(b => b.ReadyToDrink);
 
         Assert.True(root.GetProperty("ok").GetBoolean());
-        Assert.Equal(50, root.GetProperty("count").GetInt32());
+        Assert.Equal(53, root.GetProperty("count").GetInt32());
         Assert.Equal(ready, root.GetProperty("readyCount").GetInt32());
 
         var bottles = root.GetProperty("bottles").EnumerateArray().ToList();
-        Assert.Equal(50, bottles.Count);
+        Assert.Equal(53, bottles.Count);
         Assert.Equal(ready, bottles.Count(b => b.GetProperty("readyToDrink").GetBoolean()));
     }
 

@@ -1,5 +1,6 @@
 @page "/cellar"
 @using VinoDellaCasa.Application.Services
+@using VinoDellaCasa.Domain
 @using VinoDellaCasa.Domain.Entities
 @using VinoDellaCasa.Domain.Enums
 @using VinoDellaCasa.Domain.Maturity
@@ -79,8 +80,8 @@
     </section>
 }
 
-<section class="card">
-    <h2>Inventaire (@_bottles.Count)</h2>
+<section class="card cellar-inventory">
+    <h2>Inventaire (@VisibleBottles.Count@(_selectedRegion is not null ? $" / {_bottles.Count}" : null))</h2>
     @if (_loading)
     {
         <div class="skeleton-grid" aria-busy="true" aria-label="Chargement">
@@ -91,12 +92,12 @@
     }
     else if (_bottles.Count == 0)
     {
-        <div class="empty-state">
+        <div class="empty-state empty-state--prestige">
             <div class="empty-state-visual" aria-hidden="true">
                 <img class="bottle-silhouette" src="img/bottles/empty.svg" alt="" width="36" height="90" />
             </div>
             <h3>Cave vide</h3>
-            <p>Ajoutez des bouteilles pour obtenir des suggestions, ou chargez un échantillon Bordeaux (50).</p>
+            <p>Ajoutez des bouteilles pour obtenir des suggestions, ou chargez l’échantillon démo (@SeedCount).</p>
             <div class="empty-actions">
                 <button type="button" class="btn" @onclick="LoadSeeds" disabled="@_busy">Charger l’échantillon</button>
                 <button type="button" class="btn btn-secondary" @onclick="NewBottle" disabled="@_busy">Ajouter une bouteille</button>
@@ -105,23 +106,52 @@
     }
     else
     {
-        <div class="bottle-grid">
-            @for (var i = 0; i < _bottles.Count; i++)
-            {
-                var b = _bottles[i];
-                var idx = i;
-                <BottleCard Bottle="b" AsOfYear="_asOfYear" EnterIndex="idx" ShowPrice="true"
-                            OnSelect="() => Edit(b)">
-                    <button type="button" class="btn-tiny" @onclick="() => Edit(b)">Modifier</button>
-                    <button type="button" class="btn-tiny" @onclick="() => MarkDrunkAsync(b)" disabled="@_busy">Marquer bu</button>
-                    <button type="button" class="btn-tiny danger" @onclick="() => DeleteAsync(b)" disabled="@_busy">Supprimer</button>
-                </BottleCard>
-            }
+        <div class="cellar-layout">
+            <FranceWineMap Selected="_selectedRegion"
+                           SelectedChanged="OnRegionChanged"
+                           Counts="_regionCounts"
+                           ShowSuisse="_showSuisse"
+                           TotalCount="_bottles.Count" />
+            <div class="cellar-list">
+                @if (_selectedRegion is WineMapRegion sel)
+                {
+                    <p class="filter-hint muted">
+                        Filtre : <strong>@WineMapRegions.LabelFr(sel)</strong>
+                        — <button type="button" class="btn-linkish" @onclick="() => OnRegionChanged(null)">Tous</button>
+                    </p>
+                }
+                @if (VisibleBottles.Count == 0)
+                {
+                    <div class="empty-state empty-state--filter">
+                        <h3>Aucune bouteille dans cette région</h3>
+                        <p>Essayez une autre région ou affichez tout l’inventaire.</p>
+                        <button type="button" class="btn btn-secondary" @onclick="() => OnRegionChanged(null)">Tous</button>
+                    </div>
+                }
+                else
+                {
+                    <div class="bottle-grid">
+                        @for (var i = 0; i < VisibleBottles.Count; i++)
+                        {
+                            var b = VisibleBottles[i];
+                            var idx = i;
+                            <BottleCard Bottle="b" AsOfYear="_asOfYear" EnterIndex="idx"
+                                        OnSelect="() => Edit(b)">
+                                <button type="button" class="btn-tiny" @onclick="() => Edit(b)">Modifier</button>
+                                <button type="button" class="btn-tiny" @onclick="() => MarkDrunkAsync(b)" disabled="@_busy">Marquer bu</button>
+                                <button type="button" class="btn-tiny danger" @onclick="() => DeleteAsync(b)" disabled="@_busy">Supprimer</button>
+                            </BottleCard>
+                        }
+                    </div>
+                }
+            </div>
         </div>
     }
 </section>
 
 @code {
+    private const int SeedCount = 53;
+
     private List<Bottle> _bottles = new();
     private Bottle? _editing;
     private bool _isNew;
@@ -130,8 +160,22 @@
     private string? _message;
     private bool _messageIsError;
     private readonly int _asOfYear = DateTimeOffset.Now.Year;
+    private WineMapRegion? _selectedRegion;
+    private Dictionary<WineMapRegion, int> _regionCounts = new();
+    private bool _showSuisse;
+
+    private List<Bottle> VisibleBottles =>
+        _selectedRegion is null
+            ? _bottles
+            : _bottles.Where(b => WineMapRegions.Resolve(b) == _selectedRegion).ToList();
 
     protected override async Task OnInitializedAsync() => await ReloadAsync();
+
+    private Task OnRegionChanged(WineMapRegion? region)
+    {
+        _selectedRegion = region;
+        return Task.CompletedTask;
+    }
 
     private async Task ReloadAsync()
     {
@@ -145,9 +189,21 @@
             }
 
             _bottles = all
-                .Where(b => b.Status != BottleStatus.Finished)
+                .Where(b => b.Status != BottleStatus.Finished && b.Quantity > 0)
                 .OrderBy(b => b.Name, StringComparer.OrdinalIgnoreCase)
                 .ToList();
+
+            _regionCounts = _bottles
+                .GroupBy(WineMapRegions.Resolve)
+                .ToDictionary(g => g.Key, g => g.Count());
+            _showSuisse = _regionCounts.GetValueOrDefault(WineMapRegion.Suisse) > 0;
+
+            if (_selectedRegion is WineMapRegion sel
+                && sel == WineMapRegion.Suisse
+                && !_showSuisse)
+            {
+                _selectedRegion = null;
+            }
         }
         finally
         {
@@ -267,6 +323,7 @@
         {
             var n = await CellarSvc.EnsureM1SeedsAsync(asOfYear: 2026, forceReplace: _bottles.Count > 0);
             Flash(n == 0 ? "Échantillon déjà présent." : $"{n} bouteilles d’échantillon chargées.");
+            _selectedRegion = null;
             await ReloadAsync();
         }
         finally

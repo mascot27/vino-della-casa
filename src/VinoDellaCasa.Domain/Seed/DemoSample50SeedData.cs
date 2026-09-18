@@ -5,7 +5,7 @@ using VinoDellaCasa.Domain.Maturity;
 namespace VinoDellaCasa.Domain.Seed;
 
 /// <summary>
-/// Anonymous Bordeaux demo cellar (50 bottles). Public-safe extract — no personal profile,
+/// Anonymous demo cellar (53 bottles: Bordeaux sample + Suisse / Provence / Champagne). Public-safe extract — no personal profile,
 /// no critic prose. ReadyToDrink via <see cref="MaturityRules"/> for asOfYear.
 /// </summary>
 public static class DemoSample50SeedData
@@ -168,6 +168,15 @@ public static class DemoSample50SeedData
             (Guid.Parse("63ebdce2-98ac-555b-949b-1177b5c9d983"),
                 "Château Lafite Rothschild", "Château Lafite Rothschild", "Pauillac", "France",
                 Color.Red, "Cabernet Sauvignon, Merlot, Cabernet Franc, Petit Verdot", 2021, 1, "E2"),
+            (Guid.Parse("a0bb2c59-3e38-5ed6-8dfa-4b20827d3f15"),
+                "Petite Arvine", "Cave du Rhodan", "Valais", "Suisse",
+                Color.White, "Petite Arvine", 2022, 1, "F1"),
+            (Guid.Parse("b0969921-9458-5f4c-9f93-598a28277369"),
+                "Minuty", "Minuty", "Côtes de Provence", "France",
+                Color.Rose, "Grenache, Cinsault, Syrah, Tibouren", 2023, 2, "F2"),
+            (Guid.Parse("f7bbd882-78bf-5a16-8f79-f1e0161a3a24"),
+                "Champagne Brut", "Maison Réserve", "Champagne", "France",
+                Color.Sparkling, "Chardonnay, Pinot Noir, Pinot Meunier", 2018, 1, "F3"),
         };
 
         var list = new List<Bottle>(specs.Length);

@@ -7,13 +7,14 @@ namespace VinoDellaCasa.Domain.Tests;
 public class DemoSample50SeedDataTests
 {
     [Fact]
-    public void CreateSeeds_2026_HasFiftyAnonymousBordeauxBottles()
+    public void CreateSeeds_2026_HasFiftyThreeAnonymousDemoBottles()
     {
         var seeds = DemoSample50SeedData.CreateSeeds(2026);
 
-        Assert.Equal(50, seeds.Count);
+        Assert.Equal(53, seeds.Count);
         Assert.All(seeds, b => Assert.Equal(BottleStatus.InStock, b.Status));
-        Assert.All(seeds, b => Assert.Equal("France", b.Country));
+        Assert.Contains(seeds, b => b.Country == "France");
+        Assert.Contains(seeds, b => b.Country == "Suisse");
         Assert.All(seeds, b => Assert.Null(b.Notes));
         Assert.All(seeds, b => Assert.Null(b.PriceChf));
         Assert.Equal(seeds.Count, seeds.Select(b => b.Id).Distinct().Count());
@@ -22,10 +23,14 @@ public class DemoSample50SeedDataTests
         Assert.True(seeds.Count(b => !b.ReadyToDrink) >= 5);
         Assert.Contains(seeds, b => b.Color == Color.Red);
         Assert.Contains(seeds, b => b.Color == Color.White);
+        Assert.Contains(seeds, b => b.Color == Color.Rose);
+        Assert.Contains(seeds, b => b.Color == Color.Sparkling);
+        Assert.Contains(seeds, b => b.Name == "Petite Arvine");
+        Assert.Contains(seeds, b => b.Name == "Minuty");
     }
 
     [Fact]
-    public void DrinkTonight_FromDemo50_ReturnsReadyShortlist()
+    public void DrinkTonight_FromDemoSample_ReturnsReadyShortlist()
     {
         var seeds = DemoSample50SeedData.CreateSeeds(2026);
         var shortlist = DrinkTonight.Shortlist(seeds, topN: 5, asOfYear: 2026, recalculateReady: false);

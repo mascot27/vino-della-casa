@@ -1,8 +1,8 @@
 {
   "title": "Vino della casa — demo sample (anonymous)",
-  "count": 50,
+  "count": 53,
   "asOfYear": 2026,
-  "note": "Public-safe Bordeaux demo extract for app seeds. No personal cellar. No critic prose.",
+  "note": "Public-safe demo extract for app seeds (Bordeaux + Suisse/Provence/Champagne). No personal cellar. No critic prose.",
   "bottles": [
     {
       "id": "demo-001",
@@ -652,6 +652,45 @@
       "vintage": 2021,
       "quantity": 1,
       "bin": "E2",
+      "status": "InStock"
+    },
+    {
+      "id": "demo-051",
+      "name": "Petite Arvine",
+      "producer": "Cave du Rhodan",
+      "region": "Valais",
+      "country": "Suisse",
+      "color": "White",
+      "varietal": "Petite Arvine",
+      "vintage": 2022,
+      "quantity": 1,
+      "bin": "F1",
+      "status": "InStock"
+    },
+    {
+      "id": "demo-052",
+      "name": "Minuty",
+      "producer": "Minuty",
+      "region": "Côtes de Provence",
+      "country": "France",
+      "color": "Rose",
+      "varietal": "Grenache, Cinsault, Syrah, Tibouren",
+      "vintage": 2023,
+      "quantity": 2,
+      "bin": "F2",
+      "status": "InStock"
+    },
+    {
+      "id": "demo-053",
+      "name": "Champagne Brut",
+      "producer": "Maison Réserve",
+      "region": "Champagne",
+      "country": "France",
+      "color": "Sparkling",
+      "varietal": "Chardonnay, Pinot Noir, Pinot Meunier",
+      "vintage": 2018,
+      "quantity": 1,
+      "bin": "F3",
       "status": "InStock"
     }
   ]
