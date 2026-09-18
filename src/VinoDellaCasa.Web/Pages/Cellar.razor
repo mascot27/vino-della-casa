@@ -4,6 +4,7 @@
 @using VinoDellaCasa.Domain.Entities
 @using VinoDellaCasa.Domain.Enums
 @using VinoDellaCasa.Domain.Maturity
+@using VinoDellaCasa.Domain.Filtering
 @using VinoDellaCasa.Domain.Suggestions
 @using VinoDellaCasa.Web
 @using VinoDellaCasa.Web.Components
@@ -49,7 +50,43 @@
     <section id="cave-affiner" class="cave-affiner card" aria-label="Affiner la cave">
         <div class="cave-affiner-head">
             <h2 class="cave-section-title">Affiner</h2>
-            <button type="button" class="btn-linkish" @onclick="() => OnRegionChanged(null)">Réinitialiser</button>
+            <button type="button" class="btn-linkish" @onclick="ClearFilters">Réinitialiser</button>
+        </div>
+        <div class="cave-filter-row">
+            <label class="cave-filter-search">
+                <span class="sr-only">Rechercher</span>
+                <input class="form-input"
+                       type="search"
+                       placeholder="Nom, producteur, appellation…"
+                       @bind="_searchText"
+                       @bind:event="oninput" />
+            </label>
+            <label>
+                Couleur
+                <select class="form-input" @bind="_filterColor">
+                    <option value="">Toutes</option>
+                    @foreach (Color c in Enum.GetValues<Color>())
+                    {
+                        <option value="@c">@UiLabels.Color(c)</option>
+                    }
+                </select>
+            </label>
+            <label>
+                Maturité
+                <select class="form-input" @bind="_filterReady">
+                    <option value="">Toutes</option>
+                    <option value="ready">Prêt</option>
+                    <option value="wait">À attendre</option>
+                </select>
+            </label>
+            <label>
+                Casier
+                <input class="form-input"
+                       type="text"
+                       placeholder="A1…"
+                       @bind="_filterBin"
+                       @bind:event="oninput" />
+            </label>
         </div>
         <FranceWineMap Selected="_selectedRegion"
                        SelectedChanged="OnRegionChanged"
@@ -138,20 +175,20 @@ else if (_bottles.Count == 0)
 }
 else
 {
-    @if (_selectedRegion is WineMapRegion sel)
+    @if (HasActiveFilters)
     {
         <p class="filter-hint muted">
-            Filtre : <strong>@WineMapRegions.LabelFr(sel)</strong>
-            — <button type="button" class="btn-linkish" @onclick="() => OnRegionChanged(null)">Tous</button>
+            Filtres actifs
+            — <button type="button" class="btn-linkish" @onclick="ClearFilters">Tout effacer</button>
         </p>
     }
 
     @if (VisibleBottles.Count == 0)
     {
         <div class="empty-state empty-state--filter card">
-            <h3>Aucune bouteille dans cette région</h3>
-            <p>Essayez une autre région ou affichez toute la cave.</p>
-            <button type="button" class="btn btn-secondary" @onclick="() => OnRegionChanged(null)">Tous</button>
+            <h3>Aucune bouteille ne correspond</h3>
+            <p>Élargissez la recherche, changez de région, ou effacez les filtres.</p>
+            <button type="button" class="btn btn-secondary" @onclick="ClearFilters">Effacer les filtres</button>
         </div>
     }
     else
@@ -256,11 +293,45 @@ else
     private bool _showSuisse;
     private bool _affinerOpen;
     private bool _manageMode;
+    private string _searchText = string.Empty;
+    private string _filterColor = string.Empty;
+    private string _filterReady = string.Empty;
+    private string _filterBin = string.Empty;
 
-    private List<Bottle> VisibleBottles =>
-        _selectedRegion is null
-            ? _bottles
-            : _bottles.Where(b => WineMapRegions.Resolve(b) == _selectedRegion).ToList();
+    private List<Bottle> VisibleBottles
+    {
+        get
+        {
+            Color? color = Enum.TryParse<Color>(_filterColor, out var c) ? c : null;
+            bool? ready = _filterReady switch
+            {
+                "ready" => true,
+                "wait" => false,
+                _ => null
+            };
+
+            var q = CaveBottleFilter.Apply(
+                _bottles,
+                text: _searchText,
+                color: color,
+                readyToDrink: ready,
+                bin: _filterBin);
+
+            if (_selectedRegion is WineMapRegion region)
+            {
+                q = q.Where(b => WineMapRegions.Resolve(b) == region);
+            }
+
+            return q.ToList();
+        }
+    }
+
+    private bool HasActiveFilters =>
+        !string.IsNullOrWhiteSpace(_searchText)
+        || !string.IsNullOrWhiteSpace(_filterColor)
+        || !string.IsNullOrWhiteSpace(_filterReady)
+        || !string.IsNullOrWhiteSpace(_filterBin)
+        || _selectedRegion is not null;
 
     /// <summary>Oldest ReadyToDrink InStock — same rule as drink-tonight #1.</summary>
     private Bottle? Featured
@@ -313,6 +384,15 @@ else
     protected override async Task OnInitializedAsync() => await ReloadAsync();
 
     private void ToggleAffiner() => _affinerOpen = !_affinerOpen;
+
+    private void ClearFilters()
+    {
+        _searchText = string.Empty;
+        _filterColor = string.Empty;
+        _filterReady = string.Empty;
+        _filterBin = string.Empty;
+        _selectedRegion = null;
+    }
 
     private Task OnRegionChanged(WineMapRegion? region)
     {
