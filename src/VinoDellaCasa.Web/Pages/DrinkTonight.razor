@@ -1,67 +1,206 @@
 @page "/drink-tonight"
 @using VinoDellaCasa.Application.Services
 @using VinoDellaCasa.Domain.Entities
+@using VinoDellaCasa.Domain.Enums
+@using VinoDellaCasa.Domain.Maturity
+@using VinoDellaCasa.Web
+@using VinoDellaCasa.Web.Components
 @inject CellarService CellarSvc
 
-<PageTitle>Drink tonight — Vino della casa</PageTitle>
+<PageTitle>À boire ce soir — Vino della casa</PageTitle>
 
-<h1>Drink tonight</h1>
-<p class="muted">
-    Shortlist déterministe : Ready DESC → Vintage ASC → Name.
-    ReadyToDrink recalculé avec <code>MaturityRules</code> (asOf = année locale).
-</p>
+<h1>À boire ce soir</h1>
+<p class="muted">Shortlist des bouteilles prêtes en cave — plus anciennes d’abord.</p>
 
 <div class="toolbar">
-    <label>
-        Top N
-        <InputNumber class="form-input inline" @bind-Value="_topN" />
-    </label>
-    <button type="button" class="btn" @onclick="Refresh" disabled="@_busy">Rafraîchir</button>
+    <span class="chip-label">Filtrer</span>
+    <div class="chip-row" style="margin:0">
+        <button type="button" class="chip @(_colorFilter is null ? "active" : null)" @onclick="() => SetColor(null)">Tous</button>
+        <button type="button" class="chip @(_colorFilter == Color.Red ? "active" : null)" @onclick="() => SetColor(Color.Red)">Rouge</button>
+        <button type="button" class="chip @(_colorFilter == Color.White ? "active" : null)" @onclick="() => SetColor(Color.White)">Blanc</button>
+        <button type="button" class="chip @(_colorFilter == Color.Rose ? "active" : null)" @onclick="() => SetColor(Color.Rose)">Rosé</button>
+        <button type="button" class="chip @(_colorFilter == Color.Sparkling ? "active" : null)" @onclick="() => SetColor(Color.Sparkling)">Effervescent</button>
+    </div>
     <a class="btn btn-link" href="cellar">← Cave</a>
 </div>
 
-@if (_list.Count == 0)
+@if (!string.IsNullOrEmpty(_message))
 {
-    <p class="muted">Aucune bouteille en stock. Charge les seeds depuis la cave.</p>
+    <p class="flash">@_message</p>
+}
+
+@if (_loading)
+{
+    <div class="skeleton-grid" aria-busy="true" aria-label="Chargement">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+    </div>
+}
+else if (_cellarEmpty)
+{
+    <div class="empty-state card">
+        <h3>Cave vide</h3>
+        <p>Ajoutez des bouteilles pour obtenir des suggestions.</p>
+        <div class="empty-actions">
+            <a class="btn" href="cellar">Ajouter une bouteille</a>
+        </div>
+    </div>
+}
+else if (_list.Count == 0 && _colorFilter is not null)
+{
+    <div class="empty-state card">
+        <h3>Aucun résultat</h3>
+        <p>Élargissez la couleur ou la région.</p>
+        <div class="empty-actions">
+            <button type="button" class="btn" @onclick="() => SetColor(null)">Réinitialiser les filtres</button>
+        </div>
+    </div>
+}
+else if (_list.Count == 0)
+{
+    <div class="empty-state card">
+        <h3>Rien de prêt ce soir</h3>
+        <p>Les bouteilles en cave ne sont pas encore dans leur fenêtre, ou la cave est vide.</p>
+        <div class="empty-actions">
+            <a class="btn" href="cellar">Voir la cave</a>
+            <a class="btn btn-secondary" href="cellar">Ajouter une bouteille</a>
+        </div>
+    </div>
 }
 else
 {
     <ol class="tonight-list">
-        @foreach (var b in _list)
+        @for (var i = 0; i < _list.Count; i++)
         {
-            <li class="card @(b.ReadyToDrink ? "ready" : "not-ready")">
-                <strong>@b.Name</strong>
-                <span class="muted">
-                    @(b.Vintage?.ToString() ?? "?") · @(b.Region ?? "—") ·
-                    @(b.ReadyToDrink ? "prêt" : "trop jeune / hors fenêtre")
-                    · qty @b.Quantity
-                </span>
-                @if (!string.IsNullOrWhiteSpace(b.Bin))
-                {
-                    <span class="bin">Casier @b.Bin</span>
-                }
+            var b = _list[i];
+            var rank = i + 1;
+            var idx = i;
+            <li>
+                <BottleCard Bottle="b" AsOfYear="_asOfYear" Rank="rank" EnterIndex="idx"
+                            Why="@WhyFor(b)">
+                    <button type="button" class="btn-tiny" @onclick="() => MarkDrunkAsync(b)" disabled="@_busy">Marquer bu</button>
+                    <a class="btn-tiny" href="cellar">Détail</a>
+                </BottleCard>
             </li>
         }
     </ol>
 }
 
 @code {
+    private const int TopN = 5;
+    private List<Bottle> _all = new();
     private List<Bottle> _list = new();
-    private int _topN = 5;
+    private Color? _colorFilter;
     private bool _busy;
+    private bool _loading = true;
+    private bool _cellarEmpty;
+    private string? _message;
+    private readonly int _asOfYear = DateTimeOffset.Now.Year;
+    private int? _oldestReadyVintage;
 
-    protected override async Task OnInitializedAsync() => await Refresh();
+    protected override async Task OnInitializedAsync() => await RefreshAsync();
 
-    private async Task Refresh()
+    private void SetColor(Color? color)
+    {
+        _colorFilter = color;
+        ApplyFilter();
+    }
+
+    private async Task RefreshAsync()
+    {
+        _loading = true;
+        try
+        {
+            var raw = await CellarSvc.GetAllAsync();
+            _all = raw.ToList();
+            foreach (var b in _all)
+            {
+                MaturityRules.ApplyReadyToDrink(b, _asOfYear);
+            }
+
+            _cellarEmpty = _all.Count == 0 || _all.All(b => b.Status == BottleStatus.Finished || b.Quantity <= 0);
+            ApplyFilter();
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+
+    private void ApplyFilter()
+    {
+        IEnumerable<Bottle> q = _all
+            .Where(b => b.Status == BottleStatus.InStock && b.Quantity > 0 && b.ReadyToDrink);
+
+        if (_colorFilter is Color c)
+        {
+            q = q.Where(b => b.Color == c);
+        }
+
+        _list = q
+            .OrderBy(b => b.Vintage ?? int.MaxValue)
+            .ThenBy(b => b.Name, StringComparer.OrdinalIgnoreCase)
+            .Take(TopN)
+            .ToList();
+
+        var readyVintages = _all
+            .Where(b => b.Status == BottleStatus.InStock && b.Quantity > 0 && b.ReadyToDrink && b.Vintage is not null)
+            .Select(b => b.Vintage!.Value)
+            .ToList();
+        _oldestReadyVintage = readyVintages.Count == 0 ? null : readyVintages.Min();
+    }
+
+    private string WhyFor(Bottle b)
+    {
+        if (b.Vintage is int y && _oldestReadyVintage == y)
+        {
+            return $"Prêt · millésime {y} (plus ancien en cave)";
+        }
+
+        if (_colorFilter is Color filtered)
+        {
+            return $"Prêt · {UiLabels.Color(filtered)}";
+        }
+
+        if (!string.IsNullOrWhiteSpace(b.Region))
+        {
+            return $"Prêt · {b.Region}";
+        }
+
+        return "Prêt à boire · en stock";
+    }
+
+    private async Task MarkDrunkAsync(Bottle b)
     {
         _busy = true;
         try
         {
-            if (_topN < 1) _topN = 1;
-            if (_topN > 50) _topN = 50;
-            var year = DateTimeOffset.Now.Year;
-            var result = await CellarSvc.GetDrinkTonightAsync(_topN, year);
-            _list = result.ToList();
+            var updated = new Bottle
+            {
+                Id = b.Id,
+                Name = b.Name,
+                Producer = b.Producer,
+                Region = b.Region,
+                Country = b.Country,
+                Color = b.Color,
+                Varietal = b.Varietal,
+                Vintage = b.Vintage,
+                Quantity = Math.Max(0, b.Quantity - 1),
+                PriceChf = b.PriceChf,
+                PurchaseDate = b.PurchaseDate,
+                Bin = b.Bin,
+                Status = b.Quantity - 1 <= 0 ? BottleStatus.Finished : BottleStatus.Drinking,
+                Notes = b.Notes,
+                ReadyToDrink = b.ReadyToDrink,
+                CreatedAt = b.CreatedAt,
+                UpdatedAt = b.UpdatedAt
+            };
+            await CellarSvc.UpdateAsync(updated, asOfYear: _asOfYear);
+            _message = updated.Quantity == 0
+                ? $"Marqué fini : {b.Name}"
+                : $"Marqué bu : {b.Name} (reste {updated.Quantity})";
+            await RefreshAsync();
         }
         finally
         {
