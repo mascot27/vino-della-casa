@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Bottle cards v2: local SVG silhouettes by color, hover lift/shadow/silhouette scale, discreet secondary actions, coherent empty/skeleton states.
 - Bottle cards (cellar + drink-tonight): color pill + maturity badge above the title for faster visual scan.
 
 ### Added
