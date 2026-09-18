@@ -2,15 +2,45 @@
 
 <PageTitle>Vino della casa</PageTitle>
 
-<section class="hero">
-    <h1>Vino della casa</h1>
-    <p class="tagline">Cave personnelle locale — inventaire, casiers, et « À boire ce soir ».</p>
-    <p class="muted">
-        Gérez vos bouteilles hors-ligne dans le navigateur : stock, régions, maturité déterministe,
-        et une shortlist claire pour ce soir. Aucun compte requis pour l’usage de base.
-    </p>
-    <div class="hero-cta">
-        <a class="btn" href="cellar">Ouvrir la cave</a>
-        <a class="btn btn-secondary" href="drink-tonight">À boire ce soir</a>
+<section class="home-hero" aria-labelledby="home-hero-title">
+    <div class="home-hero-ambiance" aria-hidden="true">
+        <div class="home-hero-gradient"></div>
+        <div class="home-hero-grain"></div>
+        <div class="home-hero-vignette"></div>
+    </div>
+
+    <div class="home-hero-layout">
+        <div class="home-hero-card">
+            <p class="home-hero-kicker">Cave personnelle · hors-ligne</p>
+            <h1 id="home-hero-title">Vino della casa</h1>
+            <p class="home-hero-tagline">Ta cave, au casier, prête à ouvrir.</p>
+            <div class="hero-cta">
+                <a class="btn" href="cellar">Ouvrir la cave</a>
+                <a class="btn btn-secondary" href="drink-tonight">À boire ce soir</a>
+            </div>
+            <div class="home-hero-pills" aria-hidden="true">
+                <span class="pill pill-rouge">Rouge</span>
+                <span class="pill pill-blanc">Blanc</span>
+                <span class="pill pill-rose">Rosé</span>
+                <span class="pill pill-effervescent">Effervescent</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-features" aria-label="Fonctionnalités">
+    <div class="home-features-inner">
+        <article class="home-feature-card card">
+            <h2>Inventaire</h2>
+            <p>Bouteilles en local, même hors ligne.</p>
+        </article>
+        <article class="home-feature-card card">
+            <h2>Casiers</h2>
+            <p>Où elle dort.</p>
+        </article>
+        <article class="home-feature-card card">
+            <h2>À boire ce soir</h2>
+            <p>Prêtes, les plus anciennes d’abord.</p>
+        </article>
     </div>
 </section>
