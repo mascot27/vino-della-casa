@@ -592,6 +592,17 @@ textarea.form-input:focus-visible {
   justify-content: center;
 }
 
+.empty-state--prestige {
+  padding: var(--space-6) var(--space-5);
+  background: linear-gradient(180deg, rgba(107, 30, 42, 0.03), transparent 70%);
+  border-radius: var(--radius);
+}
+
+.empty-state--filter {
+  padding: var(--space-5);
+  text-align: center;
+}
+
 /* ——— Bottle cards ——— */
 .bottle-grid {
   display: grid;
@@ -604,13 +615,17 @@ textarea.form-input:focus-visible {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: var(--space-4);
+  padding: var(--space-5) var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
   transition: box-shadow 0.2s ease, transform 0.2s ease;
   animation: card-enter 0.35s ease both;
   outline: none;
+}
+
+.bottle-card--prestige {
+  min-height: 11rem;
 }
 
 .bottle-card:hover {
@@ -739,6 +754,23 @@ textarea.form-input:focus-visible {
   color: var(--burgundy);
   border-color: rgba(107, 30, 42, 0.25);
 }
+.meta-chip--tag {
+  background: rgba(107, 30, 42, 0.08);
+  color: var(--burgundy);
+  border-color: rgba(107, 30, 42, 0.2);
+}
+
+.meta-chip--varietal {
+  max-width: 12rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meta-chip--price {
+  opacity: 0.75;
+  font-weight: 400;
+}
+
 
 .bottle-card[role="button"] {
   cursor: pointer;
@@ -785,25 +817,31 @@ textarea.form-input:focus-visible {
 }
 
 .bottle-name {
-  font-size: 1.1rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.15rem;
   font-weight: 600;
   margin: 0;
   color: var(--text);
-  line-height: 1.3;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
 }
 
 .bottle-vintage {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 600;
   color: var(--text);
-  margin: var(--space-1) 0 0;
+  margin: 0;
   letter-spacing: -0.01em;
 }
 
 .bottle-appellation {
   margin: 0;
-  font-size: 0.95rem;
-  color: var(--text);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.bottle-appellation.muted {
+  color: var(--muted);
 }
 
 .bottle-appellation .producer {
@@ -1021,4 +1059,225 @@ textarea.form-input:focus-visible {
     padding-left: var(--space-6);
     padding-right: var(--space-6);
   }
+}
+
+
+/* ——— Cave layout: map + inventory ——— */
+.cellar-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) 1fr;
+  gap: var(--space-5);
+  align-items: start;
+  margin-top: var(--space-3);
+}
+
+.cellar-list {
+  min-width: 0;
+}
+
+.filter-hint {
+  margin: 0 0 var(--space-3);
+  font-size: 0.9rem;
+}
+
+.btn-linkish {
+  font: inherit;
+  color: var(--burgundy);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.france-map-panel {
+  position: sticky;
+  top: var(--space-3);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+.france-map-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.france-map-title {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--burgundy);
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.france-map-visual {
+  width: 100%;
+}
+
+.france-map-svg {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  display: block;
+}
+
+.map-land {
+  fill: #f3ebe3;
+  stroke: #d4c4b4;
+  stroke-width: 1.2;
+  pointer-events: none;
+}
+
+.map-region {
+  cursor: pointer;
+  outline: none;
+}
+
+.map-region path {
+  fill: #e8ddd2;
+  stroke: #c4b3a2;
+  stroke-width: 1;
+  transition: fill 0.15s ease;
+}
+
+.map-region:hover path,
+.map-region:focus path {
+  fill: #d9c4b8;
+}
+
+.map-region.is-active path {
+  fill: #6B1E2A;
+  stroke: #4a1520;
+}
+
+.map-rlabel {
+  fill: #5a4a3e;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 11px;
+  pointer-events: none;
+}
+
+.map-region.is-active .map-rlabel {
+  fill: #fff;
+}
+
+.map-badge {
+  fill: #6B1E2A;
+  pointer-events: none;
+}
+
+.map-region.is-active .map-badge {
+  fill: #fff;
+}
+
+.map-badge-text {
+  fill: #fff;
+  font-family: system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.map-region.is-active .map-badge-text {
+  fill: #6B1E2A;
+}
+
+.map-pin {
+  fill: #6B1E2A;
+}
+
+.map-pin-stem {
+  stroke: #6B1E2A;
+  stroke-width: 2;
+}
+
+.map-region--pin.is-active .map-pin {
+  fill: #4a1520;
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.map-pin-label {
+  fill: #6B1E2A;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 11px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.map-pin-sub {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.france-map-fallback {
+  margin-top: var(--space-3);
+}
+
+.france-map-fallback summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.france-map-region-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.france-map-region-list li {
+  margin: 0;
+}
+
+.map-count-inline {
+  margin-left: 0.35rem;
+  opacity: 0.85;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .cellar-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .france-map-panel {
+    position: static;
+  }
+
+  .france-map-svg {
+    max-height: 320px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-region path {
+    transition: none;
+  }
+}
+
+
+.france-map-visual.is-filtered {
+  position: relative;
+}
+
+.france-map-visual.is-filtered::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 2px var(--burgundy);
+  pointer-events: none;
+}
+
+.map-chip--suisse.active {
+  background: var(--burgundy);
 }

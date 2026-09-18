@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 420" role="img" aria-label="Carte des régions viticoles de France">
+  <title>Régions viticoles — France</title>
+  <defs>
+    <style>
+      .land { fill: #f3ebe3; stroke: #d4c4b4; stroke-width: 1.2; }
+      .region { fill: #e8ddd2; stroke: #c4b3a2; stroke-width: 1; cursor: pointer; transition: fill 0.15s ease; }
+      .region:hover, .region:focus { fill: #d9c4b8; outline: none; }
+      .region.is-active { fill: #6B1E2A; stroke: #4a1520; }
+      .region.is-active .rlabel, .region.is-active ~ .rlabel { fill: #fff; }
+      .rlabel { fill: #5a4a3e; font-family: Georgia, serif; font-size: 11px; pointer-events: none; }
+      .region.is-active + .rlabel, .hl .rlabel { fill: #fff; }
+      .pin { fill: #6B1E2A; }
+      .pin-label { fill: #6B1E2A; font-family: Georgia, serif; font-size: 11px; font-weight: 700; }
+      .badge { fill: #6B1E2A; }
+      .badge-text { fill: #fff; font-family: system-ui, sans-serif; font-size: 9px; font-weight: 700; }
+      .sea { fill: #eef5f7; }
+    </style>
+  </defs>
+  <!-- stylized mainland outline -->
+  <path class="land" d="M95 28 L145 18 L190 22 L230 40 L268 55 L295 95 L310 140 L318 190 L312 250 L295 300 L270 345 L230 375 L185 390 L140 385 L105 360 L78 320 L62 270 L55 210 L58 150 L70 90 Z"/>
+  <!-- Alsace -->
+  <g id="alsace" class="region" data-region="alsace">
+    <path d="M268 55 L295 95 L288 130 L265 125 L255 85 Z"/>
+  </g>
+  <text class="rlabel" x="278" y="95" text-anchor="middle">Alsace</text>
+  <!-- Champagne -->
+  <g id="champagne" class="region" data-region="champagne">
+    <path d="M190 55 L230 48 L255 85 L240 115 L195 110 L175 80 Z"/>
+  </g>
+  <text class="rlabel" x="215" y="85" text-anchor="middle">Champagne</text>
+  <!-- Loire -->
+  <g id="loire" class="region" data-region="loire">
+    <path d="M95 140 L175 125 L195 155 L170 185 L100 195 L80 165 Z"/>
+  </g>
+  <text class="rlabel" x="135" y="165" text-anchor="middle">Loire</text>
+  <!-- Bourgogne -->
+  <g id="bourgogne" class="region" data-region="bourgogne">
+    <path d="M195 110 L240 115 L255 160 L230 195 L185 185 L175 140 Z"/>
+  </g>
+  <text class="rlabel" x="215" y="155" text-anchor="middle">Bourgogne</text>
+  <!-- Bordeaux -->
+  <g id="bordeaux" class="region" data-region="bordeaux">
+    <path d="M70 220 L120 210 L140 255 L115 295 L75 290 L55 250 Z"/>
+  </g>
+  <text class="rlabel" x="95" y="255" text-anchor="middle">Bordeaux</text>
+  <!-- Rhône -->
+  <g id="rhone" class="region" data-region="rhone">
+    <path d="M200 195 L240 200 L255 260 L230 300 L195 290 L185 230 Z"/>
+  </g>
+  <text class="rlabel" x="220" y="250" text-anchor="middle">Rhône</text>
+  <!-- Sud-Ouest -->
+  <g id="sud-ouest" class="region" data-region="sud-ouest">
+    <path d="M75 295 L115 300 L130 340 L100 365 L70 350 L60 315 Z"/>
+  </g>
+  <text class="rlabel" x="95" y="335" text-anchor="middle">Sud-Ouest</text>
+  <!-- Provence -->
+  <g id="provence" class="region" data-region="provence">
+    <path d="M195 300 L245 295 L270 330 L240 360 L195 350 L180 320 Z"/>
+  </g>
+  <text class="rlabel" x="225" y="335" text-anchor="middle">Provence</text>
+  <!-- Suisse / Valais pin (east of Alsace/Bourgogne) -->
+  <g id="suisse" class="region" data-region="suisse">
+    <circle class="pin" cx="310" cy="145" r="7"/>
+    <path d="M310 152 L310 168" stroke="#6B1E2A" stroke-width="2"/>
+  </g>
+  <text class="pin-label" x="328" y="148">Valais</text>
+  <text class="pin-label" x="328" y="162" style="font-size:10px;font-weight:600">Suisse</text>
+</svg>

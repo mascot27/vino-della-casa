@@ -56,7 +56,7 @@ public sealed class VinoTools
     }
 
     [McpServerTool(Name = "list_seed_bottles"), Description(
-        "Return anonymous Bordeaux demo cellar seeds (50). Default asOfYear=2026.")]
+        "Return anonymous demo cellar seeds (53). Default asOfYear=2026.")]
     public string ListSeedBottles(
         [Description("Reference year for ReadyToDrink (default 2026)")] int? asOfYear = null,
         [Description("If true, only ready bottles")] bool? includeReadyOnly = null)

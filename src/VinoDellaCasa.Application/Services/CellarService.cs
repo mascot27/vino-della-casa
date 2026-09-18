@@ -52,7 +52,7 @@ public sealed class CellarService
     }
 
     /// <summary>
-    /// Loads anonymous Bordeaux demo seeds (50) when the cellar is empty (or forceReplace).
+    /// Loads anonymous demo seeds (53) when the cellar is empty (or forceReplace).
     /// </summary>
     public async Task<int> EnsureM1SeedsAsync(
         int asOfYear = 2026,

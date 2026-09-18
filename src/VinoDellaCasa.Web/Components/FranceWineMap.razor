@@ -1,0 +1,79 @@
+@using VinoDellaCasa.Domain
+@using VinoDellaCasa.Domain.Enums
+
+<aside class="france-map-panel" aria-label="Filtrer par région viticole">
+    <div class="france-map-toolbar">
+        <h3 class="france-map-title">Carte</h3>
+        <button type="button"
+                class="chip @(Selected is null ? "active" : null)"
+                @onclick="ClearAsync">
+            Tous
+        </button>
+    </div>
+
+    <div class="france-map-visual @(Selected is WineMapRegion s ? $"is-filtered is-filtered--{WineMapRegions.Id(s)}" : null)">
+        @* Local asset only — wwwroot/img/map/france-regions.svg (CSP img-src 'self'). *@
+        <img class="france-map-svg"
+             src="img/map/france-regions.svg"
+             alt="Carte des régions viticoles de France"
+             width="280"
+             height="320"
+             decoding="async" />
+    </div>
+
+    <details class="france-map-fallback" open>
+        <summary>Régions</summary>
+        <ul class="france-map-region-list" role="list">
+            <li>
+                <button type="button"
+                        class="chip @(Selected is null ? "active" : null)"
+                        @onclick="ClearAsync">
+                    Tous
+                    @if (TotalCount is int total)
+                    {
+                        <span class="map-count-inline">@total</span>
+                    }
+                </button>
+            </li>
+            @foreach (var region in VisibleHotspots)
+            {
+                var count = CountFor(region);
+                var id = WineMapRegions.Id(region);
+                <li>
+                    <button type="button"
+                            class="chip map-chip--@id @(Selected == region ? "active" : null)"
+                            aria-pressed="@(Selected == region)"
+                            @onclick="() => SelectAsync(region)">
+                        @WineMapRegions.LabelFr(region)
+                        @if (count > 0)
+                        {
+                            <span class="map-count-inline">@count</span>
+                        }
+                    </button>
+                </li>
+            }
+        </ul>
+    </details>
+</aside>
+
+@code {
+    [Parameter] public WineMapRegion? Selected { get; set; }
+    [Parameter] public EventCallback<WineMapRegion?> SelectedChanged { get; set; }
+    [Parameter] public IReadOnlyDictionary<WineMapRegion, int>? Counts { get; set; }
+    [Parameter] public bool ShowSuisse { get; set; }
+    [Parameter] public int? TotalCount { get; set; }
+
+    private IEnumerable<WineMapRegion> VisibleHotspots =>
+        WineMapRegions.MapHotspots.Where(r => r != WineMapRegion.Suisse || ShowSuisse);
+
+    private int CountFor(WineMapRegion region) =>
+        Counts is not null && Counts.TryGetValue(region, out var n) ? n : 0;
+
+    private async Task ClearAsync() => await SelectAsync(null);
+
+    private async Task SelectAsync(WineMapRegion? region)
+    {
+        Selected = region;
+        await SelectedChanged.InvokeAsync(region);
+    }
+}
