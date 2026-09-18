@@ -435,3 +435,6 @@ FodyWeavers.xsd
 *.user
 .vs/
 .idea/
+
+# Coverlet / CI coverage output
+coverage/

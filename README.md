@@ -24,3 +24,13 @@ Open the URL shown by `dotnet run`. On GitHub Pages, open the demo link above (p
 - `Docs/architecture.md` — IndexedDB vs test host
 - `Docs/SPEC.md` — product & engineering notes
 - `Docs/domain/` — maturity rules & sample seed notes
+
+## Dev hygiene
+
+```bash
+dotnet test --collect:"XPlat Code Coverage"
+dotnet format
+```
+
+CI collects Coverlet cobertura results as a workflow artifact (no coverage threshold yet). `dotnet format --verify-no-changes` runs as a soft check (`continue-on-error`).
+
