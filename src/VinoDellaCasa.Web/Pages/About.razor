@@ -1,11 +1,48 @@
 @page "/about"
 
-<PageTitle>About — Vino della casa</PageTitle>
+<PageTitle>À propos — Vino della casa</PageTitle>
 
-<h1>About</h1>
-<p>
-  <strong>Vino della casa</strong> is a local-first Blazor WebAssembly cellar app:
-  inventory, bin locations, and a deterministic “drink tonight” helper.
-  Data stays in the browser (IndexedDB); no account required for the MVP.
-</p>
-<p class="muted">Portfolio project — .NET / Blazor WASM, tests, and CI.</p>
+<section class="about-hero hero">
+    <h1>À propos</h1>
+    <p class="tagline">
+        Une cave locale-first : inventaire soigné, casiers, et une suggestion « À boire ce soir »
+        fondée sur des règles de maturité déterministes.
+    </p>
+    <p>
+        <strong>Vino della casa</strong> montre un produit utilisable tout de suite —
+        hors-ligne dans le navigateur, sans mur de compte — avec une UI claire pour choisir
+        une bouteille ce soir ou suivre ce qui attend encore en cave.
+    </p>
+</section>
+
+<section class="card about-look">
+    <h2>Ce que vous voyez</h2>
+    <div class="feature-grid">
+        <article class="feature-card">
+            <h3>Cave</h3>
+            <p>Cartes bouteille avec couleur, maturité, millésime et casier — pas un tableau admin.</p>
+        </article>
+        <article class="feature-card">
+            <h3>À boire ce soir</h3>
+            <p>Shortlist classée : prêts d’abord, puis millésimes plus anciens, avec filtres et actions.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Hors-ligne</h3>
+            <p>Données dans le navigateur. Chargez un échantillon ou ajoutez vos propres bouteilles.</p>
+        </article>
+    </div>
+    <div class="swatch-row" aria-hidden="true">
+        <span class="pill pill-rouge">Rouge</span>
+        <span class="pill pill-blanc">Blanc</span>
+        <span class="pill pill-rose">Rosé</span>
+        <span class="pill pill-effervescent">Effervescent</span>
+        <span class="badge-maturity badge-pret">Prêt</span>
+        <span class="badge-maturity badge-attendre">À attendre</span>
+    </div>
+    <p class="muted" style="margin-top:1rem">
+        Démo :
+        <a href="https://mascot27.github.io/vino-della-casa/" target="_blank" rel="noopener noreferrer">
+            mascot27.github.io/vino-della-casa
+        </a>
+    </p>
+</section>

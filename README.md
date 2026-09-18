@@ -1,14 +1,27 @@
 # Vino della casa
 
-Local-first Blazor WebAssembly wine cellar: stock, bin locations, search, and a deterministic **drink tonight** helper.
+Local-first **Blazor WebAssembly** wine cellar: inventory, bin locations, search/filter, and a deterministic **drink tonight** helper — runs offline in the browser via IndexedDB.
 
-**Demo:** https://mascot27.github.io/vino-della-casa/
+**Live demo:** https://mascot27.github.io/vino-della-casa/
+
+## Features
+
+- CRUD for bottles (producer, region, vintage, quantity, price, bin, status)
+- Search + filters; autocomplete for varietal / region suggestions
+- Deterministic maturity / “ready to drink” rules (unit-tested)
+- CSV-oriented cellar workflow (export path documented in the app/docs)
+- Works without an account for core cellar use (offline-first)
 
 ## Stack
 
-- .NET 8 / Blazor WASM
-- Domain + application layers, xUnit tests, GitHub Actions CI
-- Offline path: `ICellarStore` + IndexedDB (in-memory store for CI)
+| Layer | Choice |
+|---|---|
+| UI | .NET 8 / Blazor WASM |
+| Domain | Clean-ish layering (`Domain` / `Application` / `Infrastructure` / `Web`) |
+| Persistence | `ICellarStore` → IndexedDB in the browser; in-memory store for CI |
+| Tests | xUnit (+ Coverlet coverage artifact on CI) |
+| CI/CD | GitHub Actions on PRs; Dependabot (NuGet + Actions) |
+| Hosting | GitHub Pages (static) + basic CSP |
 
 ## Run locally
 
@@ -17,7 +30,7 @@ dotnet test
 dotnet run --project src/VinoDellaCasa.Web
 ```
 
-Open the URL shown by `dotnet run`. On GitHub Pages, open the demo link above (project site base path `/vino-della-casa/`).
+Open the URL printed by `dotnet run`. The GitHub Pages build uses base path `/vino-della-casa/`.
 
 ## Docs
 
@@ -32,5 +45,4 @@ dotnet test --collect:"XPlat Code Coverage"
 dotnet format
 ```
 
-CI collects Coverlet cobertura results as a workflow artifact (no coverage threshold yet). `dotnet format --verify-no-changes` runs as a soft check (`continue-on-error`).
-
+CI uploads Coverlet cobertura as a workflow artifact. `dotnet format --verify-no-changes` runs as a soft check.
