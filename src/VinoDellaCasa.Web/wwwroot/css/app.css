@@ -611,6 +611,17 @@ textarea.form-input:focus-visible {
   margin-top: var(--space-3);
 }
 
+.bottle-grid--cave {
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+@media (min-width: 720px) {
+  .bottle-grid--cave {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .bottle-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -1062,7 +1073,282 @@ textarea.form-input:focus-visible {
 }
 
 
-/* ——— Cave layout: map + inventory ——— */
+/* ——— Cave layout B: browse magazine ——— */
+.cave-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-5);
+}
+
+.cave-header-titles h1 {
+  margin: 0 0 var(--space-1);
+}
+
+.cave-lede {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.cave-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+
+.cave-cta-tonight {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.cave-seed-link {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.cave-seed-link:hover {
+  opacity: 1;
+}
+
+.cave-manage-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.cave-manage-toggle input {
+  accent-color: var(--burgundy);
+}
+
+.cave-affiner {
+  margin-bottom: var(--space-5);
+  padding: var(--space-4);
+}
+
+.cave-affiner-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.cave-affiner .france-map-panel {
+  position: static;
+  border: none;
+  background: transparent;
+  padding: 0;
+  max-width: 420px;
+}
+
+.cave-browse {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-top: var(--space-2);
+}
+
+.cave-section-title {
+  margin: 0 0 var(--space-3);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--burgundy);
+}
+
+.cave-count {
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.cave-kicker {
+  margin: 0 0 var(--space-2);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+}
+
+/* Hero featured */
+.cave-hero {
+  padding: var(--space-5);
+  background:
+    linear-gradient(135deg, rgba(107, 30, 42, 0.06), transparent 55%),
+    var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.bottle-card--featured {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  min-height: 0;
+}
+
+.bottle-card--featured:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.bottle-card--featured .bottle-card-layout {
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.bottle-card--featured .bottle-card-visual {
+  width: 5rem;
+}
+
+.bottle-card--featured .bottle-silhouette {
+  width: 4.5rem;
+  max-height: 11rem;
+}
+
+.bottle-card--featured .bottle-name {
+  font-size: 1.65rem;
+  line-height: 1.25;
+}
+
+.bottle-card--featured .bottle-vintage {
+  font-size: 1.2rem;
+}
+
+.bottle-featured-cta {
+  margin-top: var(--space-3);
+}
+
+/* Horizontal rail */
+.cave-rail-section {
+  min-width: 0;
+}
+
+.cave-rail {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  padding: var(--space-1) var(--space-1) var(--space-3);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cave-rail-item {
+  flex: 0 0 auto;
+  width: min(240px, 78vw);
+  scroll-snap-align: start;
+}
+
+.bottle-card--rail {
+  height: 100%;
+  padding: var(--space-4) var(--space-3);
+  min-height: 0;
+}
+
+.bottle-card--rail .bottle-card-visual {
+  width: 2.25rem;
+}
+
+.bottle-card--rail .bottle-silhouette {
+  width: 2rem;
+  max-height: 5rem;
+}
+
+.bottle-card--rail .bottle-name {
+  font-size: 1rem;
+}
+
+.bottle-card--rail .bottle-vintage {
+  font-size: 0.95rem;
+}
+
+/* Grid cards with ⋯ menu */
+.bottle-card--grid {
+  position: relative;
+  min-height: 12rem;
+  padding: var(--space-5) var(--space-4) var(--space-4);
+}
+
+.bottle-card-menu {
+  position: absolute;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  z-index: 2;
+}
+
+.bottle-menu-trigger {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-soft);
+}
+
+.bottle-menu-trigger:hover,
+.bottle-menu-trigger[aria-expanded="true"] {
+  border-color: var(--burgundy);
+  color: var(--burgundy);
+}
+
+.bottle-menu-popover {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.35rem);
+  min-width: 10rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lift);
+  padding: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.bottle-menu-item {
+  font: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 0.65rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.bottle-menu-item:hover {
+  background: rgba(107, 30, 42, 0.08);
+}
+
+.bottle-menu-item--danger {
+  color: #9b1c1c;
+}
+
+.btn.is-active,
+.btn-secondary.is-active {
+  box-shadow: inset 0 0 0 2px rgba(107, 30, 42, 0.35);
+}
+
+/* Map panel (secondary / Affiner) */
 .cellar-layout {
   display: grid;
   grid-template-columns: minmax(220px, 280px) 1fr;
@@ -1256,6 +1542,11 @@ textarea.form-input:focus-visible {
   .france-map-svg {
     max-height: 320px;
   }
+
+  .bottle-card--featured .bottle-card-layout {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1263,7 +1554,6 @@ textarea.form-input:focus-visible {
     transition: none;
   }
 }
-
 
 .france-map-visual.is-filtered {
   position: relative;

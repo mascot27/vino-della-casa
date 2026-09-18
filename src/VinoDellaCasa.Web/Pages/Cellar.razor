@@ -8,21 +8,55 @@
 @using VinoDellaCasa.Web
 @using VinoDellaCasa.Web.Components
 @inject CellarService CellarSvc
+@inject IJSRuntime Js
 
 <PageTitle>Cave — Vino della casa</PageTitle>
 
-<h1>Cave</h1>
-<p class="muted">Inventaire local — ajoutez des bouteilles ou chargez un échantillon pour explorer.</p>
-
-<div class="toolbar">
-    <button type="button" class="btn" @onclick="LoadSeeds" disabled="@_busy">Charger l’échantillon</button>
-    <button type="button" class="btn btn-secondary" @onclick="NewBottle" disabled="@_busy">Ajouter une bouteille</button>
-    <a class="btn btn-link" href="drink-tonight">À boire ce soir →</a>
-</div>
+<header class="cave-header">
+    <div class="cave-header-titles">
+        <h1>Cave</h1>
+        <p class="muted cave-lede">Parcourir · découvrir · ouvrir ce soir.</p>
+    </div>
+    <div class="cave-header-actions">
+        <a class="btn cave-cta-tonight" href="drink-tonight">À boire ce soir</a>
+        <button type="button"
+                class="btn btn-secondary @(_affinerOpen ? "is-active" : null)"
+                @onclick="ToggleAffiner"
+                aria-expanded="@_affinerOpen"
+                aria-controls="cave-affiner">
+            Affiner
+        </button>
+        <button type="button" class="btn-linkish cave-seed-link" @onclick="LoadSeeds" disabled="@_busy">
+            Charger l’échantillon
+        </button>
+        <button type="button" class="btn-linkish" @onclick="NewBottle" disabled="@_busy">
+            Ajouter
+        </button>
+        <label class="cave-manage-toggle">
+            <input type="checkbox" @bind="_manageMode" />
+            <span>Gérer</span>
+        </label>
+    </div>
+</header>
 
 @if (!string.IsNullOrEmpty(_message))
 {
     <p class="flash @(_messageIsError ? "flash-error" : null)">@_message</p>
+}
+
+@if (_affinerOpen)
+{
+    <section id="cave-affiner" class="cave-affiner card" aria-label="Affiner la cave">
+        <div class="cave-affiner-head">
+            <h2 class="cave-section-title">Affiner</h2>
+            <button type="button" class="btn-linkish" @onclick="() => OnRegionChanged(null)">Réinitialiser</button>
+        </div>
+        <FranceWineMap Selected="_selectedRegion"
+                       SelectedChanged="OnRegionChanged"
+                       Counts="_regionCounts"
+                       ShowSuisse="_showSuisse"
+                       TotalCount="_bottles.Count" />
+    </section>
 }
 
 @if (_editing is not null)
@@ -80,74 +114,131 @@
     </section>
 }
 
-<section class="card cellar-inventory">
-    <h2>Inventaire (@VisibleBottles.Count@(_selectedRegion is not null ? $" / {_bottles.Count}" : null))</h2>
-    @if (_loading)
-    {
-        <div class="skeleton-grid" aria-busy="true" aria-label="Chargement">
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
+@if (_loading)
+{
+    <div class="skeleton-grid" aria-busy="true" aria-label="Chargement">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+    </div>
+}
+else if (_bottles.Count == 0)
+{
+    <div class="empty-state empty-state--prestige card">
+        <div class="empty-state-visual" aria-hidden="true">
+            <img class="bottle-silhouette" src="img/bottles/empty.svg" alt="" width="36" height="90" />
         </div>
-    }
-    else if (_bottles.Count == 0)
+        <h3>Cave vide</h3>
+        <p>Ajoutez des bouteilles pour obtenir des suggestions, ou chargez l’échantillon démo (@SeedCount).</p>
+        <div class="empty-actions">
+            <button type="button" class="btn" @onclick="LoadSeeds" disabled="@_busy">Charger l’échantillon</button>
+            <button type="button" class="btn btn-secondary" @onclick="NewBottle" disabled="@_busy">Ajouter une bouteille</button>
+        </div>
+    </div>
+}
+else
+{
+    @if (_selectedRegion is WineMapRegion sel)
     {
-        <div class="empty-state empty-state--prestige">
-            <div class="empty-state-visual" aria-hidden="true">
-                <img class="bottle-silhouette" src="img/bottles/empty.svg" alt="" width="36" height="90" />
-            </div>
-            <h3>Cave vide</h3>
-            <p>Ajoutez des bouteilles pour obtenir des suggestions, ou chargez l’échantillon démo (@SeedCount).</p>
-            <div class="empty-actions">
-                <button type="button" class="btn" @onclick="LoadSeeds" disabled="@_busy">Charger l’échantillon</button>
-                <button type="button" class="btn btn-secondary" @onclick="NewBottle" disabled="@_busy">Ajouter une bouteille</button>
-            </div>
+        <p class="filter-hint muted">
+            Filtre : <strong>@WineMapRegions.LabelFr(sel)</strong>
+            — <button type="button" class="btn-linkish" @onclick="() => OnRegionChanged(null)">Tous</button>
+        </p>
+    }
+
+    @if (VisibleBottles.Count == 0)
+    {
+        <div class="empty-state empty-state--filter card">
+            <h3>Aucune bouteille dans cette région</h3>
+            <p>Essayez une autre région ou affichez toute la cave.</p>
+            <button type="button" class="btn btn-secondary" @onclick="() => OnRegionChanged(null)">Tous</button>
         </div>
     }
     else
     {
-        <div class="cellar-layout">
-            <FranceWineMap Selected="_selectedRegion"
-                           SelectedChanged="OnRegionChanged"
-                           Counts="_regionCounts"
-                           ShowSuisse="_showSuisse"
-                           TotalCount="_bottles.Count" />
-            <div class="cellar-list">
-                @if (_selectedRegion is WineMapRegion sel)
-                {
-                    <p class="filter-hint muted">
-                        Filtre : <strong>@WineMapRegions.LabelFr(sel)</strong>
-                        — <button type="button" class="btn-linkish" @onclick="() => OnRegionChanged(null)">Tous</button>
-                    </p>
-                }
-                @if (VisibleBottles.Count == 0)
-                {
-                    <div class="empty-state empty-state--filter">
-                        <h3>Aucune bouteille dans cette région</h3>
-                        <p>Essayez une autre région ou affichez tout l’inventaire.</p>
-                        <button type="button" class="btn btn-secondary" @onclick="() => OnRegionChanged(null)">Tous</button>
+        <div class="cave-browse">
+            @if (Featured is Bottle featured)
+            {
+                <section class="cave-hero" aria-label="Bouteille à l’honneur">
+                    <p class="cave-kicker">Ce soir</p>
+                    <BottleCard Bottle="featured"
+                                AsOfYear="_asOfYear"
+                                Variant="BottleCardVariant.Featured"
+                                OnFeaturedCta="() => OpenFeaturedAsync(featured)"
+                                OnSelect="() => Edit(featured)"
+                                ShowOpenActions="_manageMode">
+                        @if (_manageMode)
+                        {
+                            <button type="button" class="btn-tiny" @onclick="() => Edit(featured)">Modifier</button>
+                            <button type="button" class="btn-tiny" @onclick="() => MarkDrunkAsync(featured)" disabled="@_busy">Marquer bu</button>
+                        }
+                    </BottleCard>
+                </section>
+            }
+
+            @if (AlsoReady.Count > 0)
+            {
+                <section class="cave-rail-section" aria-label="Aussi prêtes">
+                    <h2 class="cave-section-title">Aussi prêtes</h2>
+                    <div class="cave-rail" role="list">
+                        @for (var i = 0; i < AlsoReady.Count; i++)
+                        {
+                            var b = AlsoReady[i];
+                            var idx = i;
+                            <div class="cave-rail-item" role="listitem">
+                                <BottleCard Bottle="b"
+                                            AsOfYear="_asOfYear"
+                                            Variant="BottleCardVariant.Rail"
+                                            EnterIndex="idx"
+                                            OnSelect="() => Edit(b)"
+                                            ShowOpenActions="_manageMode">
+                                    @if (_manageMode)
+                                    {
+                                        <button type="button" class="btn-tiny" @onclick="() => Edit(b)">Modifier</button>
+                                        <button type="button" class="btn-tiny" @onclick="() => MarkDrunkAsync(b)" disabled="@_busy">Marquer bu</button>
+                                    }
+                                </BottleCard>
+                            </div>
+                        }
                     </div>
+                </section>
+            }
+
+            <section class="cave-grid-section" aria-label="Le reste de la cave">
+                <h2 class="cave-section-title">Le reste de la cave <span class="cave-count">(@RestOfCave.Count)</span></h2>
+                @if (RestOfCave.Count == 0)
+                {
+                    <p class="muted">Tout est prêt — rien d’autre à ranger ici.</p>
                 }
                 else
                 {
-                    <div class="bottle-grid">
-                        @for (var i = 0; i < VisibleBottles.Count; i++)
+                    <div class="bottle-grid bottle-grid--cave">
+                        @for (var i = 0; i < RestOfCave.Count; i++)
                         {
-                            var b = VisibleBottles[i];
+                            var b = RestOfCave[i];
                             var idx = i;
-                            <BottleCard Bottle="b" AsOfYear="_asOfYear" EnterIndex="idx"
-                                        OnSelect="() => Edit(b)">
-                                <button type="button" class="btn-tiny" @onclick="() => Edit(b)">Modifier</button>
-                                <button type="button" class="btn-tiny" @onclick="() => MarkDrunkAsync(b)" disabled="@_busy">Marquer bu</button>
-                                <button type="button" class="btn-tiny danger" @onclick="() => DeleteAsync(b)" disabled="@_busy">Supprimer</button>
+                            <BottleCard Bottle="b"
+                                        AsOfYear="_asOfYear"
+                                        Variant="BottleCardVariant.Grid"
+                                        EnterIndex="idx"
+                                        OnEdit="() => Edit(b)"
+                                        OnMarkDrunk="() => MarkDrunkAsync(b)"
+                                        OnDelete="() => DeleteAsync(b)"
+                                        ShowOpenActions="_manageMode">
+                                @if (_manageMode)
+                                {
+                                    <button type="button" class="btn-tiny" @onclick="() => Edit(b)">Modifier</button>
+                                    <button type="button" class="btn-tiny" @onclick="() => MarkDrunkAsync(b)" disabled="@_busy">Marquer bu</button>
+                                    <button type="button" class="btn-tiny danger" @onclick="() => DeleteAsync(b)" disabled="@_busy">Supprimer</button>
+                                }
                             </BottleCard>
                         }
                     </div>
                 }
-            </div>
+            </section>
         </div>
     }
-</section>
+}
 
 @code {
     private const int SeedCount = 53;
@@ -163,18 +254,77 @@
     private WineMapRegion? _selectedRegion;
     private Dictionary<WineMapRegion, int> _regionCounts = new();
     private bool _showSuisse;
+    private bool _affinerOpen;
+    private bool _manageMode;
 
     private List<Bottle> VisibleBottles =>
         _selectedRegion is null
             ? _bottles
             : _bottles.Where(b => WineMapRegions.Resolve(b) == _selectedRegion).ToList();
 
+    /// <summary>Oldest ReadyToDrink InStock — same rule as drink-tonight #1.</summary>
+    private Bottle? Featured
+    {
+        get
+        {
+            return ReadyOrdered.FirstOrDefault();
+        }
+    }
+
+    private IEnumerable<Bottle> ReadyOrdered =>
+        VisibleBottles
+            .Where(b => b.Status == BottleStatus.InStock && b.Quantity > 0 && b.ReadyToDrink)
+            .OrderBy(b => b.Vintage ?? int.MaxValue)
+            .ThenBy(b => b.Name, StringComparer.OrdinalIgnoreCase);
+
+    private List<Bottle> AlsoReady
+    {
+        get
+        {
+            var featuredId = Featured?.Id;
+            return ReadyOrdered
+                .Where(b => featuredId is null || b.Id != featuredId)
+                .ToList();
+        }
+    }
+
+    private List<Bottle> RestOfCave
+    {
+        get
+        {
+            var excluded = new HashSet<Guid>();
+            if (Featured is Bottle f)
+            {
+                excluded.Add(f.Id);
+            }
+
+            foreach (var b in AlsoReady)
+            {
+                excluded.Add(b.Id);
+            }
+
+            return VisibleBottles
+                .Where(b => !excluded.Contains(b.Id))
+                .OrderBy(b => b.Name, StringComparer.OrdinalIgnoreCase)
+                .ToList();
+        }
+    }
+
     protected override async Task OnInitializedAsync() => await ReloadAsync();
+
+    private void ToggleAffiner() => _affinerOpen = !_affinerOpen;
 
     private Task OnRegionChanged(WineMapRegion? region)
     {
         _selectedRegion = region;
         return Task.CompletedTask;
+    }
+
+    private async Task OpenFeaturedAsync(Bottle featured)
+    {
+        // Product CTA: open manage/edit for that bottle (no detail page yet).
+        Edit(featured);
+        await Task.CompletedTask;
     }
 
     private async Task ReloadAsync()
@@ -278,6 +428,12 @@
 
     private async Task DeleteAsync(Bottle b)
     {
+        var ok = await Js.InvokeAsync<bool>("confirm", $"Supprimer « {b.Name} » ? Cette action est définitive.");
+        if (!ok)
+        {
+            return;
+        }
+
         _busy = true;
         try
         {
