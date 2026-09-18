@@ -249,7 +249,7 @@ public static class ToolHandlers
         }
 
         var readyOnly = input.IncludeReadyOnly ?? false;
-        var seeds = M1SeedData.CreateM1Seeds(asOfYear);
+        var seeds = DemoSample50SeedData.CreateSeeds(asOfYear);
         var filtered = readyOnly ? seeds.Where(b => b.ReadyToDrink).ToList() : seeds.ToList();
         var readyCount = seeds.Count(b => b.ReadyToDrink);
 

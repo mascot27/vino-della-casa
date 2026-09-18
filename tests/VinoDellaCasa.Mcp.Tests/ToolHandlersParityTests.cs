@@ -11,24 +11,20 @@ public class ToolHandlersParityTests
     private static JsonElement Parse(string json) => JsonDocument.Parse(json).RootElement;
 
     [Fact]
-    public void ListSeedBottles_2026_AssertsSevenReadyThreeYoung()
+    public void ListSeedBottles_2026_MatchesDemoSample50()
     {
         var json = ToolHandlers.ListSeedBottles(new ListSeedBottlesInput { AsOfYear = 2026 });
         var root = Parse(json);
+        var domain = DemoSample50SeedData.CreateSeeds(2026);
+        var ready = domain.Count(b => b.ReadyToDrink);
 
         Assert.True(root.GetProperty("ok").GetBoolean());
-        Assert.Equal(10, root.GetProperty("count").GetInt32());
-        Assert.Equal(7, root.GetProperty("readyCount").GetInt32());
+        Assert.Equal(50, root.GetProperty("count").GetInt32());
+        Assert.Equal(ready, root.GetProperty("readyCount").GetInt32());
 
         var bottles = root.GetProperty("bottles").EnumerateArray().ToList();
-        Assert.Equal(10, bottles.Count);
-        Assert.Equal(7, bottles.Count(b => b.GetProperty("readyToDrink").GetBoolean()));
-        Assert.Equal(3, bottles.Count(b => !b.GetProperty("readyToDrink").GetBoolean()));
-
-        // Parity with domain seed factory
-        var domain = M1SeedData.CreateM1Seeds(2026);
-        Assert.Equal(7, domain.Count(b => b.ReadyToDrink));
-        Assert.Equal(3, domain.Count(b => !b.ReadyToDrink));
+        Assert.Equal(50, bottles.Count);
+        Assert.Equal(ready, bottles.Count(b => b.GetProperty("readyToDrink").GetBoolean()));
     }
 
     [Fact]

@@ -40,18 +40,19 @@ public class CellarServiceTests
     }
 
     [Fact]
-    public async Task EnsureM1Seeds_LoadsTen_AndDrinkTonightUsesMaturity()
+    public async Task EnsureM1Seeds_LoadsDemo50_AndDrinkTonightUsesMaturity()
     {
         var store = new InMemoryCellarStore();
         var svc = new CellarService(store);
 
         var n = await svc.EnsureM1SeedsAsync(asOfYear: 2026);
-        Assert.Equal(10, n);
+        Assert.Equal(50, n);
         Assert.Equal(0, await svc.EnsureM1SeedsAsync(asOfYear: 2026));
 
         var all = await svc.GetAllAsync();
-        Assert.Equal(7, all.Count(b => b.ReadyToDrink));
-        Assert.Equal(3, all.Count(b => !b.ReadyToDrink));
+        Assert.Equal(50, all.Count);
+        Assert.True(all.Count(b => b.ReadyToDrink) >= 20);
+        Assert.True(all.Count(b => !b.ReadyToDrink) >= 5);
 
         var tonight = await svc.GetDrinkTonightAsync(topN: 3, asOfYear: 2026);
         Assert.Equal(3, tonight.Count);

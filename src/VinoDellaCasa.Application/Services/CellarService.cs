@@ -52,7 +52,7 @@ public sealed class CellarService
     }
 
     /// <summary>
-    /// Loads M1 SampleBordeaux + CH seeds when the cellar is empty (or forceReplace).
+    /// Loads anonymous Bordeaux demo seeds (50) when the cellar is empty (or forceReplace).
     /// </summary>
     public async Task<int> EnsureM1SeedsAsync(
         int asOfYear = 2026,
@@ -73,7 +73,7 @@ public sealed class CellarService
             }
         }
 
-        var seeds = M1SeedData.CreateM1Seeds(asOfYear);
+        var seeds = DemoSample50SeedData.CreateSeeds(asOfYear);
         foreach (var seed in seeds)
         {
             await _store.AddAsync(seed, cancellationToken);
