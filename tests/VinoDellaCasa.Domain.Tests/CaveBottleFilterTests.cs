@@ -8,16 +8,16 @@ public class CaveBottleFilterTests
 {
     private static Bottle B(string name, string? producer = null, string? region = null,
         Color color = Color.Red, bool ready = true, string? bin = "A1") => new()
-    {
-        Name = name,
-        Producer = producer,
-        Region = region,
-        Color = color,
-        ReadyToDrink = ready,
-        Bin = bin,
-        Quantity = 1,
-        Status = BottleStatus.InStock
-    };
+        {
+            Name = name,
+            Producer = producer,
+            Region = region,
+            Color = color,
+            ReadyToDrink = ready,
+            Bin = bin,
+            Quantity = 1,
+            Status = BottleStatus.InStock
+        };
 
     [Fact]
     public void Text_MatchesNameProducerRegion()
