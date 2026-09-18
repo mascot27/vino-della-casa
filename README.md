@@ -4,6 +4,14 @@ Local-first Blazor WebAssembly wine cellar: stock, bin locations, search, and a 
 
 **Demo:** https://mascot27.github.io/vino-della-casa/
 
+## Screenshots
+
+![Cave — bottle cards](docs-assets/cellar-cards.png)
+
+![Drink tonight](docs-assets/drink-tonight.png)
+
+![About](docs-assets/about.png)
+
 ## Stack
 
 - .NET 8 / Blazor WASM
