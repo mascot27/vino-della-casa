@@ -1,7 +1,7 @@
 @using VinoDellaCasa.Domain.Entities
 @using VinoDellaCasa.Web
 
-<article class="bottle-card bottle-card--prestige bottle-card--@ColorCss" style="@EnterDelay" @onclick="OnCardClick" @onkeydown="OnKeyDown" tabindex="@(OnSelect.HasDelegate ? 0 : -1)" role="@(OnSelect.HasDelegate ? "button" : null)">
+<article class="@CardClass" style="@EnterDelay" @onclick="OnCardClick" @onkeydown="OnKeyDown" tabindex="@(IsSelectable ? 0 : -1)" role="@(IsSelectable ? "button" : null)">
     @if (Rank is int r)
     {
         <div class="bottle-card-rank">#@r</div>
@@ -12,8 +12,8 @@
             <img class="bottle-silhouette"
                  src="img/bottles/@(ColorCss).svg"
                  alt=""
-                 width="40"
-                 height="100"
+                 width="@(Variant == BottleCardVariant.Featured ? 72 : 40)"
+                 height="@(Variant == BottleCardVariant.Featured ? 180 : 100)"
                  loading="lazy"
                  decoding="async" />
         </div>
@@ -33,32 +33,65 @@
                 @(string.IsNullOrWhiteSpace(Bottle.Region) ? "—" : Bottle.Region)
             </p>
 
-            <div class="bottle-card-meta">
-                @if (!string.IsNullOrWhiteSpace(Bottle.Bin))
-                {
-                    <span class="meta-chip bottle-bin">Casier @Bottle.Bin</span>
-                }
-                <span class="meta-chip">×@Bottle.Quantity</span>
-                @if (DrinkTag is string tag)
-                {
-                    <span class="meta-chip meta-chip--tag">@tag</span>
-                }
-                else if (ShortVarietal is string v)
-                {
-                    <span class="meta-chip meta-chip--varietal">@v</span>
-                }
-                @if (ShowPrice && Bottle.PriceChf is decimal price)
-                {
-                    <span class="meta-chip meta-chip--price">@price.ToString("0.##") CHF</span>
-                }
-            </div>
+            @* Face signals only: color · prêt · nom · millésime · appellation.
+               No price, IDs, notes, scores, Facile/Garde, bin, or qty on browse face. *@
+            @if (Variant == BottleCardVariant.Default && ShowAdminMeta)
+            {
+                <div class="bottle-card-meta">
+                    @if (!string.IsNullOrWhiteSpace(Bottle.Bin))
+                    {
+                        <span class="meta-chip bottle-bin">Casier @Bottle.Bin</span>
+                    }
+                    <span class="meta-chip">×@Bottle.Quantity</span>
+                    @if (ShowPrice && Bottle.PriceChf is decimal price)
+                    {
+                        <span class="meta-chip meta-chip--price">@price.ToString("0.##") CHF</span>
+                    }
+                </div>
+            }
 
             @if (!string.IsNullOrWhiteSpace(Why))
             {
                 <p class="bottle-why">@Why</p>
             }
 
-            @if (ChildContent is not null)
+            @if (Variant == BottleCardVariant.Featured && OnFeaturedCta.HasDelegate)
+            {
+                <div class="bottle-featured-cta" @onclick:stopPropagation="true">
+                    <button type="button" class="btn" @onclick="InvokeFeaturedCtaAsync">Ouvrir celle-là</button>
+                </div>
+            }
+
+            @if (Variant == BottleCardVariant.Grid && HasManageMenu)
+            {
+                <div class="bottle-card-menu" @onclick:stopPropagation="true">
+                    <button type="button"
+                            class="bottle-menu-trigger"
+                            aria-label="Actions"
+                            aria-expanded="@_menuOpen"
+                            aria-haspopup="true"
+                            @onclick="ToggleMenu">⋯</button>
+                    @if (_menuOpen)
+                    {
+                        <div class="bottle-menu-popover" role="menu">
+                            @if (OnEdit.HasDelegate)
+                            {
+                                <button type="button" role="menuitem" class="bottle-menu-item" @onclick="InvokeEditAsync">Modifier</button>
+                            }
+                            @if (OnMarkDrunk.HasDelegate)
+                            {
+                                <button type="button" role="menuitem" class="bottle-menu-item" @onclick="InvokeMarkDrunkAsync">Marquer bu</button>
+                            }
+                            @if (OnDelete.HasDelegate)
+                            {
+                                <button type="button" role="menuitem" class="bottle-menu-item bottle-menu-item--danger" @onclick="InvokeDeleteAsync">Supprimer</button>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+
+            @if (ChildContent is not null && (Variant == BottleCardVariant.Default || ShowOpenActions))
             {
                 <div class="bottle-actions" @onclick:stopPropagation="true">
                     @ChildContent
@@ -74,58 +107,57 @@
     [Parameter] public int? Rank { get; set; }
     [Parameter] public string? Why { get; set; }
     [Parameter] public int EnterIndex { get; set; }
-    /// <summary>Default false — Cave face stays prestige without big price.</summary>
+    /// <summary>Default false — Cave face stays prestige without price.</summary>
     [Parameter] public bool ShowPrice { get; set; }
+    /// <summary>Default / Featured / Rail / Grid — Cave browse layout B.</summary>
+    [Parameter] public BottleCardVariant Variant { get; set; } = BottleCardVariant.Default;
+    /// <summary>When true (Default only), show bin/qty meta chips — not used on Cave browse face.</summary>
+    [Parameter] public bool ShowAdminMeta { get; set; }
+    /// <summary>Reveal ChildContent actions openly (optional « Gérer » mode).</summary>
+    [Parameter] public bool ShowOpenActions { get; set; }
     [Parameter] public EventCallback OnSelect { get; set; }
+    [Parameter] public EventCallback OnFeaturedCta { get; set; }
+    [Parameter] public EventCallback OnEdit { get; set; }
+    [Parameter] public EventCallback OnMarkDrunk { get; set; }
+    [Parameter] public EventCallback OnDelete { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
 
+    private bool _menuOpen;
+
     private string ColorCss => UiLabels.ColorCss(Bottle.Color);
+
+    private bool IsSelectable => OnSelect.HasDelegate;
+
+    private bool HasManageMenu => OnEdit.HasDelegate || OnMarkDrunk.HasDelegate || OnDelete.HasDelegate;
+
+    private string CardClass
+    {
+        get
+        {
+            var v = Variant switch
+            {
+                BottleCardVariant.Featured => "bottle-card--featured",
+                BottleCardVariant.Rail => "bottle-card--rail",
+                BottleCardVariant.Grid => "bottle-card--grid",
+                _ => "bottle-card--prestige"
+            };
+            return $"bottle-card {v} bottle-card--{ColorCss}";
+        }
+    }
 
     private string EnterDelay =>
         EnterIndex > 0 ? $"animation-delay: {Math.Min(EnterIndex, 12) * 40}ms" : string.Empty;
 
-    /// <summary>ReadyToDrink → Facile; !Ready with vintage → Garde; else null.</summary>
-    private string? DrinkTag
-    {
-        get
-        {
-            if (Bottle.ReadyToDrink)
-            {
-                return "Facile";
-            }
-
-            if (Bottle.Vintage is not null)
-            {
-                return "Garde";
-            }
-
-            return null;
-        }
-    }
-
-    private string? ShortVarietal
-    {
-        get
-        {
-            if (DrinkTag is not null || string.IsNullOrWhiteSpace(Bottle.Varietal))
-            {
-                return null;
-            }
-
-            var v = Bottle.Varietal.Trim();
-            if (v.Length <= 22)
-            {
-                return v;
-            }
-
-            var cut = v.AsSpan(0, 20);
-            var last = cut.LastIndexOf(' ');
-            return (last > 8 ? cut[..last].ToString() : cut.ToString()) + "…";
-        }
-    }
+    private void ToggleMenu() => _menuOpen = !_menuOpen;
 
     private async Task OnCardClick()
     {
+        if (Variant == BottleCardVariant.Grid && _menuOpen)
+        {
+            _menuOpen = false;
+            return;
+        }
+
         if (OnSelect.HasDelegate)
         {
             await OnSelect.InvokeAsync();
@@ -142,6 +174,41 @@
         if (e.Key is "Enter" or " ")
         {
             await OnSelect.InvokeAsync();
+        }
+    }
+
+    private async Task InvokeFeaturedCtaAsync()
+    {
+        if (OnFeaturedCta.HasDelegate)
+        {
+            await OnFeaturedCta.InvokeAsync();
+        }
+    }
+
+    private async Task InvokeEditAsync()
+    {
+        _menuOpen = false;
+        if (OnEdit.HasDelegate)
+        {
+            await OnEdit.InvokeAsync();
+        }
+    }
+
+    private async Task InvokeMarkDrunkAsync()
+    {
+        _menuOpen = false;
+        if (OnMarkDrunk.HasDelegate)
+        {
+            await OnMarkDrunk.InvokeAsync();
+        }
+    }
+
+    private async Task InvokeDeleteAsync()
+    {
+        _menuOpen = false;
+        if (OnDelete.HasDelegate)
+        {
+            await OnDelete.InvokeAsync();
         }
     }
 }
