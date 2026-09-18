@@ -1,0 +1,36 @@
+@using VinoDellaCasa.Domain.Suggestions
+
+<div class="suggest-wrap">
+    <label>
+        @Label
+        <input class="form-input"
+               list="@ListId"
+               value="@Value"
+               @oninput="OnInput"
+               placeholder="@Placeholder" />
+        <datalist id="@ListId">
+            @foreach (var s in Filtered)
+            {
+                <option value="@s"></option>
+            }
+        </datalist>
+    </label>
+</div>
+
+@code {
+    [Parameter] public string Label { get; set; } = string.Empty;
+    [Parameter] public string? Value { get; set; }
+    [Parameter] public EventCallback<string?> ValueChanged { get; set; }
+    [Parameter] public IReadOnlyList<string> Suggestions { get; set; } = Array.Empty<string>();
+    [Parameter] public string Placeholder { get; set; } = string.Empty;
+
+    private string ListId { get; } = "dl-" + Guid.NewGuid().ToString("N");
+
+    private IEnumerable<string> Filtered => FieldSuggestions.Filter(Suggestions, Value);
+
+    private async Task OnInput(ChangeEventArgs e)
+    {
+        Value = e.Value?.ToString();
+        await ValueChanged.InvokeAsync(Value);
+    }
+}

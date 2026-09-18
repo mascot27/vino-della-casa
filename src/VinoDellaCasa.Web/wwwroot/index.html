@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Project Pages URL: https://mascot27.github.io/vino-della-casa/
+      <base href> must match that path (trailing slash). Local `dotnet run` serves at
+      the same path-base; open http://localhost:<port>/vino-della-casa/ after start,
+      or temporarily use href="/" for root-local debugging.
+    -->
+    <base href="/vino-della-casa/" />
+    <!-- Basic CSP (soft): allows Blazor WASM ('wasm-unsafe-eval') + inline styles Blazor may inject. -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'" />
+    <title>Vino della casa</title>
+    <link rel="stylesheet" href="css/app.css" />
+    <!-- If you add any scoped CSS files, uncomment the following to load them
+    <link href="VinoDellaCasa.Web.styles.css" rel="stylesheet" /> -->
+</head>
+
+<body>
+    <div id="app">
+        <svg class="loading-progress">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="loading-progress-text"></div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="js/cellarStore.js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,263 @@
+@page "/cellar"
+@using VinoDellaCasa.Application.Services
+@using VinoDellaCasa.Domain.Entities
+@using VinoDellaCasa.Domain.Enums
+@using VinoDellaCasa.Domain.Suggestions
+@using VinoDellaCasa.Web.Components
+@inject CellarService CellarSvc
+
+<PageTitle>Cellar — Vino della casa</PageTitle>
+
+<h1>Cellar</h1>
+<p class="muted">
+    CRUD local · ReadyToDrink via maturité domaine · store: IndexedDB (WASM) / in-memory (CI).
+    Pas d’OAuth.
+</p>
+
+<div class="toolbar">
+    <button type="button" class="btn" @onclick="LoadSeeds" disabled="@_busy">Charger seeds M1</button>
+    <button type="button" class="btn btn-secondary" @onclick="NewBottle" disabled="@_busy">Nouvelle bouteille</button>
+    <a class="btn btn-link" href="drink-tonight">Drink tonight →</a>
+</div>
+
+@if (!string.IsNullOrEmpty(_message))
+{
+    <p class="flash">@_message</p>
+}
+
+@if (_editing is not null)
+{
+    <section class="card edit-form">
+        <h2>@(_editing.Id == Guid.Empty || _isNew ? "Ajouter" : "Modifier")</h2>
+        <EditForm Model="_editing" OnValidSubmit="SaveAsync">
+            <div class="form-grid">
+                <label>Nom *
+                    <InputText class="form-input" @bind-Value="_editing.Name" />
+                </label>
+                <label>Producteur
+                    <InputText class="form-input" @bind-Value="_editing.Producer" />
+                </label>
+                <SuggestionInput Label="Région" @bind-Value="_editing.Region" Suggestions="FieldSuggestions.Region" Placeholder="Pessac-Léognan…" />
+                <SuggestionInput Label="Pays" @bind-Value="_editing.Country" Suggestions="FieldSuggestions.Country" Placeholder="France" />
+                <label>Couleur
+                    <InputSelect class="form-input" @bind-Value="_editing.Color">
+                        @foreach (Color c in Enum.GetValues<Color>())
+                        {
+                            <option value="@c">@ColorLabel(c)</option>
+                        }
+                    </InputSelect>
+                </label>
+                <SuggestionInput Label="Cépage / assemblage" @bind-Value="_editing.Varietal" Suggestions="FieldSuggestions.Varietal" Placeholder="Merlot…" />
+                <label>Millésime
+                    <InputNumber class="form-input" @bind-Value="_editing.Vintage" />
+                </label>
+                <label>Quantité
+                    <InputNumber class="form-input" @bind-Value="_editing.Quantity" />
+                </label>
+                <label>Prix CHF
+                    <InputNumber class="form-input" @bind-Value="_editing.PriceChf" />
+                </label>
+                <label>Casier
+                    <InputText class="form-input" @bind-Value="_editing.Bin" />
+                </label>
+                <label>Statut
+                    <InputSelect class="form-input" @bind-Value="_editing.Status">
+                        @foreach (BottleStatus s in Enum.GetValues<BottleStatus>())
+                        {
+                            <option value="@s">@s</option>
+                        }
+                    </InputSelect>
+                </label>
+                <label class="span-2">Notes
+                    <InputTextArea class="form-input" @bind-Value="_editing.Notes" rows="2" />
+                </label>
+            </div>
+            <div class="toolbar">
+                <button type="submit" class="btn" disabled="@_busy">Enregistrer</button>
+                <button type="button" class="btn btn-secondary" @onclick="CancelEdit">Annuler</button>
+            </div>
+        </EditForm>
+    </section>
+}
+
+<section class="card">
+    <h2>Inventaire (@_bottles.Count)</h2>
+    @if (_bottles.Count == 0)
+    {
+        <p class="muted">Cave vide — charge les sample Bordeaux + CH seeds ou ajoute une bouteille.</p>
+    }
+    else
+    {
+        <div class="table-wrap">
+            <table class="bottle-table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Région</th>
+                        <th>Mill.</th>
+                        <th>Qty</th>
+                        <th>Ready</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var b in _bottles)
+                    {
+                        <tr class="@(b.ReadyToDrink ? "ready" : "not-ready")">
+                            <td>
+                                <strong>@b.Name</strong>
+                                <div class="muted tiny">@ColorLabel(b.Color) · @(b.Varietal ?? "—")</div>
+                            </td>
+                            <td>@(b.Region ?? "—")</td>
+                            <td>@(b.Vintage?.ToString() ?? "—")</td>
+                            <td>@b.Quantity</td>
+                            <td>@(b.ReadyToDrink ? "✓" : "…")</td>
+                            <td class="actions">
+                                <button type="button" class="btn-tiny" @onclick="() => Edit(b)">Édit</button>
+                                <button type="button" class="btn-tiny danger" @onclick="() => DeleteAsync(b)">Suppr</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</section>
+
+@code {
+    private List<Bottle> _bottles = new();
+    private Bottle? _editing;
+    private bool _isNew;
+    private bool _busy;
+    private string? _message;
+
+    protected override async Task OnInitializedAsync() => await ReloadAsync();
+
+    private async Task ReloadAsync()
+    {
+        var all = await CellarSvc.GetAllAsync();
+        _bottles = all.OrderBy(b => b.Name).ToList();
+    }
+
+    private void NewBottle()
+    {
+        _isNew = true;
+        _editing = new Bottle
+        {
+            Name = string.Empty,
+            Color = Color.Red,
+            Country = "France",
+            Quantity = 1,
+            Status = BottleStatus.InStock
+        };
+        _message = null;
+    }
+
+    private void Edit(Bottle b)
+    {
+        _isNew = false;
+        _editing = Clone(b);
+        _message = null;
+    }
+
+    private void CancelEdit()
+    {
+        _editing = null;
+        _isNew = false;
+    }
+
+    private async Task SaveAsync()
+    {
+        if (_editing is null || string.IsNullOrWhiteSpace(_editing.Name))
+        {
+            _message = "Le nom est obligatoire.";
+            return;
+        }
+
+        _busy = true;
+        try
+        {
+            if (_isNew || _editing.Id == Guid.Empty)
+            {
+                await CellarSvc.AddAsync(_editing, asOfYear: DateTimeOffset.Now.Year);
+                _message = "Bouteille ajoutée.";
+            }
+            else
+            {
+                await CellarSvc.UpdateAsync(_editing, asOfYear: DateTimeOffset.Now.Year);
+                _message = "Bouteille mise à jour.";
+            }
+
+            _editing = null;
+            _isNew = false;
+            await ReloadAsync();
+        }
+        finally
+        {
+            _busy = false;
+        }
+    }
+
+    private async Task DeleteAsync(Bottle b)
+    {
+        _busy = true;
+        try
+        {
+            await CellarSvc.DeleteAsync(b.Id);
+            _message = $"Supprimé : {b.Name}";
+            if (_editing?.Id == b.Id)
+            {
+                CancelEdit();
+            }
+
+            await ReloadAsync();
+        }
+        finally
+        {
+            _busy = false;
+        }
+    }
+
+    private async Task LoadSeeds()
+    {
+        _busy = true;
+        try
+        {
+            var n = await CellarSvc.EnsureM1SeedsAsync(asOfYear: 2026, forceReplace: _bottles.Count > 0);
+            _message = n == 0 ? "Seeds déjà présents." : $"{n} seeds M1 chargés (asOf 2026).";
+            await ReloadAsync();
+        }
+        finally
+        {
+            _busy = false;
+        }
+    }
+
+    private static string ColorLabel(Color c) => c switch
+    {
+        Color.Rose => "Rosé",
+        Color.Sparkling => "Effervescent",
+        _ => c.ToString()
+    };
+
+    private static Bottle Clone(Bottle b) => new()
+    {
+        Id = b.Id,
+        Name = b.Name,
+        Producer = b.Producer,
+        Region = b.Region,
+        Country = b.Country,
+        Color = b.Color,
+        Varietal = b.Varietal,
+        Vintage = b.Vintage,
+        Quantity = b.Quantity,
+        PriceChf = b.PriceChf,
+        PurchaseDate = b.PurchaseDate,
+        Bin = b.Bin,
+        Status = b.Status,
+        Notes = b.Notes,
+        ReadyToDrink = b.ReadyToDrink,
+        CreatedAt = b.CreatedAt,
+        UpdatedAt = b.UpdatedAt
+    };
+}

@@ -1,0 +1,57 @@
+# Deploy Blazor WASM to GitHub Pages (project site).
+# Demo: https://mascot27.github.io/vino-della-casa/
+# Requires: Settings → Pages → Source = GitHub Actions
+# (Private repos historically need GitHub Pro for Pages; workflow is ready either way.)
+
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Publish Blazor WASM (Release)
+        run: >
+          dotnet publish src/VinoDellaCasa.Web/VinoDellaCasa.Web.csproj
+          --configuration Release
+          --output "${{ github.workspace }}/publish"
+
+      - name: Ensure .nojekyll (keep _framework visible to Pages)
+        run: touch "${{ github.workspace }}/publish/wwwroot/.nojekyll"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: publish/wwwroot
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

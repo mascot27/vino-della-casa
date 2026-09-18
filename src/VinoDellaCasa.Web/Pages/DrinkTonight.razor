@@ -1,0 +1,71 @@
+@page "/drink-tonight"
+@using VinoDellaCasa.Application.Services
+@using VinoDellaCasa.Domain.Entities
+@inject CellarService CellarSvc
+
+<PageTitle>Drink tonight — Vino della casa</PageTitle>
+
+<h1>Drink tonight</h1>
+<p class="muted">
+    Shortlist déterministe : Ready DESC → Vintage ASC → Name.
+    ReadyToDrink recalculé avec <code>MaturityRules</code> (asOf = année locale).
+</p>
+
+<div class="toolbar">
+    <label>
+        Top N
+        <InputNumber class="form-input inline" @bind-Value="_topN" />
+    </label>
+    <button type="button" class="btn" @onclick="Refresh" disabled="@_busy">Rafraîchir</button>
+    <a class="btn btn-link" href="cellar">← Cave</a>
+</div>
+
+@if (_list.Count == 0)
+{
+    <p class="muted">Aucune bouteille en stock. Charge les seeds depuis la cave.</p>
+}
+else
+{
+    <ol class="tonight-list">
+        @foreach (var b in _list)
+        {
+            <li class="card @(b.ReadyToDrink ? "ready" : "not-ready")">
+                <strong>@b.Name</strong>
+                <span class="muted">
+                    @(b.Vintage?.ToString() ?? "?") · @(b.Region ?? "—") ·
+                    @(b.ReadyToDrink ? "prêt" : "trop jeune / hors fenêtre")
+                    · qty @b.Quantity
+                </span>
+                @if (!string.IsNullOrWhiteSpace(b.Bin))
+                {
+                    <span class="bin">Casier @b.Bin</span>
+                }
+            </li>
+        }
+    </ol>
+}
+
+@code {
+    private List<Bottle> _list = new();
+    private int _topN = 5;
+    private bool _busy;
+
+    protected override async Task OnInitializedAsync() => await Refresh();
+
+    private async Task Refresh()
+    {
+        _busy = true;
+        try
+        {
+            if (_topN < 1) _topN = 1;
+            if (_topN > 50) _topN = 50;
+            var year = DateTimeOffset.Now.Year;
+            var result = await CellarSvc.GetDrinkTonightAsync(_topN, year);
+            _list = result.ToList();
+        }
+        finally
+        {
+            _busy = false;
+        }
+    }
+}
