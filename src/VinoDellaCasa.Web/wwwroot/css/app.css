@@ -1784,8 +1784,14 @@ textarea.form-input:focus-visible {
 }
 
 .fiche-en-cave-icon {
-  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
   line-height: 1;
+}
+
+.fiche-en-cave-icon svg {
+  display: block;
+  flex-shrink: 0;
 }
 
 .fiche-qty {
