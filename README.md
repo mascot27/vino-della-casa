@@ -6,13 +6,17 @@ Local-first Blazor WebAssembly wine cellar: track stock and bin locations, searc
 
 ## Screenshots
 
+Catalogue — fiche lettre:
+
+![Catalogue — fiche lettre](Docs/screenshots/catalog-fiche.png)
+
+Cave — catalogue / en cave:
+
+![Cave — catalogue](Docs/screenshots/cellar-cards.png)
+
 Accueil:
 
 ![Accueil](Docs/screenshots/home-hero.png)
-
-Cellar — bottle cards:
-
-![Cellar — bottle cards](Docs/screenshots/cellar-cards.png)
 
 Drink tonight — ranked ready bottles:
 
