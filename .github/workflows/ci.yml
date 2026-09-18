@@ -6,6 +6,15 @@ on:
   pull_request:
     branches: [main, master]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -55,3 +64,43 @@ jobs:
 
       - name: Verify formatting
         run: dotnet format --verify-no-changes --verbosity diagnostic
+
+  # GitHub Pages only after CI jobs succeed on master pushes
+  pages-build:
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
+    needs: [build-and-test, format-check]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Publish Blazor WASM (Release)
+        run: >
+          dotnet publish src/VinoDellaCasa.Web/VinoDellaCasa.Web.csproj
+          --configuration Release
+          --output "${{ github.workspace }}/publish"
+
+      - name: Ensure .nojekyll (keep _framework visible to Pages)
+        run: touch "${{ github.workspace }}/publish/wwwroot/.nojekyll"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: publish/wwwroot
+
+  pages-deploy:
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
+    needs: pages-build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
