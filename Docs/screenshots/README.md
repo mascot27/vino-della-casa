@@ -1,11 +1,10 @@
 # README screenshots
 
-Expected files for the product README:
-
 | File | View |
 |------|------|
-| `home-hero.png` | Accueil — home hero |
-| `cellar-cards.png` | Cellar — bottle cards (silhouettes) |
+| `catalog-fiche.png` | Catalogue — fiche lettre |
+| `cellar-cards.png` | Cave — catalogue / en cave |
+| `home-hero.png` | Accueil — prestige hero |
 | `drink-tonight.png` | Drink tonight — ranked ready bottles |
 
 Capture from the live demo: https://mascot27.github.io/vino-della-casa/
