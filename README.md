@@ -49,7 +49,28 @@ Open the URL printed by `dotnet run`. On GitHub Pages, use the demo link above (
 - `Docs/SPEC.md` — product & engineering notes
 - `Docs/domain/` — maturity rules, sample seeds, MCP tool contract
 
-Optional local MCP (stdio, read-only tools over domain logic): see `Docs/domain/MCP-TOOLS-CONTRACT.md` and run `dotnet run --project src/VinoDellaCasa.Mcp`.
+## Local MCP server (Cursor / agents)
+
+Read-only stdio tools over domain logic (`evaluate_maturity`, `rank_drink_tonight`, `list_seed_bottles`, …). Contract: `Docs/domain/MCP-TOOLS-CONTRACT.md`.
+
+```bash
+dotnet run --project src/VinoDellaCasa.Mcp
+```
+
+Example Cursor MCP config (no secrets — replace the absolute path):
+
+```json
+{
+  "mcpServers": {
+    "vino-della-casa": {
+      "command": "dotnet",
+      "args": ["run", "--project", "/ABS/PATH/TO/vino-della-casa/src/VinoDellaCasa.Mcp"]
+    }
+  }
+}
+```
+
+Smoke: `dotnet test tests/VinoDellaCasa.Mcp.Tests`. Stdio only; no network writes.
 
 ## Dev hygiene
 
