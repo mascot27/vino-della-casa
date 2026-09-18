@@ -12,7 +12,7 @@ Accueil:
 
 Cellar — bottle cards:
 
-![Cellar — bottle cards](docs/screenshots/cave.png)
+![Cellar — bottle cards](docs/screenshots/cellar-cards.png)
 
 Drink tonight — ranked ready bottles:
 
