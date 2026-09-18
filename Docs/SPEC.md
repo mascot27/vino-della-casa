@@ -133,12 +133,11 @@ UTF-8, header required, skip bad rows with summary.
 
 ## 7. Repo / git hygiene
 
-- Keep the project **private** until Corentin says otherwise  
-- **Git author/committer = Corentin Zeller** (his name + email on commits — - No secrets in the repository
+- Clean history suitable for a public portfolio
+- No secrets in the repository
 - No third-party / employer IP
-- Clean history suitable for a future public CV flip  
+- SemVer + CHANGELOG
 
----
 
 ## 8. Naming
 

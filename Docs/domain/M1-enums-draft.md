@@ -18,7 +18,7 @@ public enum Color { Red, White, Rose, Sparkling, Other }
 
 | Valeur | Usage MVP |
 |--------|-----------|
-| Red | Cave Corentin (Bordeaux) |
+| Red | home cellar (Bordeaux) |
 | White | Seeds / filtres CH + blancs |
 | Rose | Filtre UI ; 0 seed obligatoire |
 | Sparkling | Champagne / Crémant |
@@ -55,7 +55,7 @@ Inchangé. Transitions via use cases (`Drink`, `Finish`, …).
 - Stockage libre (`string?`) pour assemblages Bordeaux et orthographes.
 - UI / Application : constante `VarietalSuggestions` (autocomplete, pas contrainte DB).
 
-### Suggestions MVP (priorité goût Corentin + CH)
+### Suggestions MVP (priorité taste profile + CH)
 
 **Rouges prioritaires**  
 `Cabernet Sauvignon`, `Merlot`, `Cabernet Franc`, `Petit Verdot`, `Pinot Noir`, `Gamay`, `Syrah`, `Cornalin`, `Humagne Rouge`
