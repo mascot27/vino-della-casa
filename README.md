@@ -18,6 +18,10 @@ Drink tonight — ranked ready bottles:
 
 ![Drink tonight — ranked ready bottles](docs/screenshots/drink-tonight.png)
 
+## Photo credits
+
+Home hero and feature accents use local Unsplash photos (Unsplash License): Bob Brewer, Jennifer Yung, Gonzalo Facello — see `wwwroot/img/hero/ATTRIBUTION.md`.
+
 ## What it does
 
 - **Cave** — browse InStock bottles as cards (color, vintage, location)

@@ -3,26 +3,25 @@
 <PageTitle>Vino della casa</PageTitle>
 
 <section class="home-hero" aria-labelledby="home-hero-title">
-    <div class="home-hero-ambiance" aria-hidden="true">
-        <div class="home-hero-gradient"></div>
-        <div class="home-hero-grain"></div>
-        <div class="home-hero-vignette"></div>
+    <div class="home-hero-media" aria-hidden="true">
+        <img class="home-hero-photo"
+             src="img/hero/hero-chateau.jpg"
+             alt=""
+             width="1920"
+             height="1080"
+             decoding="async"
+             fetchpriority="high" />
+        <div class="home-hero-overlay"></div>
     </div>
 
     <div class="home-hero-layout">
-        <div class="home-hero-card">
+        <div class="home-hero-copy">
             <p class="home-hero-kicker">Cave personnelle · hors-ligne</p>
             <h1 id="home-hero-title">Vino della casa</h1>
             <p class="home-hero-tagline">Ta cave, au casier, prête à ouvrir.</p>
             <div class="hero-cta">
                 <a class="btn" href="cellar">Ouvrir la cave</a>
-                <a class="btn btn-secondary" href="drink-tonight">À boire ce soir</a>
-            </div>
-            <div class="home-hero-pills" aria-hidden="true">
-                <span class="pill pill-rouge">Rouge</span>
-                <span class="pill pill-blanc">Blanc</span>
-                <span class="pill pill-rose">Rosé</span>
-                <span class="pill pill-effervescent">Effervescent</span>
+                <a class="btn btn-secondary btn-hero-secondary" href="drink-tonight">À boire ce soir</a>
             </div>
         </div>
     </div>
@@ -30,17 +29,32 @@
 
 <section class="home-features" aria-label="Fonctionnalités">
     <div class="home-features-inner">
-        <article class="home-feature-card card">
-            <h2>Inventaire</h2>
-            <p>Bouteilles en local, même hors ligne.</p>
+        <article class="home-feature-card">
+            <div class="home-feature-media" aria-hidden="true">
+                <img src="img/hero/hero-cellar.jpg" alt="" width="800" height="500" loading="lazy" decoding="async" />
+            </div>
+            <div class="home-feature-body">
+                <h2>Inventaire</h2>
+                <p>Bouteilles en local, même hors ligne.</p>
+            </div>
         </article>
-        <article class="home-feature-card card">
-            <h2>Casiers</h2>
-            <p>Où elle dort.</p>
+        <article class="home-feature-card">
+            <div class="home-feature-media" aria-hidden="true">
+                <img src="img/hero/accent-barrels.jpg" alt="" width="800" height="500" loading="lazy" decoding="async" />
+            </div>
+            <div class="home-feature-body">
+                <h2>Casiers</h2>
+                <p>Où elle dort.</p>
+            </div>
         </article>
-        <article class="home-feature-card card">
-            <h2>À boire ce soir</h2>
-            <p>Prêtes, les plus anciennes d’abord.</p>
+        <article class="home-feature-card">
+            <div class="home-feature-media" aria-hidden="true">
+                <img src="img/hero/hero-chateau.jpg" alt="" width="800" height="500" loading="lazy" decoding="async" />
+            </div>
+            <div class="home-feature-body">
+                <h2>À boire ce soir</h2>
+                <p>Prêtes, les plus anciennes d’abord.</p>
+            </div>
         </article>
     </div>
 </section>
