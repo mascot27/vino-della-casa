@@ -5,6 +5,7 @@
 @using VinoDellaCasa.Domain.Enums
 @using VinoDellaCasa.Domain.Maturity
 @using VinoDellaCasa.Domain.Filtering
+@using VinoDellaCasa.Domain.Seed
 @using VinoDellaCasa.Domain.Suggestions
 @using VinoDellaCasa.Web
 @using VinoDellaCasa.Web.Components
@@ -16,7 +17,7 @@
 <header class="cave-header">
     <div class="cave-header-titles">
         <h1>Cave</h1>
-        <p class="muted cave-lede">Parcourir · découvrir · ouvrir ce soir.</p>
+        <p class="muted cave-lede">Catalogue d’abord · fiches lettre · « j’en ai en cave ».</p>
     </div>
     <div class="cave-header-actions">
         <a class="btn cave-cta-tonight" href="drink-tonight">À boire ce soir</a>
@@ -27,16 +28,6 @@
                 aria-controls="cave-affiner">
             Affiner
         </button>
-        <button type="button" class="btn-linkish cave-seed-link" @onclick="LoadSeeds" disabled="@_busy">
-            Charger l’échantillon
-        </button>
-        <button type="button" class="btn-linkish" @onclick="NewBottle" disabled="@_busy">
-            Ajouter
-        </button>
-        <label class="cave-manage-toggle">
-            <input type="checkbox" @bind="_manageMode" />
-            <span>Gérer</span>
-        </label>
     </div>
 </header>
 
@@ -47,7 +38,7 @@
 
 @if (_affinerOpen)
 {
-    <section id="cave-affiner" class="cave-affiner card" aria-label="Affiner la cave">
+    <section id="cave-affiner" class="cave-affiner card" aria-label="Affiner le catalogue">
         <div class="cave-affiner-head">
             <h2 class="cave-section-title">Affiner</h2>
             <button type="button" class="btn-linkish" @onclick="ClearFilters">Réinitialiser</button>
@@ -80,26 +71,32 @@
                 </select>
             </label>
             <label>
-                Casier
-                <input class="form-input"
-                       type="text"
-                       placeholder="A1…"
-                       @bind="_filterBin"
-                       @bind:event="oninput" />
+                Possession
+                <select class="form-input" @bind="_filterOwned">
+                    <option value="">Toutes</option>
+                    <option value="in">En cave</option>
+                    <option value="out">Pas encore</option>
+                </select>
             </label>
         </div>
         <FranceWineMap Selected="_selectedRegion"
                        SelectedChanged="OnRegionChanged"
                        Counts="_regionCounts"
                        ShowSuisse="_showSuisse"
-                       TotalCount="_bottles.Count" />
+                       TotalCount="_catalog.Count" />
+        <p class="muted cave-affiner-hint">
+            Astuce démo —
+            <button type="button" class="btn-linkish" @onclick="LoadSeeds" disabled="@_busy">
+                Remplir la cave (échantillon @_seedCount)
+            </button>
+        </p>
     </section>
 }
 
 @if (_editing is not null)
 {
     <section class="card edit-form">
-        <h2>@(_isNew ? "Ajouter une bouteille" : "Modifier")</h2>
+        <h2>@(_isNew ? "Ajouter une bouteille perso" : "Modifier")</h2>
         <EditForm Model="_editing" OnValidSubmit="SaveAsync">
             <div class="form-grid">
                 <label>Nom *
@@ -159,20 +156,6 @@
         <div class="skeleton-card"></div>
     </div>
 }
-else if (_bottles.Count == 0)
-{
-    <div class="empty-state empty-state--prestige card">
-        <div class="empty-state-visual" aria-hidden="true">
-            <img class="bottle-silhouette" src="img/bottles/empty.svg" alt="" width="36" height="90" />
-        </div>
-        <h3>Cave vide</h3>
-        <p>Ajoutez des bouteilles pour obtenir des suggestions, ou chargez l’échantillon démo (@SeedCount).</p>
-        <div class="empty-actions">
-            <button type="button" class="btn" @onclick="LoadSeeds" disabled="@_busy">Charger l’échantillon</button>
-            <button type="button" class="btn btn-secondary" @onclick="NewBottle" disabled="@_busy">Ajouter une bouteille</button>
-        </div>
-    </div>
-}
 else
 {
     @if (HasActiveFilters)
@@ -183,122 +166,83 @@ else
         </p>
     }
 
-    @if (VisibleBottles.Count == 0)
+    @if (VisibleCatalog.Count == 0)
     {
         <div class="empty-state empty-state--filter card">
-            <h3>Aucune bouteille ne correspond</h3>
+            <h3>Aucune fiche ne correspond</h3>
             <p>Élargissez la recherche, changez de région, ou effacez les filtres.</p>
             <button type="button" class="btn btn-secondary" @onclick="ClearFilters">Effacer les filtres</button>
         </div>
     }
     else
     {
-        <div class="cave-browse">
-            @if (Featured is Bottle featured)
+        <div class="catalog-lettre-grid" aria-label="Catalogue">
+            @for (var i = 0; i < VisibleCatalog.Count; i++)
             {
-                <section class="cave-hero" aria-label="Bouteille à l’honneur">
-                    <p class="cave-kicker">Ce soir</p>
-                    <BottleCard Bottle="featured"
-                                AsOfYear="_asOfYear"
-                                Variant="BottleCardVariant.Featured"
-                                OnFeaturedCta="() => OpenFeaturedAsync(featured)"
-                                OnSelect="() => Edit(featured)"
-                                ShowOpenActions="_manageMode">
-                        @if (_manageMode)
-                        {
-                            <button type="button" class="btn-tiny" @onclick="() => Edit(featured)">Modifier</button>
-                            <button type="button" class="btn-tiny" @onclick="() => MarkDrunkAsync(featured)" disabled="@_busy">Marquer bu</button>
-                        }
-                    </BottleCard>
-                </section>
+                var entry = VisibleCatalog[i];
+                var idx = i;
+                var qty = QtyFor(entry);
+                <CatalogFiche Entry="entry"
+                              Quantity="qty"
+                              AsOfYear="_asOfYear"
+                              EnterIndex="idx"
+                              Disabled="_busy"
+                              QuantityChanged="q => OnQtyChangedAsync(entry, q)" />
             }
-
-            @if (AlsoReady.Count > 0)
-            {
-                <section class="cave-rail-section" aria-label="Aussi prêtes">
-                    <h2 class="cave-section-title">Aussi prêtes</h2>
-                    <div class="cave-rail" role="list">
-                        @for (var i = 0; i < AlsoReady.Count; i++)
-                        {
-                            var b = AlsoReady[i];
-                            var idx = i;
-                            <div class="cave-rail-item" role="listitem">
-                                <BottleCard Bottle="b"
-                                            AsOfYear="_asOfYear"
-                                            Variant="BottleCardVariant.Rail"
-                                            EnterIndex="idx"
-                                            OnSelect="() => Edit(b)"
-                                            ShowOpenActions="_manageMode">
-                                    @if (_manageMode)
-                                    {
-                                        <button type="button" class="btn-tiny" @onclick="() => Edit(b)">Modifier</button>
-                                        <button type="button" class="btn-tiny" @onclick="() => MarkDrunkAsync(b)" disabled="@_busy">Marquer bu</button>
-                                    }
-                                </BottleCard>
-                            </div>
-                        }
-                    </div>
-                </section>
-            }
-
-            <section class="cave-grid-section" aria-label="Le reste de la cave">
-                <h2 class="cave-section-title">Le reste de la cave <span class="cave-count">(@RestOfCave.Count)</span></h2>
-                @if (RestOfCave.Count == 0)
-                {
-                    <p class="muted">Tout est prêt — rien d’autre à ranger ici.</p>
-                }
-                else
-                {
-                    <div class="bottle-grid bottle-grid--cave">
-                        @for (var i = 0; i < RestOfCave.Count; i++)
-                        {
-                            var b = RestOfCave[i];
-                            var idx = i;
-                            <BottleCard Bottle="b"
-                                        AsOfYear="_asOfYear"
-                                        Variant="BottleCardVariant.Grid"
-                                        EnterIndex="idx"
-                                        OnEdit="() => Edit(b)"
-                                        OnMarkDrunk="() => MarkDrunkAsync(b)"
-                                        OnDelete="() => DeleteAsync(b)"
-                                        ShowOpenActions="_manageMode">
-                                @if (_manageMode)
-                                {
-                                    <button type="button" class="btn-tiny" @onclick="() => Edit(b)">Modifier</button>
-                                    <button type="button" class="btn-tiny" @onclick="() => MarkDrunkAsync(b)" disabled="@_busy">Marquer bu</button>
-                                    <button type="button" class="btn-tiny danger" @onclick="() => DeleteAsync(b)" disabled="@_busy">Supprimer</button>
-                                }
-                            </BottleCard>
-                        }
-                    </div>
-                }
-            </section>
         </div>
+    }
+
+    <p class="catalog-add-cta">
+        <button type="button" class="btn-linkish catalog-add-link" @onclick="NewBottle" disabled="@_busy">
+            Ajouter une bouteille perso →
+        </button>
+    </p>
+
+    @if (CustomBottles.Count > 0)
+    {
+        <section class="cave-grid-section" aria-label="Bouteilles perso">
+            <h2 class="cave-section-title">Mes bouteilles perso <span class="cave-count">(@CustomBottles.Count)</span></h2>
+            <div class="bottle-grid bottle-grid--cave">
+                @foreach (var b in CustomBottles)
+                {
+                    <BottleCard Bottle="b"
+                                AsOfYear="_asOfYear"
+                                Variant="BottleCardVariant.Grid"
+                                OnEdit="() => Edit(b)"
+                                OnMarkDrunk="() => MarkDrunkAsync(b)"
+                                OnDelete="() => DeleteAsync(b)"
+                                ShowOpenActions="true" />
+                }
+            </div>
+        </section>
     }
 }
 
 @code {
-    private const int SeedCount = 53;
+    private readonly int _seedCount = CatalogSeedData.Count;
+    private readonly int _asOfYear = DateTimeOffset.Now.Year;
 
+    private List<CatalogEntry> _catalog = new();
     private List<Bottle> _bottles = new();
+    private Dictionary<Guid, int> _qtyById = new();
+    private Dictionary<string, int> _qtyByNameVintage = new();
+
     private Bottle? _editing;
     private bool _isNew;
     private bool _busy;
     private bool _loading = true;
     private string? _message;
     private bool _messageIsError;
-    private readonly int _asOfYear = DateTimeOffset.Now.Year;
     private WineMapRegion? _selectedRegion;
     private Dictionary<WineMapRegion, int> _regionCounts = new();
     private bool _showSuisse;
     private bool _affinerOpen;
-    private bool _manageMode;
     private string _searchText = string.Empty;
     private string _filterColor = string.Empty;
     private string _filterReady = string.Empty;
-    private string _filterBin = string.Empty;
+    private string _filterOwned = string.Empty;
 
-    private List<Bottle> VisibleBottles
+    private List<CatalogEntry> VisibleCatalog
     {
         get
         {
@@ -310,76 +254,46 @@ else
                 _ => null
             };
 
-            var q = CaveBottleFilter.Apply(
-                _bottles,
+            var q = CatalogEntryFilter.Apply(
+                _catalog,
                 text: _searchText,
                 color: color,
-                readyToDrink: ready,
-                bin: _filterBin);
+                readyToDrink: ready);
 
             if (_selectedRegion is WineMapRegion region)
             {
-                q = q.Where(b => WineMapRegions.Resolve(b) == region);
+                q = q.Where(e => WineMapRegions.Resolve(e.Appellation, e.Country) == region);
             }
 
-            return q.ToList();
+            if (_filterOwned == "in")
+            {
+                q = q.Where(e => QtyFor(e) > 0);
+            }
+            else if (_filterOwned == "out")
+            {
+                q = q.Where(e => QtyFor(e) <= 0);
+            }
+
+            return q
+                .OrderBy(e => e.Name, StringComparer.OrdinalIgnoreCase)
+                .ToList();
         }
     }
+
+    private List<Bottle> CustomBottles =>
+        _bottles
+            .Where(b => b.Status != BottleStatus.Finished && b.Quantity > 0)
+            .Where(b => !_catalog.Any(e => e.Id == b.Id
+                || (string.Equals(e.Name, b.Name, StringComparison.OrdinalIgnoreCase) && e.Vintage == b.Vintage)))
+            .OrderBy(b => b.Name, StringComparer.OrdinalIgnoreCase)
+            .ToList();
 
     private bool HasActiveFilters =>
         !string.IsNullOrWhiteSpace(_searchText)
         || !string.IsNullOrWhiteSpace(_filterColor)
         || !string.IsNullOrWhiteSpace(_filterReady)
-        || !string.IsNullOrWhiteSpace(_filterBin)
+        || !string.IsNullOrWhiteSpace(_filterOwned)
         || _selectedRegion is not null;
-
-    /// <summary>Oldest ReadyToDrink InStock — same rule as drink-tonight #1.</summary>
-    private Bottle? Featured
-    {
-        get
-        {
-            return ReadyOrdered.FirstOrDefault();
-        }
-    }
-
-    private IEnumerable<Bottle> ReadyOrdered =>
-        VisibleBottles
-            .Where(b => b.Status == BottleStatus.InStock && b.Quantity > 0 && b.ReadyToDrink)
-            .OrderBy(b => b.Vintage ?? int.MaxValue)
-            .ThenBy(b => b.Name, StringComparer.OrdinalIgnoreCase);
-
-    private List<Bottle> AlsoReady
-    {
-        get
-        {
-            var featuredId = Featured?.Id;
-            return ReadyOrdered
-                .Where(b => featuredId is null || b.Id != featuredId)
-                .ToList();
-        }
-    }
-
-    private List<Bottle> RestOfCave
-    {
-        get
-        {
-            var excluded = new HashSet<Guid>();
-            if (Featured is Bottle f)
-            {
-                excluded.Add(f.Id);
-            }
-
-            foreach (var b in AlsoReady)
-            {
-                excluded.Add(b.Id);
-            }
-
-            return VisibleBottles
-                .Where(b => !excluded.Contains(b.Id))
-                .OrderBy(b => b.Name, StringComparer.OrdinalIgnoreCase)
-                .ToList();
-        }
-    }
 
     protected override async Task OnInitializedAsync() => await ReloadAsync();
 
@@ -390,7 +304,7 @@ else
         _searchText = string.Empty;
         _filterColor = string.Empty;
         _filterReady = string.Empty;
-        _filterBin = string.Empty;
+        _filterOwned = string.Empty;
         _selectedRegion = null;
     }
 
@@ -400,37 +314,48 @@ else
         return Task.CompletedTask;
     }
 
-    private async Task OpenFeaturedAsync(Bottle featured)
+    private int QtyFor(CatalogEntry entry)
     {
-        // Product CTA: open manage/edit for that bottle (no detail page yet).
-        Edit(featured);
-        await Task.CompletedTask;
+        if (_qtyById.TryGetValue(entry.Id, out var q))
+        {
+            return q;
+        }
+
+        var key = NameVintageKey(entry.Name, entry.Vintage);
+        return _qtyByNameVintage.GetValueOrDefault(key);
     }
+
+    private static string NameVintageKey(string name, int? vintage) =>
+        $"{name.Trim().ToLowerInvariant()}|{vintage?.ToString() ?? "nv"}";
 
     private async Task ReloadAsync()
     {
         _loading = true;
         try
         {
+            _catalog = CatalogSeedData.CreateEntries(_asOfYear).ToList();
+            foreach (var e in _catalog)
+            {
+                // Refresh maturity for current calendar year.
+                var probe = CatalogSeedData.ToBottle(e, quantity: 1, asOfYear: _asOfYear);
+                e.ReadyToDrink = probe.ReadyToDrink;
+            }
+
             var all = await CellarSvc.GetAllAsync();
             foreach (var b in all)
             {
                 MaturityRules.ApplyReadyToDrink(b, _asOfYear);
             }
 
-            _bottles = all
-                .Where(b => b.Status != BottleStatus.Finished && b.Quantity > 0)
-                .OrderBy(b => b.Name, StringComparer.OrdinalIgnoreCase)
-                .ToList();
+            _bottles = all.ToList();
+            RebuildQtyMaps();
 
-            _regionCounts = _bottles
-                .GroupBy(WineMapRegions.Resolve)
+            _regionCounts = _catalog
+                .GroupBy(e => WineMapRegions.Resolve(e.Appellation, e.Country))
                 .ToDictionary(g => g.Key, g => g.Count());
             _showSuisse = _regionCounts.GetValueOrDefault(WineMapRegion.Suisse) > 0;
 
-            if (_selectedRegion is WineMapRegion sel
-                && sel == WineMapRegion.Suisse
-                && !_showSuisse)
+            if (_selectedRegion is WineMapRegion.Suisse && !_showSuisse)
             {
                 _selectedRegion = null;
             }
@@ -441,10 +366,49 @@ else
         }
     }
 
+    private void RebuildQtyMaps()
+    {
+        _qtyById = _bottles
+            .Where(b => b.Status != BottleStatus.Finished && b.Quantity > 0)
+            .GroupBy(b => b.Id)
+            .ToDictionary(g => g.Key, g => g.Sum(x => x.Quantity));
+
+        _qtyByNameVintage = _bottles
+            .Where(b => b.Status != BottleStatus.Finished && b.Quantity > 0)
+            .GroupBy(b => NameVintageKey(b.Name, b.Vintage))
+            .ToDictionary(g => g.Key, g => g.Sum(x => x.Quantity));
+    }
+
     private void Flash(string message, bool error = false)
     {
         _message = message;
         _messageIsError = error;
+    }
+
+    private async Task OnQtyChangedAsync(CatalogEntry entry, int qty)
+    {
+        _busy = true;
+        try
+        {
+            await CellarSvc.SetCatalogQuantityAsync(entry, qty, asOfYear: _asOfYear);
+            // Optimistic local map + light reload of bottles only.
+            var all = await CellarSvc.GetAllAsync();
+            foreach (var b in all)
+            {
+                MaturityRules.ApplyReadyToDrink(b, _asOfYear);
+            }
+
+            _bottles = all.ToList();
+            RebuildQtyMaps();
+        }
+        catch (Exception ex)
+        {
+            Flash($"Impossible de mettre à jour la cave : {ex.Message}", error: true);
+        }
+        finally
+        {
+            _busy = false;
+        }
     }
 
     private void NewBottle()
@@ -488,7 +452,7 @@ else
             if (_isNew || _editing.Id == Guid.Empty)
             {
                 await CellarSvc.AddAsync(_editing, asOfYear: _asOfYear);
-                Flash("Bouteille ajoutée.");
+                Flash("Bouteille perso ajoutée.");
             }
             else
             {
@@ -558,7 +522,7 @@ else
         try
         {
             var n = await CellarSvc.EnsureM1SeedsAsync(asOfYear: 2026, forceReplace: _bottles.Count > 0);
-            Flash(n == 0 ? "Échantillon déjà présent." : $"{n} bouteilles d’échantillon chargées.");
+            Flash(n == 0 ? "Échantillon déjà présent." : $"{n} bouteilles d’échantillon en cave.");
             _selectedRegion = null;
             await ReloadAsync();
         }

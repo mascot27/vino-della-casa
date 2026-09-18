@@ -20,11 +20,11 @@ Drink tonight — ranked ready bottles:
 
 ## Photo credits
 
-Home hero and feature accents use local Unsplash photos (Unsplash License): Bob Brewer, Jennifer Yung, Gonzalo Facello — see `wwwroot/img/hero/ATTRIBUTION.md`.
+Home hero, feature accents, and catalogue fiche backgrounds use local Unsplash photos (Unsplash License): Bob Brewer, Jennifer Yung, Gonzalo Facello — see `wwwroot/img/hero/ATTRIBUTION.md` and `wwwroot/img/catalog/ATTRIBUTION.md`.
 
 ## What it does
 
-- **Cave** — browse InStock bottles as cards (color, vintage, location)
+- **Cave** — catalogue-first letter fiches (image, style, pourquoi) + « J’en ai en cave » qty (IndexedDB)
 - **Search & filters** — find bottles by varietal, region, status
 - **Drink tonight** — rank bottles that are ready to drink from your cellar
 - **Offline-friendly** — local store path (IndexedDB in the browser; in-memory for CI)

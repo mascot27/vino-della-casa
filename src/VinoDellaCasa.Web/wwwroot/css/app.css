@@ -1616,3 +1616,221 @@ textarea.form-input:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+/* ——— Catalogue fiche « lettre » (#55) ——— */
+.catalog-lettre-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin: var(--space-4) 0 var(--space-6);
+}
+
+@media (min-width: 720px) {
+  .catalog-lettre-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .catalog-lettre-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.fiche-lettre {
+  background: #F3EBDD;
+  border: 1px solid #E2D6C4;
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: fiche-enter 0.45s ease both;
+}
+
+@keyframes fiche-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.fiche-hero {
+  position: relative;
+  min-height: 168px;
+  background-size: cover;
+  background-position: center;
+  background-color: #C9B8A0;
+}
+
+.fiche-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(31, 26, 23, 0.05), rgba(31, 26, 23, 0.28));
+}
+
+.fiche-bottle {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  z-index: 1;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.35));
+  pointer-events: none;
+}
+
+.fiche-body {
+  padding: 1rem 1.15rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.fiche-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.fiche-name {
+  margin: 0.15rem 0 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #4A1C24;
+  line-height: 1.25;
+}
+
+.fiche-meta {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.fiche-style {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: #7A7168;
+}
+
+.fiche-pourquoi {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  margin-top: 0.35rem;
+  padding: 0.7rem 0.8rem;
+  background: #EBD9CE;
+  border-radius: 10px;
+  color: #3F2A28;
+}
+
+.fiche-pourquoi-icon {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  display: grid;
+  place-items: center;
+  color: #6B1E2A;
+}
+
+.fiche-pourquoi-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.fiche-pourquoi-text strong {
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+}
+
+.fiche-cellar-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 0.55rem;
+}
+
+.fiche-en-cave {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid #C9BDB0;
+  background: #F7F1E8;
+  color: #3A322C;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.fiche-en-cave.is-on {
+  border-color: var(--burgundy);
+  background: #F3E6E8;
+  color: var(--burgundy);
+}
+
+.fiche-en-cave:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.fiche-en-cave-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.fiche-qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #C9BDB0;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #FFFCF7;
+}
+
+.fiche-qty-btn {
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  background: transparent;
+  color: #3A322C;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.fiche-qty-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.fiche-qty-value {
+  min-width: 1.5rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.catalog-add-cta {
+  text-align: center;
+  margin: 0 0 var(--space-6);
+}
+
+.catalog-add-link {
+  font-size: 0.92rem;
+  color: #3A322C;
+}
+
+.cave-affiner-hint {
+  margin: var(--space-3) 0 0;
+  font-size: 0.85rem;
+}
