@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Bottle cards (cellar + drink-tonight): color pill + maturity badge above the title for faster visual scan.
+
 ### Added
 
 - MCP stdio server v1 (`src/VinoDellaCasa.Mcp`): `evaluate_maturity`, `rank_drink_tonight`, `list_seed_bottles`, `suggest_varietal_region`, `get_color_labels` — read-only Domain tools; contract in `Docs/domain/MCP-TOOLS-CONTRACT.md`.

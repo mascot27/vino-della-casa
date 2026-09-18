@@ -25,10 +25,11 @@ Ne pas afficher sur la carte MVP : scores critiques, `MaturityStyle=` technique,
 
 ## Hiérarchie typographique
 
-1. **Name** (semibold)
-2. **Vintage** (+ âge optionnel)
-3. **Region** (muted)
-4. Meta chips : pastille couleur · badge maturité · casier · qty
+1. Pastille couleur · badge maturité (scan rapide, au-dessus du titre)
+2. **Name** (semibold)
+3. **Vintage** (+ âge optionnel)
+4. **Region** (muted)
+5. Meta chips : casier · qty · prix (secondaire)
 
 ## Pastille couleur
 

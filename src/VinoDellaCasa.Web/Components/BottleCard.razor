@@ -7,6 +7,14 @@
         <div class="bottle-card-rank">#@r</div>
     }
 
+    <div class="bottle-card-badges">
+        <span class="pill pill-@UiLabels.ColorCss(Bottle.Color)">@UiLabels.Color(Bottle.Color)</span>
+        @{
+            var state = UiLabels.MaturityState(Bottle.ReadyToDrink, Bottle.Vintage);
+        }
+        <span class="badge-maturity badge-@UiLabels.MaturityCss(state)">@UiLabels.MaturityBadge(state)</span>
+    </div>
+
     <h3 class="bottle-name">@Bottle.Name</h3>
     <p class="bottle-vintage">@UiLabels.VintageLine(Bottle.Vintage, AsOfYear)</p>
     <p class="bottle-appellation muted">
@@ -17,12 +25,7 @@
         }
     </p>
 
-    <div class="bottle-card-header">
-        <span class="pill pill-@UiLabels.ColorCss(Bottle.Color)">@UiLabels.Color(Bottle.Color)</span>
-        @{
-            var state = UiLabels.MaturityState(Bottle.ReadyToDrink, Bottle.Vintage);
-        }
-        <span class="badge-maturity badge-@UiLabels.MaturityCss(state)">@UiLabels.MaturityBadge(state)</span>
+    <div class="bottle-card-meta">
         @if (!string.IsNullOrWhiteSpace(Bottle.Bin))
         {
             <span class="meta-chip bottle-bin">Casier @Bottle.Bin</span>

@@ -409,7 +409,8 @@ textarea.form-input:focus-visible {
   text-transform: uppercase;
 }
 
-.bottle-card-header {
+.bottle-card-badges,
+.bottle-card-meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
