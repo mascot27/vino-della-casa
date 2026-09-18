@@ -40,6 +40,9 @@
 else if (_cellarEmpty)
 {
     <div class="empty-state card">
+        <div class="empty-state-visual" aria-hidden="true">
+            <img class="bottle-silhouette" src="img/bottles/empty.svg" alt="" width="36" height="90" />
+        </div>
         <h3>Cave vide</h3>
         <p>Ajoutez des bouteilles pour obtenir des suggestions.</p>
         <div class="empty-actions">
@@ -50,6 +53,9 @@ else if (_cellarEmpty)
 else if (_list.Count == 0 && _colorFilter is not null)
 {
     <div class="empty-state card">
+        <div class="empty-state-visual" aria-hidden="true">
+            <img class="bottle-silhouette" src="img/bottles/empty.svg" alt="" width="36" height="90" />
+        </div>
         <h3>Aucun résultat</h3>
         <p>Élargissez la couleur ou la région.</p>
         <div class="empty-actions">
@@ -60,6 +66,9 @@ else if (_list.Count == 0 && _colorFilter is not null)
 else if (_list.Count == 0)
 {
     <div class="empty-state card">
+        <div class="empty-state-visual" aria-hidden="true">
+            <img class="bottle-silhouette" src="img/bottles/empty.svg" alt="" width="36" height="90" />
+        </div>
         <h3>Rien de prêt ce soir</h3>
         <p>Les bouteilles en cave ne sont pas encore dans leur fenêtre, ou la cave est vide.</p>
         <div class="empty-actions">
