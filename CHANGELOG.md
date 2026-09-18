@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Catalogue-first Cave (#55): `CatalogEntry` + `CatalogSeedData` (53 anonymous fiches), `CatalogFiche` letter layout, local `wwwroot/img/catalog/` heroes + ATTRIBUTION, « J’en ai en cave » qty → IndexedDB via `CellarService.SetCatalogQuantityAsync`.
+
 ### Changed
 
 - Bottle cards v2: local SVG silhouettes by color, hover lift/shadow/silhouette scale, discreet secondary actions, coherent empty/skeleton states.

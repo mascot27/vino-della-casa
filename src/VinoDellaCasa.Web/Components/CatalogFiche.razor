@@ -1,0 +1,108 @@
+@using VinoDellaCasa.Domain.Entities
+@using VinoDellaCasa.Web
+
+<article class="fiche-lettre" style="@EnterDelay">
+    <div class="fiche-hero" style="background-image: url('@Entry.ImagePath')">
+        <img class="fiche-bottle"
+             src="img/bottles/@(ColorCss).svg"
+             alt=""
+             width="72"
+             height="180"
+             loading="lazy"
+             decoding="async" />
+    </div>
+
+    <div class="fiche-body">
+        <div class="fiche-badges">
+            <span class="pill pill-@ColorCss">@UiLabels.Color(Entry.Color)</span>
+            @{
+                var state = UiLabels.MaturityState(Entry.ReadyToDrink, Entry.Vintage);
+            }
+            <span class="badge-maturity badge-@UiLabels.MaturityCss(state)">@UiLabels.MaturityBadge(state)</span>
+        </div>
+
+        <h3 class="fiche-name">@Entry.Name</h3>
+        <p class="fiche-meta">@MetaLine</p>
+        @if (!string.IsNullOrWhiteSpace(Entry.Style))
+        {
+            <p class="fiche-style">@Entry.Style</p>
+        }
+
+        <div class="fiche-pourquoi" role="note">
+            <span class="fiche-pourquoi-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 3c-2.2 2.4-4 4.8-4 7.2a4 4 0 0 0 8 0C16 7.8 14.2 5.4 12 3Z" />
+                    <path d="M9 14.5c.8 1.2 1.8 2 3 2s2.2-.8 3-2" />
+                    <path d="M8 20h8" />
+                </svg>
+            </span>
+            <div class="fiche-pourquoi-text">
+                <strong>Pourquoi</strong>
+                <span>@Entry.Pourquoi</span>
+            </div>
+        </div>
+
+        <div class="fiche-cellar-row">
+            <button type="button"
+                    class="fiche-en-cave @(Quantity > 0 ? "is-on" : null)"
+                    @onclick="ToggleInCaveAsync"
+                    disabled="@Disabled"
+                    aria-pressed="@(Quantity > 0)">
+                <span class="fiche-en-cave-icon" aria-hidden="true">🗄</span>
+                J’en ai en cave
+            </button>
+            <div class="fiche-qty" role="group" aria-label="Quantité en cave">
+                <button type="button" class="fiche-qty-btn" @onclick="DecrementAsync" disabled="@(Disabled || Quantity <= 0)" aria-label="Diminuer">−</button>
+                <span class="fiche-qty-value">@Quantity</span>
+                <button type="button" class="fiche-qty-btn" @onclick="IncrementAsync" disabled="@Disabled" aria-label="Augmenter">+</button>
+            </div>
+        </div>
+    </div>
+</article>
+
+@code {
+    [Parameter, EditorRequired] public CatalogEntry Entry { get; set; } = default!;
+    [Parameter] public int Quantity { get; set; }
+    [Parameter] public int AsOfYear { get; set; } = DateTimeOffset.Now.Year;
+    [Parameter] public int EnterIndex { get; set; }
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public EventCallback<int> QuantityChanged { get; set; }
+
+    private string ColorCss => UiLabels.ColorCss(Entry.Color);
+
+    private string MetaLine
+    {
+        get
+        {
+            var vintageAge = UiLabels.VintageLine(Entry.Vintage, AsOfYear);
+            var app = string.IsNullOrWhiteSpace(Entry.Appellation) ? "—" : Entry.Appellation;
+            if (Entry.Vintage is null)
+            {
+                return $"NV · {app}";
+            }
+
+            return $"{vintageAge} · {app}";
+        }
+    }
+
+    private string EnterDelay =>
+        EnterIndex > 0 ? $"animation-delay: {Math.Min(EnterIndex, 16) * 35}ms" : string.Empty;
+
+    private async Task IncrementAsync() => await SetQtyAsync(Quantity + 1);
+
+    private async Task DecrementAsync() => await SetQtyAsync(Math.Max(0, Quantity - 1));
+
+    private async Task ToggleInCaveAsync()
+    {
+        // 0 → 1 (mark owned); >0 → 0 (clear ownership).
+        await SetQtyAsync(Quantity > 0 ? 0 : 1);
+    }
+
+    private async Task SetQtyAsync(int qty)
+    {
+        if (QuantityChanged.HasDelegate)
+        {
+            await QuantityChanged.InvokeAsync(qty);
+        }
+    }
+}

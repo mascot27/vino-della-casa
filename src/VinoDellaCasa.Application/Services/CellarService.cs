@@ -1,5 +1,6 @@
 using VinoDellaCasa.Application.Abstractions;
 using VinoDellaCasa.Domain.Entities;
+using VinoDellaCasa.Domain.Enums;
 using VinoDellaCasa.Domain.Maturity;
 using VinoDellaCasa.Domain.Seed;
 using VinoDellaCasa.Domain.Services;
@@ -7,7 +8,7 @@ using VinoDellaCasa.Domain.Services;
 namespace VinoDellaCasa.Application.Services;
 
 /// <summary>
-/// Application façade over <see cref="ICellarStore"/>: CRUD, seed, drink-tonight.
+/// Application façade over <see cref="ICellarStore"/>: CRUD, seed, drink-tonight, catalogue qty.
 /// Recalculates ReadyToDrink via domain maturity rules before shortlists / writes.
 /// </summary>
 public sealed class CellarService
@@ -80,5 +81,61 @@ public sealed class CellarService
         }
 
         return seeds.Count;
+    }
+
+    /// <summary>
+    /// Upserts cellar ownership for a catalogue entry (IndexedDB qty). qty ≤ 0 removes the bottle.
+    /// Matches by Id first, then Name + Vintage.
+    /// </summary>
+    public async Task<Bottle?> SetCatalogQuantityAsync(
+        CatalogEntry entry,
+        int quantity,
+        int? asOfYear = null,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(entry);
+        var year = asOfYear ?? DateTimeOffset.UtcNow.Year;
+        var existing = await FindMatchingBottleAsync(entry, cancellationToken);
+
+        if (quantity <= 0)
+        {
+            if (existing is not null)
+            {
+                await _store.DeleteAsync(existing.Id, cancellationToken);
+            }
+
+            return null;
+        }
+
+        if (existing is null)
+        {
+            var created = CatalogSeedData.ToBottle(entry, quantity, year);
+            return await AddAsync(created, year, cancellationToken);
+        }
+
+        existing.Quantity = quantity;
+        existing.Status = BottleStatus.InStock;
+        existing.Name = entry.Name;
+        existing.Producer = entry.Producer;
+        existing.Region = entry.Appellation;
+        existing.Country = entry.Country;
+        existing.Color = entry.Color;
+        existing.Varietal = entry.Blend;
+        existing.Vintage = entry.Vintage;
+        return await UpdateAsync(existing, year, cancellationToken);
+    }
+
+    private async Task<Bottle?> FindMatchingBottleAsync(CatalogEntry entry, CancellationToken cancellationToken)
+    {
+        var byId = await _store.GetByIdAsync(entry.Id, cancellationToken);
+        if (byId is not null)
+        {
+            return byId;
+        }
+
+        var all = await _store.GetAllAsync(cancellationToken);
+        return all.FirstOrDefault(b =>
+            string.Equals(b.Name, entry.Name, StringComparison.OrdinalIgnoreCase)
+            && b.Vintage == entry.Vintage);
     }
 }
