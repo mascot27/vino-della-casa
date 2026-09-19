@@ -1,0 +1,5408 @@
+{
+  "title": "Vino della casa — catalogue Bourgogne 100 (anonymous)",
+  "count": 100,
+  "asOfYear": 2026,
+  "note": "Public-safe Bourgogne seed for app catalog + map hotspot. No personal cellar. No critic prose. quantity=0 (catalog-first). Ready/wait asOf 2026: 60/40.",
+  "generatedAt": "2026-09-19T08:19:51.763622+02:00",
+  "mapRegionHint": "bourgogne",
+  "bottles": [
+    {
+      "id": "bg-001",
+      "name": "Albert Bichot — Chablis Grand Cru Les Blanchots",
+      "producer": "Albert Bichot",
+      "region": "Chablis Grand Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2018,
+      "quantity": 0,
+      "priceChf": 79.0,
+      "priceEur": 79.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "bichot-chablis-blanchots",
+      "styleTags": [
+        "chardonnay",
+        "grand-cru",
+        "age-worthy",
+        "chablis-style",
+        "mineral",
+        "climat"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "flint",
+          "citrus",
+          "chalk",
+          "honey"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "oysters",
+          "lobster",
+          "Comté"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · minéral · de garde · corps ample",
+      "pourquoi": "Chardonnay de Chablis (Chablis Grand Cru) — tension, pierre à fusil et longueur. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "ws": 92
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-002",
+      "name": "Albert Bichot — Chablis Grand Cru Les Clos",
+      "producer": "Albert Bichot",
+      "region": "Chablis Grand Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2018,
+      "quantity": 0,
+      "priceChf": 91.0,
+      "priceEur": 91.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "bichot-chablis-clos",
+      "styleTags": [
+        "chardonnay",
+        "grand-cru",
+        "age-worthy",
+        "chablis-style",
+        "mineral",
+        "climat"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "flint",
+          "citrus",
+          "chalk",
+          "honey"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "oysters",
+          "lobster",
+          "Comté"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · minéral · de garde · corps ample",
+      "pourquoi": "Chardonnay de Chablis (Chablis Grand Cru) — tension, pierre à fusil et longueur. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "js": 94,
+        "ws": 92
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-003",
+      "name": "Domaine Billaud-Simon — Chablis Grand Cru Les Clos",
+      "producer": "Domaine Billaud-Simon",
+      "region": "Chablis Grand Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2018,
+      "quantity": 0,
+      "priceChf": 36.4,
+      "priceEur": 36.4,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "billaud-simon-chablis-les-clos",
+      "styleTags": [
+        "chablis-style",
+        "grand-cru",
+        "chardonnay",
+        "mineral",
+        "age-worthy"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "flint",
+          "citrus",
+          "chalk",
+          "honey"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "oysters",
+          "lobster",
+          "Comté"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · minéral · de garde · corps ample",
+      "pourquoi": "Chardonnay de Chablis (Chablis Grand Cru) — tension, pierre à fusil et longueur. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "ws": 91
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-004",
+      "name": "Louis Jadot — Chablis Grand Cru Les Preuses",
+      "producer": "Louis Jadot",
+      "region": "Chablis Grand Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2018,
+      "quantity": 0,
+      "priceChf": 103.0,
+      "priceEur": 103.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "jadot-chablis-preuses",
+      "styleTags": [
+        "chablis-style",
+        "grand-cru",
+        "chardonnay",
+        "maison"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "flint",
+          "citrus",
+          "chalk",
+          "honey"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "oysters",
+          "lobster",
+          "Comté"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · corps ample · flint, citrus",
+      "pourquoi": "Chardonnay de Chablis (Chablis Grand Cru) — tension, pierre à fusil et longueur. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "ws": 93
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-005",
+      "name": "Jean-Paul & Benoît Droin — Chablis Grand Cru Valmur",
+      "producer": "Jean-Paul & Benoît Droin",
+      "region": "Chablis Grand Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2018,
+      "quantity": 0,
+      "priceChf": 117.0,
+      "priceEur": 117.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "jean-paul-et-benoit-droin-chablis-valmur",
+      "styleTags": [
+        "chardonnay",
+        "grand-cru",
+        "age-worthy",
+        "chablis-style",
+        "mineral",
+        "climat"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "flint",
+          "citrus",
+          "chalk",
+          "honey"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "oysters",
+          "lobster",
+          "Comté"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · minéral · de garde · corps ample",
+      "pourquoi": "Chardonnay de Chablis (Chablis Grand Cru) — tension, pierre à fusil et longueur. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "rp": 94
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-006",
+      "name": "Jean-Paul & Benoît Droin — Chablis Grand Cru Vaudésir",
+      "producer": "Jean-Paul & Benoît Droin",
+      "region": "Chablis Grand Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2018,
+      "quantity": 0,
+      "priceChf": 117.0,
+      "priceEur": 117.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "jean-paul-et-benoit-droin-chablis-vaudesir",
+      "styleTags": [
+        "chardonnay",
+        "grand-cru",
+        "age-worthy",
+        "chablis-style",
+        "mineral",
+        "climat"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "flint",
+          "citrus",
+          "chalk",
+          "honey"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "oysters",
+          "lobster",
+          "Comté"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · minéral · de garde · corps ample",
+      "pourquoi": "Chardonnay de Chablis (Chablis Grand Cru) — tension, pierre à fusil et longueur. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "rp": 93
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-007",
+      "name": "Domaine Laroche — Chablis Grand Cru Les Blanchots",
+      "producer": "Domaine Laroche",
+      "region": "Chablis Grand Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2018,
+      "quantity": 0,
+      "priceChf": 82.0,
+      "priceEur": 82.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "laroche-chablis-blanchots",
+      "styleTags": [
+        "chablis-style",
+        "grand-cru",
+        "chardonnay",
+        "mineral",
+        "age-worthy"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "flint",
+          "citrus",
+          "chalk",
+          "honey"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "oysters",
+          "lobster",
+          "Comté"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · minéral · de garde · corps ample",
+      "pourquoi": "Chardonnay de Chablis (Chablis Grand Cru) — tension, pierre à fusil et longueur. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "ws": 92
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-008",
+      "name": "Domaine Laroche — Chablis Grand Cru Les Bouguerots",
+      "producer": "Domaine Laroche",
+      "region": "Chablis Grand Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2018,
+      "quantity": 0,
+      "priceChf": 86.5,
+      "priceEur": 86.5,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "laroche-chablis-bouguerots",
+      "styleTags": [
+        "chardonnay",
+        "grand-cru",
+        "age-worthy",
+        "chablis-style",
+        "mineral",
+        "climat"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "flint",
+          "citrus",
+          "chalk",
+          "honey"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "oysters",
+          "lobster",
+          "Comté"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · minéral · de garde · corps ample",
+      "pourquoi": "Chardonnay de Chablis (Chablis Grand Cru) — tension, pierre à fusil et longueur. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "ws": 94
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-009",
+      "name": "Domaine Long-Depaquit — Chablis Grand Cru Moutonne",
+      "producer": "Domaine Long-Depaquit (Albert Bichot)",
+      "region": "Chablis Grand Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2022,
+      "quantity": 0,
+      "priceChf": 172.0,
+      "priceEur": 172.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "long-depaquit-chablis-moutonne",
+      "styleTags": [
+        "chablis-style",
+        "grand-cru",
+        "chardonnay",
+        "monopole",
+        "mineral"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "flint",
+          "citrus",
+          "honey",
+          "white-flower"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "oysters",
+          "lobster",
+          "Comté"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · minéral · corps ample · flint, citrus",
+      "pourquoi": "Chardonnay de Chablis (Chablis Grand Cru) — tension, pierre à fusil et longueur. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "ws": 93
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-010",
+      "name": "Simonnet-Febvre — Chablis Grand Cru Blanchot",
+      "producer": "Simonnet-Febvre",
+      "region": "Chablis Grand Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2020,
+      "quantity": 0,
+      "priceChf": 88.2,
+      "priceEur": 88.2,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "simonnet-febvre-chablis-blanchot",
+      "styleTags": [
+        "chardonnay",
+        "grand-cru",
+        "age-worthy",
+        "chablis-style",
+        "mineral",
+        "climat"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "flint",
+          "citrus",
+          "chalk",
+          "honey"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "oysters",
+          "lobster",
+          "Comté"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · minéral · de garde · corps ample",
+      "pourquoi": "Chardonnay de Chablis (Chablis Grand Cru) — tension, pierre à fusil et longueur. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "ws": 92
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-011",
+      "name": "William Fèvre — Chablis Grand Cru Bougros",
+      "producer": "William Fèvre",
+      "region": "Chablis Grand Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2018,
+      "quantity": 0,
+      "priceChf": 87.0,
+      "priceEur": 87.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "william-fevre-chablis-bougros",
+      "styleTags": [
+        "chablis-style",
+        "grand-cru",
+        "chardonnay",
+        "mineral",
+        "negociant"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "flint",
+          "chalk",
+          "white-peach"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 20
+        },
+        "pairingHints": [
+          "seafood",
+          "sushi"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · minéral · corps moyen · citrus, flint",
+      "pourquoi": "Chardonnay de Chablis (Chablis Grand Cru) — tension, pierre à fusil et longueur. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "rp": 93
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-012",
+      "name": "William Fèvre — Chablis Grand Cru Bougros",
+      "producer": "William Fèvre",
+      "region": "Chablis Grand Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": 86.0,
+      "priceEur": 86.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "william-fevre-chablis-bougros-2",
+      "styleTags": [
+        "chardonnay",
+        "grand-cru",
+        "age-worthy",
+        "chablis-style",
+        "mineral",
+        "climat"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "flint",
+          "citrus",
+          "chalk",
+          "honey"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "oysters",
+          "lobster",
+          "Comté"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · minéral · de garde · corps ample",
+      "pourquoi": "Chardonnay de Chablis (Chablis Grand Cru) — tension, pierre à fusil et longueur. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "rp": 93
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-013",
+      "name": "Billaud-Simon — Chablis Premier Cru Fourchaume",
+      "producer": "Billaud-Simon",
+      "region": "Chablis Premier Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2022,
+      "quantity": 0,
+      "priceChf": 60.0,
+      "priceEur": 60.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "billaud-simon-chablis-fourchaume",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "chablis-style",
+        "mineral",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "flint",
+          "green-apple",
+          "chalk"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "seafood",
+          "goat cheese"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · minéral · corps moyen · citrus, flint",
+      "pourquoi": "Chardonnay de Chablis (Chablis Premier Cru) — tension, pierre à fusil et longueur. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "ws": 91
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-014",
+      "name": "Billaud-Simon — Chablis Premier Cru Les Vaillons",
+      "producer": "Billaud-Simon",
+      "region": "Chablis Premier Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2021,
+      "quantity": 0,
+      "priceChf": 53.0,
+      "priceEur": 53.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "billaud-simon-chablis-les-vaillons",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "chablis-style",
+        "mineral",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "flint",
+          "green-apple",
+          "chalk"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "seafood",
+          "goat cheese"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · minéral · corps moyen · citrus, flint",
+      "pourquoi": "Chardonnay de Chablis (Chablis Premier Cru) — tension, pierre à fusil et longueur. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "ws": 92
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-015",
+      "name": "Jean-Marc Brocard — Chablis Premier Cru Vau de Vey",
+      "producer": "Jean-Marc Brocard",
+      "region": "Chablis Premier Cru",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2017,
+      "quantity": 0,
+      "priceChf": 33.6,
+      "priceEur": 33.6,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "brocard-chablis-vau-de-vey",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "chablis-style",
+        "mineral",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "flint",
+          "green-apple",
+          "chalk"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "seafood",
+          "goat cheese"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · minéral · corps moyen · citrus, flint",
+      "pourquoi": "Chardonnay de Chablis (Chablis Premier Cru) — tension, pierre à fusil et longueur. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "js": 89,
+        "ws": 90
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-016",
+      "name": "Domaine du Clos de Tart — Clos de Tart Grand Cru Monopole",
+      "producer": "Domaine du Clos de Tart",
+      "region": "Morey-Saint-Denis, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2015,
+      "quantity": 0,
+      "priceChf": 927.0,
+      "priceEur": 927.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "clos-de-tart-grand-cru",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "monopole",
+        "icon",
+        "age-worthy"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "black-cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · black-cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Clos de Tart Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 98
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-017",
+      "name": "Domaine Georges Roumier — Musigny Grand Cru",
+      "producer": "Domaine Georges Roumier",
+      "region": "Chambolle-Musigny, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2019,
+      "quantity": 0,
+      "priceChf": 992.0,
+      "priceEur": 992.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "georges-roumier-musigny",
+      "styleTags": [
+        "cote-de-nuits",
+        "grand-cru",
+        "pinot-noir",
+        "icon",
+        "elegant",
+        "age-worthy"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "medium",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "rose",
+          "mineral",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 12,
+          "close": 40
+        },
+        "pairingHints": [
+          "duck",
+          "truffle",
+          "aged cheese"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · élégant · de garde · corps ample",
+      "pourquoi": "Pinot noir de Côte de Nuits (Musigny) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 97
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-018",
+      "name": "Domaine Ponsot — Clos de la Roche Grand Cru",
+      "producer": "Domaine Ponsot",
+      "region": "Morey-Saint-Denis, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2017,
+      "quantity": 0,
+      "priceChf": 570.0,
+      "priceEur": 570.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "ponsot-clos-de-la-roche",
+      "styleTags": [
+        "cote-de-nuits",
+        "grand-cru",
+        "pinot-noir",
+        "icon",
+        "age-worthy",
+        "power"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "medium",
+        "oak": "none",
+        "aromaFamilies": [
+          "cherry",
+          "earth",
+          "spice",
+          "underbrush"
+        ],
+        "drinkWindowYears": {
+          "open": 12,
+          "close": 40
+        },
+        "pairingHints": [
+          "game",
+          "beef"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · puissant · de garde · corps ample",
+      "pourquoi": "Pinot noir de Côte de Nuits (Clos de la Roche) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "rp": 96
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-019",
+      "name": "Domaine Armand Rousseau — Gevrey-Chambertin Premier Cru Clos Saint-Jacques",
+      "producer": "Domaine Armand Rousseau",
+      "region": "Gevrey-Chambertin, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": 157.0,
+      "priceEur": 157.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "armand-rousseau-clos-saint-jacques",
+      "styleTags": [
+        "cote-de-nuits",
+        "premier-cru",
+        "pinot-noir",
+        "icon",
+        "elegant"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "medium",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "raspberry",
+          "violet",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · élégant · corps ample · cherry, raspberry",
+      "pourquoi": "Pinot noir de Côte de Nuits (Gevrey-Chambertin Premier Cru) — fruit rouge, structure et tenue. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 94
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-020",
+      "name": "Domaine Faiveley — Nuits-Saint-Georges Premier Cru Les Saint-Georges",
+      "producer": "Domaine Faiveley",
+      "region": "Nuits-Saint-Georges, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2015,
+      "quantity": 0,
+      "priceChf": 137.5,
+      "priceEur": 137.5,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "faiveley-nuits-saint-georges-pc",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "icon"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "black-berry",
+          "earth",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, black-berry",
+      "pourquoi": "Pinot noir de Côte de Nuits (Nuits-Saint-Georges Premier Cru) — fruit rouge, structure et tenue. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 95
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-021",
+      "name": "Domaine Georges Roumier — Chambolle-Musigny Premier Cru Les Amoureuses",
+      "producer": "Domaine Georges Roumier",
+      "region": "Chambolle-Musigny, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": 497.0,
+      "priceEur": 497.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "georges-roumier-chambolle-amoureuses",
+      "styleTags": [
+        "cote-de-nuits",
+        "premier-cru",
+        "pinot-noir",
+        "icon",
+        "elegant"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "rose",
+          "violet",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "duck breast",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · élégant · corps moyen · cherry, rose",
+      "pourquoi": "Pinot noir de Côte de Nuits (Chambolle-Musigny Premier Cru) — fruit rouge, structure et tenue. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 96
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-022",
+      "name": "Domaine A.F. Gros — Echezeaux Grand Cru",
+      "producer": "Domaine A.F. Gros",
+      "region": "Flagey-Echézeaux, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2022,
+      "quantity": 0,
+      "priceChf": 495.0,
+      "priceEur": 495.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "a-f-gros-echezeaux-village",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-nuits"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Echezeaux Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-023",
+      "name": "Bouchard Père & Fils — Clos de Vougeot Grand Cru",
+      "producer": "Bouchard Père & Fils",
+      "region": "Vougeot, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2014,
+      "quantity": 0,
+      "priceChf": 247.0,
+      "priceEur": 247.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "bouchard-clos-vougeot",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "maison",
+        "age-worthy"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Clos de Vougeot Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "rp": 93,
+        "js": 95
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-024",
+      "name": "Bouchard Père & Fils — Clos de Vougeot",
+      "producer": "Bouchard Père & Fils",
+      "region": "Vougeot, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2019,
+      "quantity": 0,
+      "priceChf": 299.0,
+      "priceEur": 299.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "bouchard-clos-vougeot-3",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-nuits"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Clos de Vougeot) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 95
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-025",
+      "name": "Maison Champy — Clos de Vougeot Grand Cru",
+      "producer": "Maison Champy",
+      "region": "Vougeot, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2022,
+      "quantity": 0,
+      "priceChf": 395.0,
+      "priceEur": 395.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "champy-clos-vougeot",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "maison"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Clos de Vougeot Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "ws": 92
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-026",
+      "name": "Champy — Clos de Vougeot Grand Cru",
+      "producer": "Champy",
+      "region": "Vougeot, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2008,
+      "quantity": 0,
+      "priceChf": 399.0,
+      "priceEur": 399.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "champy-clos-vougeot-village",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-nuits"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Clos de Vougeot Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "ws": 91
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-027",
+      "name": "Champy — Echezeaux Grand Cru",
+      "producer": "Champy",
+      "region": "Flagey-Echézeaux, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2022,
+      "quantity": 0,
+      "priceChf": 365.0,
+      "priceEur": 365.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "champy-echezeaux-village",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-nuits"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Echezeaux Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "ws": 93
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-028",
+      "name": "Domaine Comte Georges de Vogue — Musigny Grand Cru Vieilles Vignes",
+      "producer": "Domaine Comte Georges de Vogue",
+      "region": "Chambolle-Musigny, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2016,
+      "quantity": 0,
+      "priceChf": 1387.0,
+      "priceEur": 1387.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "comte-georges-de-vogue-musigny-vieilles-vignes",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-nuits",
+        "climat"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Musigny Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 99
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-029",
+      "name": "Domaine Faiveley — Chambertin Grand Cru",
+      "producer": "Domaine Faiveley",
+      "region": "Gevrey-Chambertin, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2016,
+      "quantity": 0,
+      "priceChf": 146.0,
+      "priceEur": 146.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "faiveley-chambertin-village",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-nuits"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Chambertin Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "ws": 94
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-030",
+      "name": "Domaine Henri Rebourseau — Clos de Vougeot Grand Cru Vieilles Vignes",
+      "producer": "Domaine Henri Rebourseau",
+      "region": "Vougeot, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2015,
+      "quantity": 0,
+      "priceChf": 232.0,
+      "priceEur": 232.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "henri-rebourseau-clos-vougeot-vieilles-vignes",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-nuits",
+        "climat"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Clos de Vougeot Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "ws": 93
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-031",
+      "name": "Louis Jadot — Bonnes-Mares Grand Cru",
+      "producer": "Louis Jadot",
+      "region": "Chambolle-Musigny, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2015,
+      "quantity": 0,
+      "priceChf": 550.0,
+      "priceEur": 550.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "jadot-bonnes-mares",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "maison",
+        "age-worthy"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Bonnes-Mares Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "ws": 95
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-032",
+      "name": "Joseph Drouhin — Clos de Vougeot Grand Cru",
+      "producer": "Joseph Drouhin",
+      "region": "Vougeot, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2015,
+      "quantity": 0,
+      "priceChf": 290.0,
+      "priceEur": 290.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "joseph-drouhin-clos-vougeot-village",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-nuits"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Clos de Vougeot Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "rp": 94
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-033",
+      "name": "Joseph Drouhin — Musigny Grand Cru",
+      "producer": "Joseph Drouhin",
+      "region": "Chambolle-Musigny, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2016,
+      "quantity": 0,
+      "priceChf": 173.0,
+      "priceEur": 173.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "joseph-drouhin-musigny-village",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-nuits",
+        "climat"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Musigny Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 93
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-034",
+      "name": "Louis Latour — Chambertin Grand Cru",
+      "producer": "Louis Latour",
+      "region": "Gevrey-Chambertin, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2021,
+      "quantity": 0,
+      "priceChf": 86.0,
+      "priceEur": 86.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "latour-chambertin-village",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-nuits"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Chambertin Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 91,
+        "ws": 92
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-035",
+      "name": "Louis Latour — Clos de Vougeot Grand Cru",
+      "producer": "Louis Latour",
+      "region": "Vougeot, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2022,
+      "quantity": 0,
+      "priceChf": 315.0,
+      "priceEur": 315.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "latour-clos-vougeot",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "maison"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Clos de Vougeot Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 96,
+        "ws": 95
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-036",
+      "name": "Leroy — Clos de la Roche Grand Cru",
+      "producer": "Leroy",
+      "region": "Morey-Saint-Denis, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": 9150.0,
+      "priceEur": 9150.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "leroy-clos-de-la-roche-village",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-nuits",
+        "climat"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Clos de la Roche Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "rp": 95
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-037",
+      "name": "Lucien Le Moine — Clos de la Roche Grand Cru",
+      "producer": "Lucien Le Moine",
+      "region": "Morey-Saint-Denis, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2015,
+      "quantity": 0,
+      "priceChf": 495.0,
+      "priceEur": 495.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "lucien-le-moine-clos-de-la-roche-village",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-nuits",
+        "climat"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Clos de la Roche Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "ws": 97
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-038",
+      "name": "Méo-Camuzet — Clos de Vougeot Grand Cru",
+      "producer": "Méo-Camuzet",
+      "region": "Vougeot, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2022,
+      "quantity": 0,
+      "priceChf": 330.0,
+      "priceEur": 330.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "meo-camuzet-clos-vougeot-cuvee-etienne-camuzet",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-nuits"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Clos de Vougeot Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "ws": 95
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-039",
+      "name": "Domaine de la Vougeraie — Bonnes-Mares Grand Cru",
+      "producer": "Domaine de la Vougeraie",
+      "region": "Chambolle-Musigny, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2015,
+      "quantity": 0,
+      "priceChf": 415.0,
+      "priceEur": 415.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "vougeraie-bonnes-mares",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "biodynamic",
+        "age-worthy"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "mineral",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Bonnes-Mares Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 99
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-040",
+      "name": "Domaine de la Vougeraie — Clos de Vougeot Grand Cru",
+      "producer": "Domaine de la Vougeraie",
+      "region": "Vougeot, Côte de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2016,
+      "quantity": 0,
+      "priceChf": 157.0,
+      "priceEur": 157.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "vougeraie-clos-vougeot",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "biodynamic",
+        "age-worthy"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Nuits (Clos de Vougeot Grand Cru) — fruit rouge, structure et tenue. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 97
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-041",
+      "name": "Domaine Bonneau du Martray — Corton-Charlemagne Grand Cru",
+      "producer": "Domaine Bonneau du Martray",
+      "region": "Pernand-Vergelesses, Côte de Beaune",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2011,
+      "quantity": 0,
+      "priceChf": 555.0,
+      "priceEur": 555.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "bonneau-du-martray-corton-charlemagne",
+      "styleTags": [
+        "cote-de-beaune",
+        "grand-cru",
+        "chardonnay",
+        "icon",
+        "age-worthy",
+        "mineral"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "hazelnut",
+          "flint",
+          "butter",
+          "toast"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 30
+        },
+        "pairingHints": [
+          "lobster",
+          "roast chicken",
+          "Comté"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · minéral · de garde · corps ample",
+      "pourquoi": "Chardonnay de Bourgogne (Corton-Charlemagne) — profil de table clair. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "rp": 91
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-042",
+      "name": "Maison Joseph Drouhin — Beaune Premier Cru Clos des Mouches Blanc",
+      "producer": "Maison Joseph Drouhin",
+      "region": "Beaune, Côte de Beaune",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2020,
+      "quantity": 0,
+      "priceChf": 147.0,
+      "priceEur": 147.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "joseph-drouhin-beaune-clos-mouches-blanc",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "icon",
+        "maison"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "honey",
+          "hazelnut",
+          "white-flower"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "fish in butter",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · citrus, honey",
+      "pourquoi": "Chardonnay de Bourgogne (Beaune Premier Cru) — profil de table clair. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "js": 96,
+        "ws": 95
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-043",
+      "name": "Maison Joseph Drouhin — Beaune Premier Cru Clos des Mouches Rouge",
+      "producer": "Maison Joseph Drouhin",
+      "region": "Beaune, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": 167.0,
+      "priceEur": 167.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "joseph-drouhin-beaune-clos-mouches-rouge",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "icon",
+        "maison"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "spice",
+          "violet"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, spice",
+      "pourquoi": "Pinot noir de Côte de Beaune (Beaune Premier Cru) — soyeux, épices et digestibilité. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 98
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-044",
+      "name": "Domaines Leflaive — Bâtard-Montrachet Grand Cru",
+      "producer": "Domaines Leflaive",
+      "region": "Puligny-Montrachet, Côte de Beaune",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": 1415.0,
+      "priceEur": 1415.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "domaines-leflaive-batard-montrachet-village",
+      "styleTags": [
+        "chardonnay",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-beaune"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "citrus",
+          "hazelnut",
+          "butter",
+          "flint"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "lobster",
+          "roast veal"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · citrus, hazelnut",
+      "pourquoi": "Chardonnay de Bourgogne (Bâtard-Montrachet Grand Cru) — profil de table clair. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "rp": 95,
+        "ws": 96
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-045",
+      "name": "Au Pied du Mont Chauve — Corton Grand Cru Clos des Fiètres",
+      "producer": "Au Pied du Mont Chauve",
+      "region": "Aloxe-Corton, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2015,
+      "quantity": 0,
+      "priceChf": 169.0,
+      "priceEur": 169.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "pied-mont-chauve-corton-clos-des-fietres",
+      "styleTags": [
+        "pinot-noir",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-beaune",
+        "climat"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "firm",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 10,
+          "close": 30
+        },
+        "pairingHints": [
+          "game",
+          "mushroom risotto"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Beaune (Corton Grand Cru) — soyeux, épices et digestibilité. Grand Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Grand Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 92
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-046",
+      "name": "Domaine Boris Champy — Beaune Premier Cru Aux Coucherias",
+      "producer": "Domaine Boris Champy",
+      "region": "Beaune, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2017,
+      "quantity": 0,
+      "priceChf": 66.0,
+      "priceEur": 66.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "boris-champy-beaune-aux-coucherias",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "cote-de-beaune",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "red-berry",
+          "violet",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, red-berry",
+      "pourquoi": "Pinot noir de Côte de Beaune (Beaune Premier Cru) — soyeux, épices et digestibilité. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 94
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-047",
+      "name": "Bruno Colin — Chassagne-Montrachet Premier Cru En Remilly",
+      "producer": "Bruno Colin",
+      "region": "Chassagne-Montrachet, Côte de Beaune",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2021,
+      "quantity": 0,
+      "priceChf": 165.0,
+      "priceEur": 165.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "bruno-colin-chassagne-en-remilly",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "cote-de-beaune",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "white-flower",
+          "hazelnut",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "fish in butter",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · citrus, white-flower",
+      "pourquoi": "Chardonnay de Bourgogne (Chassagne-Montrachet Premier Cru) — profil de table clair. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "ws": 92
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-048",
+      "name": "Domaine du Cellier aux Moines — Volnay Premier Cru En Chevret",
+      "producer": "Domaine du Cellier aux Moines",
+      "region": "Volnay, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": 130.8,
+      "priceEur": 130.8,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "cellier-aux-moines-volnay-en-chevret",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "cote-de-beaune",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "red-berry",
+          "violet",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, red-berry",
+      "pourquoi": "Pinot noir de Côte de Beaune (Volnay Premier Cru) — soyeux, épices et digestibilité. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 93
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-049",
+      "name": "Chanson — Beaune Premier Cru Bressandes",
+      "producer": "Chanson",
+      "region": "Beaune, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2020,
+      "quantity": 0,
+      "priceChf": 60.7,
+      "priceEur": 60.7,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "chanson-beaune-bressandes",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "cote-de-beaune",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "red-berry",
+          "violet",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, red-berry",
+      "pourquoi": "Pinot noir de Côte de Beaune (Beaune Premier Cru) — soyeux, épices et digestibilité. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "ws": 94
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-050",
+      "name": "Chanson — Beaune Premier Cru Clos des Fèves",
+      "producer": "Chanson",
+      "region": "Beaune, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2015,
+      "quantity": 0,
+      "priceChf": 107.0,
+      "priceEur": 107.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "chanson-beaune-clos-des-feves",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "cote-de-beaune",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "red-berry",
+          "violet",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, red-berry",
+      "pourquoi": "Pinot noir de Côte de Beaune (Beaune Premier Cru) — soyeux, épices et digestibilité. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "ws": 94
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-051",
+      "name": "Maison Chanson — Beaune Premier Cru Clos des Mouches",
+      "producer": "Maison Chanson",
+      "region": "Beaune, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2024,
+      "quantity": 0,
+      "priceChf": 107.0,
+      "priceEur": 107.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "chanson-beaune-clos-mouches",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "maison"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "spice",
+          "violet"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, spice",
+      "pourquoi": "Pinot noir de Côte de Beaune (Beaune Premier Cru) — soyeux, épices et digestibilité. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "ws": 92
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-052",
+      "name": "Maison Chanson — Savigny-lès-Beaune Premier Cru Dominode",
+      "producer": "Maison Chanson",
+      "region": "Savigny-lès-Beaune, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2021,
+      "quantity": 0,
+      "priceChf": 64.3,
+      "priceEur": 64.3,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "chanson-savigny-dominode",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "maison"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "red-berry",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, red-berry",
+      "pourquoi": "Pinot noir de Côte de Beaune (Savigny-lès-Beaune Premier Cru) — soyeux, épices et digestibilité. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 92
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-053",
+      "name": "Domaine de Courcel — Pommard Premier Cru Les Rugiens",
+      "producer": "Domaine de Courcel",
+      "region": "Pommard, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2022,
+      "quantity": 0,
+      "priceChf": 126.7,
+      "priceEur": 126.7,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "courcel-pommard-rugiens",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "cote-de-beaune",
+        "climat",
+        "power"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "earth",
+          "spice",
+          "smoke"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · puissant · corps moyen · cherry, earth",
+      "pourquoi": "Pinot noir de Côte de Beaune (Pommard Premier Cru) — soyeux, épices et digestibilité. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 95
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-054",
+      "name": "Domaine de Montille — Volnay Premier Cru Taillepieds",
+      "producer": "Domaine de Montille",
+      "region": "Volnay, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2012,
+      "quantity": 0,
+      "priceChf": 130.0,
+      "priceEur": 130.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "de-montille-volnay-taillepieds",
+      "styleTags": [
+        "cote-de-beaune",
+        "premier-cru",
+        "pinot-noir",
+        "elegant",
+        "biodynamic"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "raspberry",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 18
+        },
+        "pairingHints": [
+          "duck",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · élégant · corps moyen · cherry, violet",
+      "pourquoi": "Pinot noir de Côte de Beaune (Volnay Premier Cru) — soyeux, épices et digestibilité. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "ws": 90
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-055",
+      "name": "Domaines Leflaive — Puligny-Montrachet Premier Cru Les Folatières",
+      "producer": "Domaines Leflaive",
+      "region": "Puligny-Montrachet, Côte de Beaune",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": 680.0,
+      "priceEur": 680.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "domaines-leflaive-puligny-les-folatieres",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "cote-de-beaune",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "white-flower",
+          "hazelnut",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "fish in butter",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · citrus, white-flower",
+      "pourquoi": "Chardonnay de Bourgogne (Puligny-Montrachet Premier Cru) — profil de table clair. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "rp": 93,
+        "ws": 95
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-056",
+      "name": "Domaine Hubert Lamy — Chassagne-Montrachet Premier Cru Les Macherelles",
+      "producer": "Domaine Hubert Lamy",
+      "region": "Chassagne-Montrachet, Côte de Beaune",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": 159.0,
+      "priceEur": 159.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "hubert-lamy-chassagne-macherelles",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "cote-de-beaune",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "white-flower",
+          "hazelnut",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "fish in butter",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · citrus, white-flower",
+      "pourquoi": "Chardonnay de Bourgogne (Chassagne-Montrachet Premier Cru) — profil de table clair. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "rp": 92
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-057",
+      "name": "Domaine Hubert Lamy — Saint-Aubin Premier Cru Derrière chez Edouard",
+      "producer": "Domaine Hubert Lamy",
+      "region": "Saint-Aubin, Côte de Beaune",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2018,
+      "quantity": 0,
+      "priceChf": 117.5,
+      "priceEur": 117.5,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "hubert-lamy-saint-aubin-derriere-chez-edouard-2",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "cote-de-beaune",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "white-flower",
+          "hazelnut",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "fish in butter",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · citrus, white-flower",
+      "pourquoi": "Chardonnay de Bourgogne (Saint-Aubin Premier Cru) — profil de table clair. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "ws": 91
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-058",
+      "name": "Domaine de la Pousse d'Or — Volnay Premier Cru Caillerets",
+      "producer": "Domaine de la Pousse d'Or",
+      "region": "Volnay, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2022,
+      "quantity": 0,
+      "priceChf": 111.0,
+      "priceEur": 111.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "la-pousse-dor-volnay-caillerets",
+      "styleTags": [
+        "cote-de-beaune",
+        "premier-cru",
+        "pinot-noir",
+        "elegant"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "raspberry",
+          "violet",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 4,
+          "close": 15
+        },
+        "pairingHints": [
+          "duck",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · élégant · corps moyen · cherry, raspberry",
+      "pourquoi": "Pinot noir de Côte de Beaune (Volnay Premier Cru) — soyeux, épices et digestibilité. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 95,
+        "ws": 93
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-059",
+      "name": "Domaine Leflaive — Puligny-Montrachet Premier Cru Clavoillon",
+      "producer": "Domaine Leflaive",
+      "region": "Puligny-Montrachet, Côte de Beaune",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": 510.0,
+      "priceEur": 510.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "leflaive-puligny-clavoillon",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "cote-de-beaune",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "white-flower",
+          "hazelnut",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "fish in butter",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · citrus, white-flower",
+      "pourquoi": "Chardonnay de Bourgogne (Puligny-Montrachet Premier Cru) — profil de table clair. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "rp": 93,
+        "ws": 95
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-060",
+      "name": "Domaine Leflaive — Puligny-Montrachet Premier Cru Les Pucelles",
+      "producer": "Domaine Leflaive",
+      "region": "Puligny-Montrachet, Côte de Beaune",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2018,
+      "quantity": 0,
+      "priceChf": 192.5,
+      "priceEur": 192.5,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "leflaive-puligny-pucelles",
+      "styleTags": [
+        "cote-de-beaune",
+        "premier-cru",
+        "chardonnay",
+        "biodynamic",
+        "elegant"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "white-peach",
+          "hazelnut",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 20
+        },
+        "pairingHints": [
+          "fish",
+          "poultry cream"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · élégant · corps moyen · citrus, white-peach",
+      "pourquoi": "Chardonnay de Bourgogne (Puligny-Montrachet Premier Cru) — profil de table clair. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "js": 96
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-061",
+      "name": "Olivier Leflaive — Pernand-Vergelesses Premier Cru Fichots",
+      "producer": "Olivier Leflaive",
+      "region": "Pernand-Vergelesses, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": 53.5,
+      "priceEur": 53.5,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "olivier-leflaive-pernand-fichots",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "cote-de-beaune",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "red-berry",
+          "violet",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, red-berry",
+      "pourquoi": "Pinot noir de Côte de Beaune (Pernand-Vergelesses Premier Cru) — soyeux, épices et digestibilité. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 92
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-062",
+      "name": "Olivier Leflaive — Volnay Premier Cru Clos des Angles",
+      "producer": "Olivier Leflaive",
+      "region": "Volnay, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2024,
+      "quantity": 0,
+      "priceChf": 89.5,
+      "priceEur": 89.5,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "olivier-leflaive-volnay-clos-des-angles",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "cote-de-beaune",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "red-berry",
+          "violet",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, red-berry",
+      "pourquoi": "Pinot noir de Côte de Beaune (Volnay Premier Cru) — soyeux, épices et digestibilité. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "ws": 94
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-063",
+      "name": "Au Pied du Mont Chauve — Chassagne-Montrachet Premier Cru Clos Saint Jean",
+      "producer": "Au Pied du Mont Chauve",
+      "region": "Chassagne-Montrachet, Côte de Beaune",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2021,
+      "quantity": 0,
+      "priceChf": 113.3,
+      "priceEur": 113.3,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "pied-mont-chauve-chassagne-clos-saint-jean",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "cote-de-beaune",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "white-flower",
+          "hazelnut",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "fish in butter",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · citrus, white-flower",
+      "pourquoi": "Chardonnay de Bourgogne (Chassagne-Montrachet Premier Cru) — profil de table clair. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "js": 93
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-064",
+      "name": "Domaine Arnaud Ente — Meursault",
+      "producer": "Domaine Arnaud Ente",
+      "region": "Meursault, Côte de Beaune",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2025,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "arnaud-ente-meursault",
+      "styleTags": [
+        "chardonnay",
+        "village",
+        "icon"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "white-flower",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 8
+        },
+        "pairingHints": [
+          "seafood",
+          "aperitif"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Village · corps moyen · citrus, white-flower",
+      "pourquoi": "Chardonnay de Bourgogne (Meursault) — profil de table clair. Classification Village ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Village",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "rp": 94
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-065",
+      "name": "Vincent Girardin — Corton-Charlemagne Grand Cru",
+      "producer": "Vincent Girardin",
+      "region": "Aloxe-Corton, Côte de Beaune",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "vincent-girardin-corton-charlemagne-village",
+      "styleTags": [
+        "chardonnay",
+        "grand-cru",
+        "age-worthy",
+        "cote-de-beaune"
+      ],
+      "taste": {
+        "body": "full",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "marked",
+        "aromaFamilies": [
+          "citrus",
+          "hazelnut",
+          "butter",
+          "flint"
+        ],
+        "drinkWindowYears": {
+          "open": 8,
+          "close": 25
+        },
+        "pairingHints": [
+          "lobster",
+          "roast veal"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Grand Cru · de garde · corps ample · citrus, hazelnut",
+      "pourquoi": "Chardonnay de Bourgogne (Corton-Charlemagne Grand Cru) — profil de table clair. Classification Grand Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Grand Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "hachetteStars": 1
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-066",
+      "name": "Domaine Chevrot — Maranges Premier Cru La Fussière",
+      "producer": "Domaine Chevrot",
+      "region": "Cheilly-lès-Maranges, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2016,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "chevrot-maranges-fussiere",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "cote-de-beaune"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, spice",
+      "pourquoi": "Pinot noir de Côte de Beaune (Maranges Premier Cru) — soyeux, épices et digestibilité. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 1
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-067",
+      "name": "Domaine Guillemot — Savigny-lès-Beaune",
+      "producer": "Domaine Guillemot",
+      "region": "Savigny-lès-Beaune, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "guillemot-savigny",
+      "styleTags": [
+        "pinot-noir",
+        "village",
+        "cote-de-beaune"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "red-berry",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 3,
+          "close": 10
+        },
+        "pairingHints": [
+          "roast chicken",
+          "charcuterie"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Village · accessible · corps moyen · cherry, red-berry",
+      "pourquoi": "Pinot noir de Côte de Beaune (Savigny-lès-Beaune) — soyeux, épices et digestibilité. Village — ouvert pour la table (seed anonyme, faits de style uniquement).",
+      "classification": "Village",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 1
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-068",
+      "name": "Domaine Mestre Père et Fils — Santenay",
+      "producer": "Domaine Mestre Père et Fils",
+      "region": "Santenay, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2009,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "mestre-santenay",
+      "styleTags": [
+        "pinot-noir",
+        "village",
+        "cote-de-beaune"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "earth",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 3,
+          "close": 10
+        },
+        "pairingHints": [
+          "roast chicken",
+          "charcuterie"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Village · accessible · corps moyen · cherry, earth",
+      "pourquoi": "Pinot noir de Côte de Beaune (Santenay) — soyeux, épices et digestibilité. Village — ouvert pour la table (seed anonyme, faits de style uniquement).",
+      "classification": "Village",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-069",
+      "name": "Domaine Jean-Marc et Hugues Pavelot — Savigny-lès-Beaune",
+      "producer": "Domaine Jean-Marc et Hugues Pavelot",
+      "region": "Savigny-lès-Beaune, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2017,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "pavelot-savigny",
+      "styleTags": [
+        "pinot-noir",
+        "village",
+        "cote-de-beaune"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "earth",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 3,
+          "close": 10
+        },
+        "pairingHints": [
+          "roast chicken",
+          "charcuterie"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Village · accessible · corps moyen · cherry, earth",
+      "pourquoi": "Pinot noir de Côte de Beaune (Savigny-lès-Beaune) — soyeux, épices et digestibilité. Village — ouvert pour la table (seed anonyme, faits de style uniquement).",
+      "classification": "Village",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-070",
+      "name": "Domaine Prunier — Auxey-Duresses",
+      "producer": "Domaine Prunier",
+      "region": "Auxey-Duresses, Côte de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2019,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "prunier-auxey",
+      "styleTags": [
+        "pinot-noir",
+        "village",
+        "cote-de-beaune"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "red-berry",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 3,
+          "close": 10
+        },
+        "pairingHints": [
+          "roast chicken",
+          "charcuterie"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Village · accessible · corps moyen · cherry, red-berry",
+      "pourquoi": "Pinot noir de Côte de Beaune (Auxey-Duresses) — soyeux, épices et digestibilité. Village — ouvert pour la table (seed anonyme, faits de style uniquement).",
+      "classification": "Village",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-071",
+      "name": "Domaine du Cellier aux Moines — Givry Premier Cru Clos du Cellier aux Moines",
+      "producer": "Domaine du Cellier aux Moines",
+      "region": "Givry, Côte Chalonnaise",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2019,
+      "quantity": 0,
+      "priceChf": 61.0,
+      "priceEur": 61.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "cellier-aux-moines-givry-clos-du-cellier-aux-moines-l",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "chalonnaise",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "red-berry",
+          "violet",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, red-berry",
+      "pourquoi": "Pinot de Côte Chalonnaise (Givry Premier Cru) — rapport plaisir / tension. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 95
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-072",
+      "name": "Domaine Thenard — Givry Premier Cru Cellier aux Moines",
+      "producer": "Domaine Thenard",
+      "region": "Givry, Côte Chalonnaise",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": 59.2,
+      "priceEur": 59.2,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "thenard-givry-cellier-aux-moines",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "chalonnaise",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, spice",
+      "pourquoi": "Pinot de Côte Chalonnaise (Givry Premier Cru) — rapport plaisir / tension. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "js": 95
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-073",
+      "name": "Domaine A. et P. de Villaine — Rully Premier Cru Cloux",
+      "producer": "Domaine A. et P. de Villaine",
+      "region": "Rully, Côte Chalonnaise",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2019,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "a-et-p-de-villaine-rully-cloux",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "chalonnaise",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "white-flower",
+          "hazelnut",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "fish in butter",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · citrus, white-flower",
+      "pourquoi": "Chardonnay de Côte Chalonnaise — équilibre beurre / minéral. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-074",
+      "name": "Domaine Belleville — Rully Premier Cru Les Cloux",
+      "producer": "Domaine Belleville",
+      "region": "Rully, Côte Chalonnaise",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2014,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "belleville-rully-les-cloux",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "chalonnaise",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "apple",
+          "hazelnut"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "fish in butter",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · citrus, apple",
+      "pourquoi": "Chardonnay de Côte Chalonnaise — équilibre beurre / minéral. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-075",
+      "name": "Clos Salomon — Givry Premier Cru Clos Salomon",
+      "producer": "Clos Salomon",
+      "region": "Givry, Côte Chalonnaise",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2017,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "clos-salomon-givry-clos-salomon",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "chalonnaise",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, spice",
+      "pourquoi": "Pinot de Côte Chalonnaise (Givry Premier Cru) — rapport plaisir / tension. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-076",
+      "name": "Domaine Michel Juillot — Mercurey Premier Cru Clos Tonnerre",
+      "producer": "Domaine Michel Juillot",
+      "region": "Mercurey, Côte Chalonnaise",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2017,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "michel-juillot-mercurey-clos-tonnerre",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "chalonnaise",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "red-berry",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, red-berry",
+      "pourquoi": "Pinot de Côte Chalonnaise (Mercurey Premier Cru) — rapport plaisir / tension. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 1
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-077",
+      "name": "Domaine Mouton — Givry Premier Cru Clos Jus",
+      "producer": "Domaine Mouton",
+      "region": "Givry, Côte Chalonnaise",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2022,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "mouton-givry-clos-jus",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru",
+        "chalonnaise",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, spice",
+      "pourquoi": "Pinot de Côte Chalonnaise (Givry Premier Cru) — rapport plaisir / tension. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-078",
+      "name": "Domaine François Raquillet — Mercurey Premier Cru Les Vasées",
+      "producer": "Domaine François Raquillet",
+      "region": "Mercurey, Côte Chalonnaise",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2018,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "raquillet-mercurey-vasees",
+      "styleTags": [
+        "pinot-noir",
+        "premier-cru"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 6,
+          "close": 18
+        },
+        "pairingHints": [
+          "roast duck",
+          "mushroom"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · cherry, spice",
+      "pourquoi": "Pinot de Côte Chalonnaise (Mercurey Premier Cru) — rapport plaisir / tension. Premier Cru — fenêtre de garde à respecter (seed anonyme, faits de style uniquement).",
+      "classification": "Premier Cru",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-079",
+      "name": "Domaine de Villaine — Rully Premier Cru Rabourcé",
+      "producer": "Domaine de Villaine",
+      "region": "Rully, Côte Chalonnaise",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2021,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "villaine-rully-rabource",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "chalonnaise",
+        "climat",
+        "biodynamic"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "white-flower",
+          "hazelnut"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "fish in butter",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · citrus, white-flower",
+      "pourquoi": "Chardonnay de Côte Chalonnaise — équilibre beurre / minéral. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "hachetteStars": 1
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-080",
+      "name": "Domaine Brintet — Mercurey",
+      "producer": "Domaine Brintet",
+      "region": "Mercurey, Côte Chalonnaise",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2019,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "brintet-mercurey",
+      "styleTags": [
+        "pinot-noir",
+        "village",
+        "chalonnaise"
+      ],
+      "taste": {
+        "body": "light",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "none",
+        "aromaFamilies": [
+          "cherry",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 7
+        },
+        "pairingHints": [
+          "charcuterie",
+          "picnic"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Village · accessible · corps léger · cherry, spice",
+      "pourquoi": "Pinot de Côte Chalonnaise (Mercurey) — rapport plaisir / tension. Village — ouvert pour la table (seed anonyme, faits de style uniquement).",
+      "classification": "Village",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-081",
+      "name": "Domaine François Raquillet — Mercurey",
+      "producer": "Domaine François Raquillet",
+      "region": "Mercurey, Côte Chalonnaise",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2019,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "francois-raquillet-mercurey",
+      "styleTags": [
+        "chalonnaise",
+        "village",
+        "pinot-noir",
+        "value"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "medium",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "cherry",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 10
+        },
+        "pairingHints": [
+          "roast meat",
+          "cheese"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Village · accessible · corps moyen · cherry, spice",
+      "pourquoi": "Pinot de Côte Chalonnaise (Mercurey) — rapport plaisir / tension. Village — ouvert pour la table (seed anonyme, faits de style uniquement).",
+      "classification": "Village",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-082",
+      "name": "Domaine Michel Sarrazin — Givry",
+      "producer": "Domaine Michel Sarrazin",
+      "region": "Givry, Côte Chalonnaise",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2020,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "michel-sarrazin-givry",
+      "styleTags": [
+        "pinot-noir",
+        "village",
+        "chalonnaise"
+      ],
+      "taste": {
+        "body": "light",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "none",
+        "aromaFamilies": [
+          "cherry",
+          "spice",
+          "earth"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 7
+        },
+        "pairingHints": [
+          "charcuterie",
+          "picnic"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Village · accessible · corps léger · cherry, spice",
+      "pourquoi": "Pinot de Côte Chalonnaise (Givry) — rapport plaisir / tension. Village — ouvert pour la table (seed anonyme, faits de style uniquement).",
+      "classification": "Village",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-083",
+      "name": "J.A. Ferret — Pouilly-Fuissé Premier Cru Tournant de Pouilly",
+      "producer": "J.A. Ferret",
+      "region": "Fuissé, Mâconnais",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2018,
+      "quantity": 0,
+      "priceChf": 95.0,
+      "priceEur": 95.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "ferret-pouilly-fuisse-tournant",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "icon"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "hazelnut",
+          "honey",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "fish in butter",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · citrus, hazelnut",
+      "pourquoi": "Blanc du Mâconnais (Pouilly-Fuissé Premier Cru) — fruit mûr et texture souple. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "ws": 93
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-084",
+      "name": "Domaine Guffens-Heynen — Saint-Véran Premier Jus",
+      "producer": "Domaine Guffens-Heynen",
+      "region": "Saint-Vérand, Mâconnais",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2025,
+      "quantity": 0,
+      "priceChf": 116.7,
+      "priceEur": 116.7,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "guffens-saint-veran",
+      "styleTags": [
+        "chardonnay",
+        "village",
+        "icon"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "flint",
+          "white-flower"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 8
+        },
+        "pairingHints": [
+          "seafood",
+          "aperitif"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Village · corps moyen · citrus, flint",
+      "pourquoi": "Blanc du Mâconnais (Saint-Véran) — fruit mûr et texture souple. Classification Village ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Village",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "rp": 94
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-085",
+      "name": "Château Fuissé — Pouilly-Fuissé Premier Cru Les Brûlés",
+      "producer": "Château Fuissé",
+      "region": "Fuissé, Mâconnais",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2019,
+      "quantity": 0,
+      "priceChf": 62.3,
+      "priceEur": 62.3,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "fuisse-pouilly-fuisse-les-brules",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "maconnais",
+        "climat"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "white-flower",
+          "hazelnut",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "fish in butter",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · citrus, white-flower",
+      "pourquoi": "Blanc du Mâconnais (Pouilly-Fuissé Premier Cru) — fruit mûr et texture souple. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "ws": 92
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-086",
+      "name": "Domaine Cordier Père et Fils — Viré-Clessé Vieilles Vignes",
+      "producer": "Domaine Cordier Père et Fils",
+      "region": "Viré, Mâconnais",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2007,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "cordier-vire-clesse",
+      "styleTags": [
+        "chardonnay",
+        "village"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "apple",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 8
+        },
+        "pairingHints": [
+          "seafood",
+          "aperitif"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Village · accessible · corps moyen · citrus, apple",
+      "pourquoi": "Blanc du Mâconnais (Viré-Clessé) — fruit mûr et texture souple. Classification Village ; déjà agréable à l’ouverture.",
+      "classification": "Village",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-087",
+      "name": "Domaine Corsin — Pouilly-Fuissé",
+      "producer": "Domaine Corsin",
+      "region": "Fuissé, Mâconnais",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2008,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "corsin-pouilly-fuisse",
+      "styleTags": [
+        "chardonnay",
+        "village",
+        "maconnais"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "apple",
+          "hazelnut",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 8
+        },
+        "pairingHints": [
+          "seafood",
+          "aperitif"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Village · accessible · corps moyen · citrus, apple",
+      "pourquoi": "Blanc du Mâconnais (Pouilly-Fuissé) — fruit mûr et texture souple. Classification Village ; déjà agréable à l’ouverture.",
+      "classification": "Village",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "hachetteStars": 3
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-088",
+      "name": "Domaine de la Croix Senaillet — Saint-Véran",
+      "producer": "Domaine de la Croix Senaillet",
+      "region": "Davayé, Mâconnais",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2017,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "croix-senaillet-saint-veran",
+      "styleTags": [
+        "chardonnay",
+        "village",
+        "maconnais"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "apple",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 8
+        },
+        "pairingHints": [
+          "seafood",
+          "aperitif"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Village · accessible · corps moyen · citrus, apple",
+      "pourquoi": "Blanc du Mâconnais (Saint-Véran) — fruit mûr et texture souple. Classification Village ; déjà agréable à l’ouverture.",
+      "classification": "Village",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-089",
+      "name": "Domaine Ferrand — Pouilly-Fuissé",
+      "producer": "Domaine Ferrand",
+      "region": "Fuissé, Mâconnais",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2023,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "ferrand-pouilly-fuisse",
+      "styleTags": [
+        "chardonnay",
+        "village",
+        "maconnais"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "apple",
+          "hazelnut",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 8
+        },
+        "pairingHints": [
+          "seafood",
+          "aperitif"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Village · accessible · corps moyen · citrus, apple",
+      "pourquoi": "Blanc du Mâconnais (Pouilly-Fuissé) — fruit mûr et texture souple. Classification Village ; déjà agréable à l’ouverture.",
+      "classification": "Village",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "hachetteStars": 1
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-090",
+      "name": "Château Fuissé — Saint-Véran",
+      "producer": "Château Fuissé",
+      "region": "Davayé, Mâconnais",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2025,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "fuisse-saint-veran-village",
+      "styleTags": [
+        "chardonnay",
+        "village",
+        "maconnais"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "apple",
+          "hazelnut",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 8
+        },
+        "pairingHints": [
+          "seafood",
+          "aperitif"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Village · accessible · corps moyen · citrus, apple",
+      "pourquoi": "Blanc du Mâconnais (Saint-Véran) — fruit mûr et texture souple. Classification Village ; déjà agréable à l’ouverture.",
+      "classification": "Village",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "hachetteStars": 1
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-091",
+      "name": "Domaine Jacques Saumaize — Pouilly-Fuissé",
+      "producer": "Domaine Jacques Saumaize",
+      "region": "Vergisson, Mâconnais",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2019,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "jacques-saumaize-pouilly",
+      "styleTags": [
+        "chardonnay",
+        "village",
+        "maconnais"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "hazelnut",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 8
+        },
+        "pairingHints": [
+          "seafood",
+          "aperitif"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Village · accessible · corps moyen · citrus, hazelnut",
+      "pourquoi": "Blanc du Mâconnais (Pouilly-Fuissé) — fruit mûr et texture souple. Classification Village ; déjà agréable à l’ouverture.",
+      "classification": "Village",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-092",
+      "name": "La Soufrandière — Pouilly-Vinzelles",
+      "producer": "La Soufrandière",
+      "region": "Vinzelles, Mâconnais",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2018,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "la-soufrandiere-pouilly-vinzelles",
+      "styleTags": [
+        "chardonnay",
+        "village",
+        "maconnais"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "flint",
+          "hazelnut"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 8
+        },
+        "pairingHints": [
+          "seafood",
+          "aperitif"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Village · corps moyen · citrus, flint",
+      "pourquoi": "Blanc du Mâconnais (Pouilly-Vinzelles) — fruit mûr et texture souple. Classification Village ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Village",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-093",
+      "name": "Domaine Saumaize-Michelin — Saint-Véran",
+      "producer": "Domaine Saumaize-Michelin",
+      "region": "Vergisson, Mâconnais",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2020,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "saumaize-michelin-saint-veran",
+      "styleTags": [
+        "chardonnay",
+        "village",
+        "maconnais"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "apple",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 8
+        },
+        "pairingHints": [
+          "seafood",
+          "aperitif"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Village · accessible · corps moyen · citrus, apple",
+      "pourquoi": "Blanc du Mâconnais (Saint-Véran) — fruit mûr et texture souple. Classification Village ; déjà agréable à l’ouverture.",
+      "classification": "Village",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-094",
+      "name": "J.A. Ferret — Pouilly-Fuissé Premier Cru Les Perrières",
+      "producer": "J.A. Ferret",
+      "region": "Fuissé, Mâconnais",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2021,
+      "quantity": 0,
+      "priceChf": 65.0,
+      "priceEur": 65.0,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "ferret-pouilly-fuisse-perrieres",
+      "styleTags": [
+        "chardonnay",
+        "premier-cru",
+        "icon"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "hazelnut",
+          "honey",
+          "mineral"
+        ],
+        "drinkWindowYears": {
+          "open": 5,
+          "close": 15
+        },
+        "pairingHints": [
+          "fish in butter",
+          "poultry"
+        ],
+        "easyDrinking": false
+      },
+      "styleLine": "Premier Cru · corps moyen · citrus, hazelnut",
+      "pourquoi": "Blanc du Mâconnais (Pouilly-Fuissé Premier Cru) — fruit mûr et texture souple. Classification Premier Cru ; gagne à s’aérer et à attendre le milieu de fenêtre.",
+      "classification": "Premier Cru",
+      "assemblage": "Chardonnay",
+      "scores": null,
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-095",
+      "name": "Gros Frère et Sœur — Bourgogne Hautes-Côtes de Nuits",
+      "producer": "Gros Frère et Sœur",
+      "region": "Bourgogne Hautes-Côtes de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2002,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "gros-frere-soeur-hautes-cotes",
+      "styleTags": [
+        "pinot-noir",
+        "hautes-cotes",
+        "accessible"
+      ],
+      "taste": {
+        "body": "light",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "none",
+        "aromaFamilies": [
+          "cherry",
+          "violet",
+          "spice"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 7
+        },
+        "pairingHints": [
+          "charcuterie",
+          "picnic"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Régionale · accessible · corps léger · cherry, violet",
+      "pourquoi": "Pinot des Hautes-Côtes (Bourgogne Hautes-Côtes de Nuits) — fraîcheur d’altitude, style droit. Régionale — ouvert pour la table (seed anonyme, faits de style uniquement).",
+      "classification": "Régionale",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 3
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-096",
+      "name": "Domaine Jacob — Bourgogne Hautes-Côtes de Beaune",
+      "producer": "Domaine Jacob",
+      "region": "Bourgogne Hautes-Côtes de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2005,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "jacob-hautes-cotes-beaune",
+      "styleTags": [
+        "pinot-noir",
+        "hautes-cotes",
+        "accessible"
+      ],
+      "taste": {
+        "body": "light",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "none",
+        "aromaFamilies": [
+          "cherry",
+          "strawberry"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 7
+        },
+        "pairingHints": [
+          "charcuterie",
+          "picnic"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Régionale · accessible · corps léger · cherry, strawberry",
+      "pourquoi": "Pinot des Hautes-Côtes (Bourgogne Hautes-Côtes de Beaune) — fraîcheur d’altitude, style droit. Régionale — ouvert pour la table (seed anonyme, faits de style uniquement).",
+      "classification": "Régionale",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-097",
+      "name": "Domaine Lucien Jacob — Bourgogne Hautes-Côtes de Beaune",
+      "producer": "Domaine Lucien Jacob",
+      "region": "Bourgogne Hautes-Côtes de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2019,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "lucien-jacob-hautes-cotes",
+      "styleTags": [
+        "pinot-noir",
+        "hautes-cotes",
+        "accessible"
+      ],
+      "taste": {
+        "body": "light",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "none",
+        "aromaFamilies": [
+          "cherry",
+          "strawberry",
+          "violet"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 7
+        },
+        "pairingHints": [
+          "charcuterie",
+          "picnic"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Régionale · accessible · corps léger · cherry, strawberry",
+      "pourquoi": "Pinot des Hautes-Côtes (Bourgogne Hautes-Côtes de Beaune) — fraîcheur d’altitude, style droit. Régionale — ouvert pour la table (seed anonyme, faits de style uniquement).",
+      "classification": "Régionale",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-098",
+      "name": "Domaine Mazilly — Bourgogne Hautes-Côtes de Beaune",
+      "producer": "Domaine Mazilly",
+      "region": "Bourgogne Hautes-Côtes de Beaune",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2020,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "mazilly-hautes-cotes",
+      "styleTags": [
+        "pinot-noir",
+        "hautes-cotes",
+        "accessible"
+      ],
+      "taste": {
+        "body": "light",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "none",
+        "aromaFamilies": [
+          "cherry",
+          "strawberry",
+          "violet"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 7
+        },
+        "pairingHints": [
+          "charcuterie",
+          "picnic"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Régionale · accessible · corps léger · cherry, strawberry",
+      "pourquoi": "Pinot des Hautes-Côtes (Bourgogne Hautes-Côtes de Beaune) — fraîcheur d’altitude, style droit. Régionale — ouvert pour la table (seed anonyme, faits de style uniquement).",
+      "classification": "Régionale",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-099",
+      "name": "Domaine Parigot — Bourgogne Hautes-Côtes de Beaune Blanc",
+      "producer": "Domaine Parigot",
+      "region": "Bourgogne Hautes-Côtes de Beaune",
+      "country": "France",
+      "color": "White",
+      "varietal": "Chardonnay",
+      "vintage": 2025,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": false,
+      "estateId": "parigot-hautes-cotes-beaune-blanc",
+      "styleTags": [
+        "chardonnay",
+        "hautes-cotes",
+        "accessible"
+      ],
+      "taste": {
+        "body": "medium",
+        "tannin": "soft",
+        "acidity": "medium",
+        "oak": "subtle",
+        "aromaFamilies": [
+          "citrus",
+          "apple",
+          "flint"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 8
+        },
+        "pairingHints": [
+          "seafood",
+          "aperitif"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Régionale · accessible · corps moyen · citrus, apple",
+      "pourquoi": "Chardonnay de Bourgogne (Bourgogne Hautes-Côtes de Beaune) — profil de table clair. Classification Régionale ; déjà agréable à l’ouverture.",
+      "classification": "Régionale",
+      "assemblage": "Chardonnay",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    },
+    {
+      "id": "bg-100",
+      "name": "Domaine Thévenot-le-Brun — Bourgogne Hautes-Côtes de Nuits",
+      "producer": "Domaine Thévenot-le-Brun",
+      "region": "Bourgogne Hautes-Côtes de Nuits",
+      "country": "France",
+      "color": "Red",
+      "varietal": "Pinot Noir",
+      "vintage": 2019,
+      "quantity": 0,
+      "priceChf": null,
+      "priceEur": null,
+      "bin": null,
+      "status": "InStock",
+      "notes": null,
+      "readyToDrink": true,
+      "estateId": "thevenot-le-brun-hautes-cotes",
+      "styleTags": [
+        "pinot-noir",
+        "hautes-cotes",
+        "accessible"
+      ],
+      "taste": {
+        "body": "light",
+        "tannin": "soft",
+        "acidity": "high",
+        "oak": "none",
+        "aromaFamilies": [
+          "cherry",
+          "strawberry",
+          "violet"
+        ],
+        "drinkWindowYears": {
+          "open": 2,
+          "close": 7
+        },
+        "pairingHints": [
+          "charcuterie",
+          "picnic"
+        ],
+        "easyDrinking": true
+      },
+      "styleLine": "Régionale · accessible · corps léger · cherry, strawberry",
+      "pourquoi": "Pinot des Hautes-Côtes (Bourgogne Hautes-Côtes de Nuits) — fraîcheur d’altitude, style droit. Régionale — ouvert pour la table (seed anonyme, faits de style uniquement).",
+      "classification": "Régionale",
+      "assemblage": "Pinot Noir",
+      "scores": {
+        "hachetteStars": 2
+      },
+      "imageKey": null,
+      "mapRegion": "bourgogne"
+    }
+  ]
+}
