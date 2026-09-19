@@ -1668,16 +1668,6 @@ textarea.form-input:focus-visible {
   background: linear-gradient(180deg, rgba(31, 26, 23, 0.05), rgba(31, 26, 23, 0.28));
 }
 
-.fiche-bottle {
-  position: absolute;
-  left: 50%;
-  bottom: 8px;
-  transform: translateX(-50%);
-  z-index: 1;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.35));
-  pointer-events: none;
-}
-
 .fiche-body {
   padding: 1rem 1.15rem 1.2rem;
   display: flex;
