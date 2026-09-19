@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Catalogue Bourgogne (+100 anonymous fiches) wired into `CatalogSeedData` (~153 total); null `imageKey` → local `img/catalog/estate-*.jpg`; map filter hotspot Bourgogne (#63).
+
 - Catalogue fiche détail (`/catalogue/{id}`): full letter page with assemblage, classement, fenêtre, accords, scores/prix optionnels, notes cave locales; list card click → detail (#60).
 - Catalogue-first Cave (#55): `CatalogEntry` + `CatalogSeedData` (53 anonymous fiches), `CatalogFiche` letter layout, local `wwwroot/img/catalog/` heroes + ATTRIBUTION, « J’en ai en cave » qty → IndexedDB via `CellarService.SetCatalogQuantityAsync`.
 
