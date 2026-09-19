@@ -1,0 +1,326 @@
+@page "/catalogue/{Id:guid}"
+@using VinoDellaCasa.Application.Services
+@using VinoDellaCasa.Domain.Entities
+@using VinoDellaCasa.Domain.Maturity
+@using VinoDellaCasa.Domain.Seed
+@using VinoDellaCasa.Web
+@inject CellarService CellarSvc
+@inject NavigationManager Nav
+
+<PageTitle>@(Entry?.Name ?? "Fiche") — Vino della casa</PageTitle>
+
+@if (_loading)
+{
+    <p class="muted">Chargement de la fiche…</p>
+}
+else if (Entry is null)
+{
+    <div class="empty-state card">
+        <h1>Fiche introuvable</h1>
+        <p>Cette référence n’est pas dans le catalogue.</p>
+        <a class="btn" href="cellar">Retour au catalogue</a>
+    </div>
+}
+else
+{
+    <nav class="fiche-detail-nav" aria-label="Fil d’Ariane">
+        <a class="fiche-detail-back" href="cellar">← Retour au catalogue</a>
+    </nav>
+
+    <article class="fiche-detail">
+        <div class="fiche-detail-hero" style="background-image: url('@SafeImagePath')" role="img" aria-label="@Entry.Name"></div>
+
+        <div class="fiche-detail-body">
+            <div class="fiche-badges">
+                <span class="pill pill-@ColorCss">@UiLabels.Color(Entry.Color)</span>
+                @{
+                    var state = UiLabels.MaturityState(Entry.ReadyToDrink, Entry.Vintage);
+                }
+                <span class="badge-maturity badge-@UiLabels.MaturityCss(state)">@UiLabels.MaturityBadge(state)</span>
+            </div>
+
+            <h1 class="fiche-detail-name">@Entry.Name</h1>
+            <p class="fiche-meta">@MetaLine</p>
+            @if (!string.IsNullOrWhiteSpace(Entry.Producer))
+            {
+                <p class="fiche-detail-producer">@Entry.Producer</p>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(Entry.Style))
+            {
+                <p class="fiche-style">@Entry.Style</p>
+            }
+
+            <div class="fiche-pourquoi" role="note">
+                <span class="fiche-pourquoi-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 3c-2.2 2.4-4 4.8-4 7.2a4 4 0 0 0 8 0C16 7.8 14.2 5.4 12 3Z" />
+                        <path d="M9 14.5c.8 1.2 1.8 2 3 2s2.2-.8 3-2" />
+                        <path d="M8 20h8" />
+                    </svg>
+                </span>
+                <div class="fiche-pourquoi-text">
+                    <strong>Pourquoi</strong>
+                    <span>@Entry.Pourquoi</span>
+                </div>
+            </div>
+
+            @if (HasExtraBlocks)
+            {
+                <dl class="fiche-detail-facts">
+                    @if (!string.IsNullOrWhiteSpace(Entry.Blend))
+                    {
+                        <div class="fiche-detail-fact">
+                            <dt>Assemblage</dt>
+                            <dd>@Entry.Blend</dd>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Entry.Classification))
+                    {
+                        <div class="fiche-detail-fact">
+                            <dt>Classement</dt>
+                            <dd>@Entry.Classification</dd>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Entry.DrinkWindow))
+                    {
+                        <div class="fiche-detail-fact">
+                            <dt>Fenêtre</dt>
+                            <dd>@Entry.DrinkWindow</dd>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Entry.Pairing))
+                    {
+                        <div class="fiche-detail-fact">
+                            <dt>Accords</dt>
+                            <dd>@Entry.Pairing</dd>
+                        </div>
+                    }
+                    @if (HasScores)
+                    {
+                        <div class="fiche-detail-fact">
+                            <dt>Scores</dt>
+                            <dd>
+                                <ul class="fiche-detail-scores">
+                                    @if (Entry.ScoreRp is int rp)
+                                    {
+                                        <li>RP @rp</li>
+                                    }
+                                    @if (Entry.ScoreJs is int js)
+                                    {
+                                        <li>JS @js</li>
+                                    }
+                                    @if (!string.IsNullOrWhiteSpace(Entry.ScoreHachette))
+                                    {
+                                        <li>Hachette @Entry.ScoreHachette</li>
+                                    }
+                                    @if (Entry.Stars is int stars)
+                                    {
+                                        <li>@stars★</li>
+                                    }
+                                </ul>
+                            </dd>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Entry.PriceRangeChf))
+                    {
+                        <div class="fiche-detail-fact">
+                            <dt>Prix indicatif</dt>
+                            <dd>@Entry.PriceRangeChf CHF</dd>
+                        </div>
+                    }
+                </dl>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(_cellarNotes))
+            {
+                <section class="fiche-detail-notes" aria-label="Notes cave">
+                    <h2 class="fiche-detail-notes-title">Notes cave</h2>
+                    <p>@_cellarNotes</p>
+                    <p class="muted fiche-detail-notes-hint">Notes locales (IndexedDB) — non partagées.</p>
+                </section>
+            }
+        </div>
+
+        <div class="fiche-detail-sticky" @onclick:stopPropagation="true">
+            <button type="button"
+                    class="fiche-en-cave @(_quantity > 0 ? "is-on" : null)"
+                    @onclick="ToggleInCaveAsync"
+                    disabled="@_busy"
+                    aria-pressed="@(_quantity > 0)">
+                <span class="fiche-en-cave-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3.5" width="18" height="17" rx="1.5" />
+                        <path d="M3 9.75h18" />
+                        <path d="M3 15.25h18" />
+                        <circle cx="7.5" cy="6.6" r="1.35" />
+                        <circle cx="12" cy="6.6" r="1.35" />
+                        <circle cx="16.5" cy="6.6" r="1.35" />
+                        <circle cx="7.5" cy="12.5" r="1.35" />
+                        <circle cx="12" cy="12.5" r="1.35" />
+                        <circle cx="16.5" cy="12.5" r="1.35" />
+                        <circle cx="7.5" cy="18.4" r="1.35" />
+                        <circle cx="12" cy="18.4" r="1.35" />
+                        <circle cx="16.5" cy="18.4" r="1.35" />
+                    </svg>
+                </span>
+                J’en ai en cave
+            </button>
+            <div class="fiche-qty" role="group" aria-label="Quantité en cave">
+                <button type="button" class="fiche-qty-btn" @onclick="DecrementAsync" disabled="@(_busy || _quantity <= 0)" aria-label="Diminuer">−</button>
+                <span class="fiche-qty-value">@_quantity</span>
+                <button type="button" class="fiche-qty-btn" @onclick="IncrementAsync" disabled="@_busy" aria-label="Augmenter">+</button>
+            </div>
+        </div>
+    </article>
+
+    @if (!string.IsNullOrEmpty(_message))
+    {
+        <p class="flash @(_messageIsError ? "flash-error" : null)">@_message</p>
+    }
+}
+
+@code {
+    [Parameter] public Guid Id { get; set; }
+
+    private readonly int _asOfYear = DateTimeOffset.Now.Year;
+    private CatalogEntry? Entry { get; set; }
+    private bool _loading = true;
+    private bool _busy;
+    private int _quantity;
+    private string? _cellarNotes;
+    private string? _message;
+    private bool _messageIsError;
+
+    private string ColorCss => Entry is null ? "autre" : UiLabels.ColorCss(Entry.Color);
+
+    /// <summary>Local wwwroot path only — never allow remote/hotlinked heroes.</summary>
+    private string SafeImagePath
+    {
+        get
+        {
+            var path = Entry?.ImagePath ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(path)
+                || path.Contains("://", StringComparison.Ordinal)
+                || path.StartsWith("//", StringComparison.Ordinal)
+                || !path.StartsWith("img/", StringComparison.Ordinal))
+            {
+                return "img/catalog/estate-chateau.jpg";
+            }
+
+            return path;
+        }
+    }
+
+    private string MetaLine
+    {
+        get
+        {
+            if (Entry is null)
+            {
+                return string.Empty;
+            }
+
+            var vintageAge = UiLabels.VintageLine(Entry.Vintage, _asOfYear);
+            var app = string.IsNullOrWhiteSpace(Entry.Appellation) ? "—" : Entry.Appellation;
+            var country = string.IsNullOrWhiteSpace(Entry.Country) ? null : Entry.Country;
+            var core = Entry.Vintage is null ? $"NV · {app}" : $"{vintageAge} · {app}";
+            return country is null ? core : $"{core} · {country}";
+        }
+    }
+
+    private bool HasScores =>
+        Entry is not null
+        && (Entry.ScoreRp is not null
+            || Entry.ScoreJs is not null
+            || !string.IsNullOrWhiteSpace(Entry.ScoreHachette)
+            || Entry.Stars is not null);
+
+    private bool HasExtraBlocks =>
+        Entry is not null
+        && (!string.IsNullOrWhiteSpace(Entry.Blend)
+            || !string.IsNullOrWhiteSpace(Entry.Classification)
+            || !string.IsNullOrWhiteSpace(Entry.DrinkWindow)
+            || !string.IsNullOrWhiteSpace(Entry.Pairing)
+            || HasScores
+            || !string.IsNullOrWhiteSpace(Entry.PriceRangeChf));
+
+    protected override async Task OnParametersSetAsync() => await LoadAsync();
+
+    private async Task LoadAsync()
+    {
+        _loading = true;
+        _message = null;
+        try
+        {
+            var entry = CatalogSeedData.FindById(Id, _asOfYear);
+            if (entry is not null)
+            {
+                var probe = CatalogSeedData.ToBottle(entry, quantity: 1, asOfYear: _asOfYear);
+                entry.ReadyToDrink = probe.ReadyToDrink;
+            }
+
+            Entry = entry;
+            await RefreshCellarAsync();
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+
+    private async Task RefreshCellarAsync()
+    {
+        if (Entry is null)
+        {
+            _quantity = 0;
+            _cellarNotes = null;
+            return;
+        }
+
+        var all = await CellarSvc.GetAllAsync();
+        var match = all.FirstOrDefault(b =>
+            b.Id == Entry.Id
+            || (string.Equals(b.Name, Entry.Name, StringComparison.OrdinalIgnoreCase) && b.Vintage == Entry.Vintage));
+
+        if (match is null || match.Status == Domain.Enums.BottleStatus.Finished || match.Quantity <= 0)
+        {
+            _quantity = 0;
+            _cellarNotes = null;
+            return;
+        }
+
+        _quantity = match.Quantity;
+        _cellarNotes = string.IsNullOrWhiteSpace(match.Notes) ? null : match.Notes.Trim();
+    }
+
+    private async Task IncrementAsync() => await SetQtyAsync(_quantity + 1);
+
+    private async Task DecrementAsync() => await SetQtyAsync(Math.Max(0, _quantity - 1));
+
+    private async Task ToggleInCaveAsync() => await SetQtyAsync(_quantity > 0 ? 0 : 1);
+
+    private async Task SetQtyAsync(int qty)
+    {
+        if (Entry is null)
+        {
+            return;
+        }
+
+        _busy = true;
+        try
+        {
+            await CellarSvc.SetCatalogQuantityAsync(Entry, qty, asOfYear: _asOfYear);
+            await RefreshCellarAsync();
+        }
+        catch (Exception ex)
+        {
+            _message = $"Impossible de mettre à jour la cave : {ex.Message}";
+            _messageIsError = true;
+        }
+        finally
+        {
+            _busy = false;
+        }
+    }
+}
