@@ -1,3 +1,5 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using VinoDellaCasa.Domain.Entities;
 using VinoDellaCasa.Domain.Enums;
 using VinoDellaCasa.Domain.Maturity;
@@ -5,14 +7,21 @@ using VinoDellaCasa.Domain.Maturity;
 namespace VinoDellaCasa.Domain.Seed;
 
 /// <summary>
-/// Anonymous catalogue seed (53 fiches). Built from the public demo sample + métier Style/Pourquoi.
-/// Personal tags (corentin-*, wedding-*, notesInternal) are never present.
-/// Images are local paths under wwwroot/img/catalog/ only.
+/// Anonymous catalogue seed (53 demo + 100 Bourgogne). Built from the public demo sample +
+/// <c>Docs/domain/catalog-bourgogne-100.json</c>. Personal tags are never present.
+/// Images are local paths under wwwroot/img/catalog/ only (null imageKey → estate placeholders).
 /// </summary>
 public static class CatalogSeedData
 {
     public static readonly DateTimeOffset SeedTimestamp =
         new(2026, 9, 18, 16, 0, 0, TimeSpan.Zero);
+
+    public const int DemoCount = 53;
+    public const int BourgogneCount = 100;
+    public const int ExpectedCount = DemoCount + BourgogneCount;
+
+    private const string BourgogneResourceName = "VinoDellaCasa.Domain.Seed.catalog-bourgogne-100.json";
+    private const int BourgogneAsOfYear = 2026;
 
     private static readonly string[] CatalogImages =
     [
@@ -22,11 +31,21 @@ public static class CatalogSeedData
         "img/catalog/estate-vineyard.jpg"
     ];
 
+    private static readonly JsonSerializerOptions JsonOptions = new()
+    {
+        PropertyNameCaseInsensitive = true,
+        ReadCommentHandling = JsonCommentHandling.Skip,
+        AllowTrailingCommas = true
+    };
+
+    private static readonly Lazy<IReadOnlyList<BourgogneBottleDto>> BourgogneDtos =
+        new(LoadBourgogneDtos);
+
     public static IReadOnlyList<CatalogEntry> CreateEntries(int asOfYear = 2026)
     {
         // Same identity/ids as DemoSample50 so « en cave » matches IndexedDB bottles by Id.
         var bottles = DemoSample50SeedData.CreateSeeds(asOfYear);
-        var list = new List<CatalogEntry>(bottles.Count);
+        var list = new List<CatalogEntry>(ExpectedCount);
 
         for (var i = 0; i < bottles.Count; i++)
         {
@@ -37,17 +56,7 @@ public static class CatalogSeedData
             var window = InferDrinkWindow(b);
             var pairing = InferPairing(b);
 
-            // Scrub guard — seed must stay anonymous (no raw HTML / personal markers).
-            if (CatalogScrub.ContainsPersonalMarker(style)
-                || CatalogScrub.ContainsPersonalMarker(pourquoi)
-                || CatalogScrub.ContainsPersonalMarker(b.Name)
-                || CatalogScrub.ContainsPersonalMarker(b.Notes)
-                || CatalogScrub.ContainsPersonalMarker(pairing)
-                || CatalogScrub.ContainsPersonalMarker(classification)
-                || CatalogScrub.ContainsPersonalMarker(b.Varietal))
-            {
-                throw new InvalidOperationException($"Personal marker leaked in catalog seed for {b.Name}.");
-            }
+            GuardAnonymous(b.Name, style, pourquoi, b.Notes, pairing, classification, b.Varietal);
 
             list.Add(new CatalogEntry
             {
@@ -66,7 +75,6 @@ public static class CatalogSeedData
                 Stars = null,
                 DrinkWindow = window,
                 Pairing = pairing,
-                // Scores / price: only when factual numbers exist in seed — never hotlinked.
                 ScoreRp = null,
                 ScoreJs = null,
                 ScoreHachette = null,
@@ -75,14 +83,29 @@ public static class CatalogSeedData
             });
         }
 
+        var bgStart = list.Count;
+        for (var i = 0; i < BourgogneDtos.Value.Count; i++)
+        {
+            list.Add(MapBourgogne(BourgogneDtos.Value[i], bgStart + i, asOfYear));
+        }
+
+        if (list.Count != ExpectedCount)
+        {
+            throw new InvalidOperationException(
+                $"Catalog seed count mismatch: expected {ExpectedCount}, got {list.Count}.");
+        }
+
+        if (list.Select(e => e.Id).Distinct().Count() != list.Count)
+        {
+            throw new InvalidOperationException("Catalog seed ids are not unique.");
+        }
+
         return list;
     }
 
-    /// <summary>Lookup a catalogue fiche by stable seed Id (same Guid as demo bottles).</summary>
+    /// <summary>Lookup a catalogue fiche by stable seed Id (same Guid as demo bottles / bg keys).</summary>
     public static CatalogEntry? FindById(Guid id, int asOfYear = 2026) =>
         CreateEntries(asOfYear).FirstOrDefault(e => e.Id == id);
-
-    public const int ExpectedCount = 53;
 
     public static int Count => ExpectedCount;
 
@@ -111,6 +134,152 @@ public static class CatalogSeedData
         };
         MaturityRules.ApplyReadyToDrink(bottle, asOfYear);
         return bottle;
+    }
+
+    private static CatalogEntry MapBourgogne(BourgogneBottleDto dto, int imageIndex, int asOfYear)
+    {
+        ArgumentNullException.ThrowIfNull(dto);
+        if (string.IsNullOrWhiteSpace(dto.Id))
+        {
+            throw new InvalidOperationException("Bourgogne seed entry missing id.");
+        }
+
+        var style = string.IsNullOrWhiteSpace(dto.StyleLine) ? "fruité · structure souple" : dto.StyleLine.Trim();
+        var pourquoi = string.IsNullOrWhiteSpace(dto.Pourquoi)
+            ? "Profil Bourgogne — laisser parler le climat et le cépage."
+            : dto.Pourquoi.Trim();
+        var blend = FirstNonEmpty(dto.Assemblage, dto.Varietal);
+        var classification = string.IsNullOrWhiteSpace(dto.Classification) ? null : dto.Classification.Trim();
+        var pairing = FormatPairing(dto.Taste?.PairingHints);
+        var window = FormatDrinkWindow(dto.Vintage, dto.Taste?.DrinkWindowYears);
+        var imagePath = ResolveImagePath(dto.ImageKey, imageIndex);
+        var ready = ResolveReady(dto, asOfYear);
+
+        GuardAnonymous(dto.Name, style, pourquoi, dto.Notes, pairing, classification, blend, dto.Producer);
+
+        return new CatalogEntry
+        {
+            Id = CatalogSeedIds.FromKey(dto.Id),
+            Name = dto.Name.Trim(),
+            Producer = string.IsNullOrWhiteSpace(dto.Producer) ? null : dto.Producer.Trim(),
+            Appellation = string.IsNullOrWhiteSpace(dto.Region) ? "Bourgogne" : dto.Region.Trim(),
+            Country = string.IsNullOrWhiteSpace(dto.Country) ? "France" : dto.Country.Trim(),
+            Color = ParseColor(dto.Color),
+            Vintage = dto.Vintage,
+            ImagePath = imagePath,
+            Style = style,
+            Pourquoi = pourquoi,
+            Blend = blend,
+            Classification = classification,
+            Stars = null,
+            DrinkWindow = window,
+            Pairing = pairing,
+            ScoreRp = dto.Scores?.Rp,
+            ScoreJs = dto.Scores?.Js,
+            ScoreHachette = FormatHachette(dto.Scores?.HachetteStars),
+            PriceRangeChf = dto.PriceChf is decimal p ? $"{p:0.##}" : null,
+            ReadyToDrink = ready
+        };
+    }
+
+    private static bool ResolveReady(BourgogneBottleDto dto, int asOfYear)
+    {
+        if (dto.Taste?.DrinkWindowYears is { } w && dto.Vintage is int v)
+        {
+            var age = asOfYear - v;
+            return age >= w.Open && age <= w.Close;
+        }
+
+        if (asOfYear == BourgogneAsOfYear)
+        {
+            return dto.ReadyToDrink;
+        }
+
+        return dto.ReadyToDrink;
+    }
+
+    private static string ResolveImagePath(string? imageKey, int imageIndex)
+    {
+        if (!string.IsNullOrWhiteSpace(imageKey)
+            && imageKey.StartsWith("img/catalog/", StringComparison.Ordinal)
+            && !imageKey.Contains("://", StringComparison.Ordinal))
+        {
+            return imageKey;
+        }
+
+        return CatalogImages[Math.Abs(imageIndex) % CatalogImages.Length];
+    }
+
+    private static Color ParseColor(string? color) =>
+        Enum.TryParse<Color>(color, ignoreCase: true, out var c) ? c : Color.Other;
+
+    private static string? FormatPairing(IReadOnlyList<string>? hints)
+    {
+        if (hints is null || hints.Count == 0)
+        {
+            return null;
+        }
+
+        var parts = hints
+            .Where(h => !string.IsNullOrWhiteSpace(h))
+            .Select(h => h.Trim())
+            .ToList();
+        return parts.Count == 0 ? null : string.Join(" · ", parts);
+    }
+
+    private static string? FormatDrinkWindow(int? vintage, DrinkWindowYearsDto? window)
+    {
+        if (vintage is not int v || window is null)
+        {
+            return null;
+        }
+
+        return $"{v + window.Open}–{v + window.Close}";
+    }
+
+    private static string? FormatHachette(int? stars) =>
+        stars is int s and > 0 ? new string('*', Math.Min(s, 5)) : null;
+
+    private static string? FirstNonEmpty(params string?[] values)
+    {
+        foreach (var v in values)
+        {
+            if (!string.IsNullOrWhiteSpace(v))
+            {
+                return v.Trim();
+            }
+        }
+
+        return null;
+    }
+
+    private static void GuardAnonymous(params string?[] fields)
+    {
+        foreach (var f in fields)
+        {
+            if (CatalogScrub.ContainsPersonalMarker(f))
+            {
+                throw new InvalidOperationException($"Personal marker leaked in catalog seed: {f}");
+            }
+        }
+    }
+
+    private static IReadOnlyList<BourgogneBottleDto> LoadBourgogneDtos()
+    {
+        using var stream = typeof(CatalogSeedData).Assembly.GetManifestResourceStream(BourgogneResourceName)
+            ?? throw new InvalidOperationException(
+                $"Missing embedded resource '{BourgogneResourceName}'.");
+
+        var file = JsonSerializer.Deserialize<BourgogneCatalogFile>(stream, JsonOptions)
+            ?? throw new InvalidOperationException("Bourgogne catalog JSON deserialized to null.");
+
+        if (file.Bottles.Count != BourgogneCount)
+        {
+            throw new InvalidOperationException(
+                $"Bourgogne catalog expected {BourgogneCount} bottles, got {file.Bottles.Count}.");
+        }
+
+        return file.Bottles;
     }
 
     internal static string BuildStyle(Bottle b)
@@ -348,5 +517,52 @@ public static class CatalogSeedData
         }
 
         return false;
+    }
+
+    private sealed class BourgogneCatalogFile
+    {
+        public List<BourgogneBottleDto> Bottles { get; set; } = [];
+    }
+
+    private sealed class BourgogneBottleDto
+    {
+        public string Id { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string? Producer { get; set; }
+        public string? Region { get; set; }
+        public string? Country { get; set; }
+        public string? Color { get; set; }
+        public string? Varietal { get; set; }
+        public int? Vintage { get; set; }
+        public decimal? PriceChf { get; set; }
+        public string? Notes { get; set; }
+        public bool ReadyToDrink { get; set; }
+        public string? StyleLine { get; set; }
+        public string? Pourquoi { get; set; }
+        public string? Classification { get; set; }
+        public string? Assemblage { get; set; }
+        public string? ImageKey { get; set; }
+        public BourgogneScoresDto? Scores { get; set; }
+        public BourgogneTasteDto? Taste { get; set; }
+    }
+
+    private sealed class BourgogneScoresDto
+    {
+        public int? Rp { get; set; }
+        public int? Js { get; set; }
+        public int? Ws { get; set; }
+        public int? HachetteStars { get; set; }
+    }
+
+    private sealed class BourgogneTasteDto
+    {
+        public DrinkWindowYearsDto? DrinkWindowYears { get; set; }
+        public List<string>? PairingHints { get; set; }
+    }
+
+    private sealed class DrinkWindowYearsDto
+    {
+        public int Open { get; set; }
+        public int Close { get; set; }
     }
 }
