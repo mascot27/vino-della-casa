@@ -7,8 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Catalogue fiche hero: photo-only (removed bottle silhouette overlay that read as a color bar) (#61).
+
 ### Added
 
+- Catalogue fiche détail (`/catalogue/{id}`): full letter page with assemblage, classement, fenêtre, accords, scores/prix optionnels, notes cave locales; list card click → detail (#60).
 - Catalogue-first Cave (#55): `CatalogEntry` + `CatalogSeedData` (53 anonymous fiches), `CatalogFiche` letter layout, local `wwwroot/img/catalog/` heroes + ATTRIBUTION, « J’en ai en cave » qty → IndexedDB via `CellarService.SetCatalogQuantityAsync`.
 
 ### Changed

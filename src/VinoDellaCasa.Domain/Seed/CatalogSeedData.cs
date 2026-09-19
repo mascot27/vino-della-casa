@@ -35,12 +35,16 @@ public static class CatalogSeedData
             var pourquoi = BuildPourquoi(b, asOfYear);
             var classification = InferClassification(b);
             var window = InferDrinkWindow(b);
+            var pairing = InferPairing(b);
 
-            // Scrub guard — seed must stay anonymous.
+            // Scrub guard — seed must stay anonymous (no raw HTML / personal markers).
             if (CatalogScrub.ContainsPersonalMarker(style)
                 || CatalogScrub.ContainsPersonalMarker(pourquoi)
                 || CatalogScrub.ContainsPersonalMarker(b.Name)
-                || CatalogScrub.ContainsPersonalMarker(b.Notes))
+                || CatalogScrub.ContainsPersonalMarker(b.Notes)
+                || CatalogScrub.ContainsPersonalMarker(pairing)
+                || CatalogScrub.ContainsPersonalMarker(classification)
+                || CatalogScrub.ContainsPersonalMarker(b.Varietal))
             {
                 throw new InvalidOperationException($"Personal marker leaked in catalog seed for {b.Name}.");
             }
@@ -61,12 +65,22 @@ public static class CatalogSeedData
                 Classification = classification,
                 Stars = null,
                 DrinkWindow = window,
+                Pairing = pairing,
+                // Scores / price: only when factual numbers exist in seed — never hotlinked.
+                ScoreRp = null,
+                ScoreJs = null,
+                ScoreHachette = null,
+                PriceRangeChf = b.PriceChf is decimal p ? $"{p:0.##}" : null,
                 ReadyToDrink = b.ReadyToDrink
             });
         }
 
         return list;
     }
+
+    /// <summary>Lookup a catalogue fiche by stable seed Id (same Guid as demo bottles).</summary>
+    public static CatalogEntry? FindById(Guid id, int asOfYear = 2026) =>
+        CreateEntries(asOfYear).FirstOrDefault(e => e.Id == id);
 
     public const int ExpectedCount = 53;
 
@@ -230,6 +244,52 @@ public static class CatalogSeedData
         }
 
         return "À attendre : le pic de maturité n’est pas encore là.";
+    }
+
+    private static string? InferPairing(Bottle b)
+    {
+        if (b.Color == Color.Sparkling)
+        {
+            return "Apéritif · fruits de mer · fromages frais";
+        }
+
+        if (b.Color == Color.Rose)
+        {
+            return "Cuisine d’été · grillades légères · charcuterie";
+        }
+
+        if (b.Color == Color.White)
+        {
+            if (Contains(b.Region, "Sauternes", "Barsac"))
+            {
+                return "Foie gras · desserts aux fruits · fromages bleus";
+            }
+
+            if (Contains(b.Country, "Suisse") || Contains(b.Region, "Valais", "Vaud"))
+            {
+                return "Filets de perche · fromages alpins · cuisine de lac";
+            }
+
+            return "Poissons · volaille · fromages de chèvre";
+        }
+
+        // Rouge
+        if (Contains(b.Region, "Pomerol", "Saint-Émilion", "Saint-Emilion"))
+        {
+            return "Agneau · canard · fromages à pâte molle";
+        }
+
+        if (Contains(b.Region, "Pauillac", "Saint-Estèphe", "Saint-Julien", "Médoc", "Haut-Médoc", "Margaux"))
+        {
+            return "Viandes rôties · gibier · fromages affinés";
+        }
+
+        if (Contains(b.Region, "Pessac", "Graves"))
+        {
+            return "Volaille rôtie · champignons · fromages à croûte fleurie";
+        }
+
+        return "Viandes · fromages · cuisine de saison";
     }
 
     private static string? InferClassification(Bottle b)

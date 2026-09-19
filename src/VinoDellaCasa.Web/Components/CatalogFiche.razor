@@ -1,7 +1,14 @@
 @using VinoDellaCasa.Domain.Entities
 @using VinoDellaCasa.Web
+@inject NavigationManager Nav
 
-<article class="fiche-lettre" style="@EnterDelay">
+<article class="fiche-lettre fiche-lettre--clickable"
+         style="@EnterDelay"
+         role="link"
+         tabindex="0"
+         aria-label="@($"Voir la fiche {Entry.Name}")"
+         @onclick="OpenDetail"
+         @onkeydown="OnCardKeyDown">
     <div class="fiche-hero" style="background-image: url('@Entry.ImagePath')"></div>
 
     <div class="fiche-body">
@@ -34,7 +41,7 @@
             </div>
         </div>
 
-        <div class="fiche-cellar-row">
+        <div class="fiche-cellar-row" @onclick:stopPropagation="true" @onkeydown:stopPropagation="true">
             <button type="button"
                     class="fiche-en-cave @(Quantity > 0 ? "is-on" : null)"
                     @onclick="ToggleInCaveAsync"
@@ -94,6 +101,16 @@
 
     private string EnterDelay =>
         EnterIndex > 0 ? $"animation-delay: {Math.Min(EnterIndex, 16) * 35}ms" : string.Empty;
+
+    private void OpenDetail() => Nav.NavigateTo($"catalogue/{Entry.Id}");
+
+    private void OnCardKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key is "Enter" or " ")
+        {
+            OpenDetail();
+        }
+    }
 
     private async Task IncrementAsync() => await SetQtyAsync(Quantity + 1);
 

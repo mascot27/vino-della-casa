@@ -46,8 +46,46 @@ public class CatalogSeedDataTests
             Assert.False(CatalogScrub.ContainsPersonalMarker(e.Pourquoi));
             Assert.False(CatalogScrub.ContainsPersonalMarker(e.Blend));
             Assert.False(CatalogScrub.ContainsPersonalMarker(e.Classification));
+            Assert.False(CatalogScrub.ContainsPersonalMarker(e.Pairing));
+            Assert.False(CatalogScrub.ContainsPersonalMarker(e.ScoreHachette));
+            Assert.False(CatalogScrub.ContainsPersonalMarker(e.PriceRangeChf));
             Assert.Null(CatalogScrub.FindPersonalLeak(e.Pourquoi));
+            Assert.StartsWith("img/catalog/", e.ImagePath, StringComparison.Ordinal);
+            Assert.DoesNotContain("<", e.Pourquoi, StringComparison.Ordinal);
+            Assert.DoesNotContain("<", e.Style, StringComparison.Ordinal);
+            Assert.DoesNotContain("<", e.Pairing ?? string.Empty, StringComparison.Ordinal);
         });
+    }
+
+    [Fact]
+    public void FindById_ReturnsMatchingEntry_AndUnknownIsNull()
+    {
+        var entries = CatalogSeedData.CreateEntries(2026);
+        var first = entries[0];
+
+        var found = CatalogSeedData.FindById(first.Id, 2026);
+        Assert.NotNull(found);
+        Assert.Equal(first.Id, found.Id);
+        Assert.Equal(first.Name, found.Name);
+
+        Assert.Null(CatalogSeedData.FindById(Guid.Empty, 2026));
+    }
+
+    [Fact]
+    public void CreateEntries_HasPairingAndLocalImagesOnly()
+    {
+        var entries = CatalogSeedData.CreateEntries(2026);
+        Assert.All(entries, e =>
+        {
+            Assert.False(string.IsNullOrWhiteSpace(e.Pairing));
+            Assert.DoesNotContain("http://", e.ImagePath, StringComparison.OrdinalIgnoreCase);
+            Assert.DoesNotContain("https://", e.ImagePath, StringComparison.OrdinalIgnoreCase);
+            // Scores / price optional — demo seed has no critic numbers yet.
+            Assert.Null(e.ScoreRp);
+            Assert.Null(e.ScoreJs);
+        });
+        Assert.Contains(entries, e => !string.IsNullOrWhiteSpace(e.DrinkWindow));
+        Assert.Contains(entries, e => !string.IsNullOrWhiteSpace(e.Blend));
     }
 
     [Fact]

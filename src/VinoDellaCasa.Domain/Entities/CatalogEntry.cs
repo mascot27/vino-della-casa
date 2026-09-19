@@ -32,8 +32,26 @@ public sealed class CatalogEntry
     public string? Blend { get; set; }
 
     public string? Classification { get; set; }
+
+    /// <summary>Legacy generic star score; prefer structured critic scores below.</summary>
     public int? Stars { get; set; }
+
     public string? DrinkWindow { get; set; }
+
+    /// <summary>Anonymous pairing hint (facts only, no critic prose).</summary>
+    public string? Pairing { get; set; }
+
+    /// <summary>Robert Parker score when known as a number (no prose).</summary>
+    public int? ScoreRp { get; set; }
+
+    /// <summary>James Suckling score when known as a number (no prose).</summary>
+    public int? ScoreJs { get; set; }
+
+    /// <summary>Hachette mark when known (e.g. « ♥ », « ** »), facts only.</summary>
+    public string? ScoreHachette { get; set; }
+
+    /// <summary>Indicative price range in CHF when known (e.g. « 40–55 »).</summary>
+    public string? PriceRangeChf { get; set; }
 
     /// <summary>Computed for asOfYear when seed is built; UI may refresh via MaturityRules.</summary>
     public bool ReadyToDrink { get; set; }
