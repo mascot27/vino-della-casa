@@ -47,6 +47,16 @@ dotnet run --project src/VinoDellaCasa.Web
 
 Open the URL printed by `dotnet run`. On GitHub Pages, use the demo link above (site base path `/vino-della-casa/`).
 
+## Code coverage
+
+The [CI workflow runs](https://github.com/mascot27/vino-della-casa/actions/workflows/ci.yml) collect Coverlet coverage in Cobertura format. Select a run and download the **coverage** artifact to inspect the report; no coverage percentage is published or enforced.
+
+To collect coverage locally, run:
+
+```bash
+dotnet test --collect:"XPlat Code Coverage"
+```
+
 ## Docs
 
 - `Docs/architecture.md` — IndexedDB vs test host
@@ -79,8 +89,7 @@ Smoke: `dotnet test tests/VinoDellaCasa.Mcp.Tests`. Stdio only; no network write
 ## Dev hygiene
 
 ```bash
-dotnet test --collect:"XPlat Code Coverage"
 dotnet format
 ```
 
-CI collects Coverlet cobertura results as a workflow artifact (no coverage threshold yet). `dotnet format --verify-no-changes` runs as a soft check (`continue-on-error`).
+`dotnet format --verify-no-changes` runs as a soft check (`continue-on-error`).
