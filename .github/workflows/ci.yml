@@ -42,11 +42,11 @@ jobs:
           DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
 
       - name: Upload coverage artifact
-        if: always()
+        if: ${{ always() }}
         uses: actions/upload-artifact@v7
         with:
           name: coverage
-          path: coverage/**
+          path: coverage
           if-no-files-found: warn
           retention-days: 14
 
