@@ -159,6 +159,21 @@ public class CatalogSeedDataTests
     }
 
     [Fact]
+    public void CreateEntries_BlendsByVintageOptional_EmptyUntilDataExists()
+    {
+        var entries = CatalogSeedData.CreateEntries(2026);
+
+        Assert.All(entries, e =>
+        {
+            Assert.NotNull(e.BlendsByVintage);
+            Assert.Empty(e.BlendsByVintage);
+        });
+
+        // Fallback path still has plain Blend / cépage list for many fiches.
+        Assert.Contains(entries, e => !string.IsNullOrWhiteSpace(e.Blend));
+    }
+
+    [Fact]
     public void ToBottle_PreservesCatalogId()
     {
         var entry = CatalogSeedData.CreateEntries(2026)[0];
