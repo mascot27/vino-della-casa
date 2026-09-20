@@ -1,3 +1,4 @@
+using VinoDellaCasa.Domain;
 using VinoDellaCasa.Domain.Enums;
 using VinoDellaCasa.Domain.Seed;
 
@@ -11,7 +12,8 @@ public class CatalogSeedDataTests
         var entries = CatalogSeedData.CreateEntries(2026);
 
         Assert.Equal(CatalogSeedData.ExpectedCount, entries.Count);
-        Assert.Equal(53, entries.Count);
+        Assert.Equal(153, entries.Count);
+        Assert.Equal(CatalogSeedData.DemoCount + CatalogSeedData.BourgogneCount, entries.Count);
         Assert.Equal(entries.Count, entries.Select(e => e.Id).Distinct().Count());
 
         Assert.All(entries, e =>
@@ -31,6 +33,28 @@ public class CatalogSeedDataTests
         Assert.Contains(entries, e => e.Color == Color.White);
         Assert.Contains(entries, e => e.Color == Color.Rose);
         Assert.Contains(entries, e => e.Color == Color.Sparkling);
+    }
+
+    [Fact]
+    public void CreateEntries_IncludesBourgogneMappedToMapHotspot()
+    {
+        var entries = CatalogSeedData.CreateEntries(2026);
+        var bourgogne = entries
+            .Where(e => WineMapRegions.Resolve(e.Appellation, e.Country) == WineMapRegion.Bourgogne)
+            .ToList();
+
+        Assert.True(bourgogne.Count >= CatalogSeedData.BourgogneCount);
+        Assert.Contains(entries, e => e.Name.Contains("Chablis", StringComparison.OrdinalIgnoreCase));
+        Assert.All(bourgogne, e =>
+        {
+            Assert.StartsWith("img/catalog/estate-", e.ImagePath, StringComparison.Ordinal);
+            Assert.DoesNotContain("://", e.ImagePath, StringComparison.Ordinal);
+        });
+
+        // Stable UUID v5 for bg-001 (URL namespace + vino-della-casa/catalog/bg-001).
+        var bg001 = CatalogSeedIds.FromKey("bg-001");
+        Assert.Equal(Guid.Parse("b0633efa-02a1-5b8d-b7bb-537b4d686ec5"), bg001);
+        Assert.Contains(entries, e => e.Id == bg001);
     }
 
     [Fact]
@@ -80,12 +104,16 @@ public class CatalogSeedDataTests
             Assert.False(string.IsNullOrWhiteSpace(e.Pairing));
             Assert.DoesNotContain("http://", e.ImagePath, StringComparison.OrdinalIgnoreCase);
             Assert.DoesNotContain("https://", e.ImagePath, StringComparison.OrdinalIgnoreCase);
-            // Scores / price optional — demo seed has no critic numbers yet.
-            Assert.Null(e.ScoreRp);
-            Assert.Null(e.ScoreJs);
         });
         Assert.Contains(entries, e => !string.IsNullOrWhiteSpace(e.DrinkWindow));
         Assert.Contains(entries, e => !string.IsNullOrWhiteSpace(e.Blend));
+        // Demo seed has no critic numbers; Bourgogne JSON may carry factual scores.
+        Assert.All(entries.Take(CatalogSeedData.DemoCount), e =>
+        {
+            Assert.Null(e.ScoreRp);
+            Assert.Null(e.ScoreJs);
+        });
+        Assert.Contains(entries.Skip(CatalogSeedData.DemoCount), e => e.ScoreRp is not null || e.ScoreJs is not null);
     }
 
     [Fact]
