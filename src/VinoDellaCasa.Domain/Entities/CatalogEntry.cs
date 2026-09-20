@@ -28,8 +28,14 @@ public sealed class CatalogEntry
     /// <summary>1–2 anonymous métier sentences for the Pourquoi block.</summary>
     public required string Pourquoi { get; set; }
 
-    /// <summary>Assemblage / cépage(s).</summary>
+    /// <summary>Assemblage / cépage(s) — plain list fallback when blends-by-vintage absent.</summary>
     public string? Blend { get; set; }
+
+    /// <summary>
+    /// Optional % by millésime from wine-knowledge / seed (<c>blendsByVintage</c>).
+    /// Empty for anonymous demo until data is wired.
+    /// </summary>
+    public IReadOnlyList<BlendByVintage> BlendsByVintage { get; set; } = [];
 
     public string? Classification { get; set; }
 

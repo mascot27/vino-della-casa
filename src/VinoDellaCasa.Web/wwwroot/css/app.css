@@ -1952,7 +1952,31 @@ textarea.form-input:focus-visible {
   line-height: 1.35;
 }
 
+.fiche-assemblage-chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.fiche-assemblage-chip {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-variant-numeric: tabular-nums;
+  color: #3A322C;
+  background: #F7F0E6;
+  border-color: #E0D2C0;
+}
+
+.fiche-assemblage-vintage {
+  margin: 0.4rem 0 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.8rem;
+}
+
 .fiche-detail-scores {
+
   list-style: none;
   margin: 0;
   padding: 0;
