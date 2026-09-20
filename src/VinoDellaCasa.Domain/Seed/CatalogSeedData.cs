@@ -71,6 +71,7 @@ public static class CatalogSeedData
                 Style = style,
                 Pourquoi = pourquoi,
                 Blend = b.Varietal,
+                BlendsByVintage = [],
                 Classification = classification,
                 Stars = null,
                 DrinkWindow = window,
@@ -170,6 +171,7 @@ public static class CatalogSeedData
             Style = style,
             Pourquoi = pourquoi,
             Blend = blend,
+            BlendsByVintage = MapBlendsByVintage(dto.BlendsByVintage),
             Classification = classification,
             Stars = null,
             DrinkWindow = window,
@@ -519,6 +521,58 @@ public static class CatalogSeedData
         return false;
     }
 
+    private static IReadOnlyList<BlendByVintage> MapBlendsByVintage(
+        IReadOnlyList<BlendByVintageDto>? dtos)
+    {
+        if (dtos is null || dtos.Count == 0)
+        {
+            return [];
+        }
+
+        var mapped = new List<BlendByVintage>(dtos.Count);
+        foreach (var dto in dtos)
+        {
+            if (dto.Vintage is not int vintage)
+            {
+                continue;
+            }
+
+            var components = (dto.Components ?? [])
+                .Select(c => new BlendComponent
+                {
+                    Grape = CatalogAssemblage.SanitizeText(c.Grape),
+                    Percent = c.Percent
+                })
+                .Where(c => !string.IsNullOrEmpty(c.Grape))
+                .ToList();
+
+            if (components.Count == 0)
+            {
+                continue;
+            }
+
+            mapped.Add(new BlendByVintage
+            {
+                Vintage = vintage,
+                Components = components
+            });
+        }
+
+        return CatalogAssemblage.MapFromSeed(mapped);
+    }
+
+    private sealed class BlendByVintageDto
+    {
+        public int? Vintage { get; set; }
+        public List<BlendComponentDto>? Components { get; set; }
+    }
+
+    private sealed class BlendComponentDto
+    {
+        public string? Grape { get; set; }
+        public int? Percent { get; set; }
+    }
+
     private sealed class BourgogneCatalogFile
     {
         public List<BourgogneBottleDto> Bottles { get; set; } = [];
@@ -541,6 +595,8 @@ public static class CatalogSeedData
         public string? Pourquoi { get; set; }
         public string? Classification { get; set; }
         public string? Assemblage { get; set; }
+        /// <summary>Optional wine-knowledge blends (% by vintage); empty until data exists.</summary>
+        public List<BlendByVintageDto>? BlendsByVintage { get; set; }
         public string? ImageKey { get; set; }
         public BourgogneScoresDto? Scores { get; set; }
         public BourgogneTasteDto? Taste { get; set; }

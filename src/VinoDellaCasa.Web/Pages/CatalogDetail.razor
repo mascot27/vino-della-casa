@@ -68,7 +68,27 @@ else
             @if (HasExtraBlocks)
             {
                 <dl class="fiche-detail-facts">
-                    @if (!string.IsNullOrWhiteSpace(Entry.Blend))
+                    @if (PreferredBlend is { } preferred)
+                    {
+                        <div class="fiche-detail-fact">
+                            <dt>Assemblage</dt>
+                            <dd>
+                                <ul class="fiche-assemblage-chips" aria-label="Assemblage">
+                                    @foreach (var component in preferred.Components)
+                                    {
+                                        var chip = CatalogAssemblage.FormatChip(component);
+                                        if (string.IsNullOrEmpty(chip))
+                                        {
+                                            continue;
+                                        }
+                                        <li class="meta-chip fiche-assemblage-chip">@chip</li>
+                                    }
+                                </ul>
+                                <p class="fiche-assemblage-vintage muted">millésime @preferred.Vintage</p>
+                            </dd>
+                        </div>
+                    }
+                    else if (!string.IsNullOrWhiteSpace(Entry.Blend))
                     {
                         <div class="fiche-detail-fact">
                             <dt>Assemblage</dt>
@@ -236,9 +256,15 @@ else
             || !string.IsNullOrWhiteSpace(Entry.ScoreHachette)
             || Entry.Stars is not null);
 
+    private BlendByVintage? PreferredBlend =>
+        Entry is null
+            ? null
+            : CatalogAssemblage.PreferForFiche(Entry.BlendsByVintage, Entry.Vintage);
+
     private bool HasExtraBlocks =>
         Entry is not null
-        && (!string.IsNullOrWhiteSpace(Entry.Blend)
+        && (PreferredBlend is not null
+            || !string.IsNullOrWhiteSpace(Entry.Blend)
             || !string.IsNullOrWhiteSpace(Entry.Classification)
             || !string.IsNullOrWhiteSpace(Entry.DrinkWindow)
             || !string.IsNullOrWhiteSpace(Entry.Pairing)
