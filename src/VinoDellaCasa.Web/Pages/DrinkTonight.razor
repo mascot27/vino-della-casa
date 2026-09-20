@@ -9,10 +9,15 @@
 
 <PageTitle>À boire ce soir — Vino della casa</PageTitle>
 
-<h1>À boire ce soir</h1>
-<p class="muted">Shortlist des bouteilles prêtes en cave — plus anciennes d’abord.</p>
+<header class="tonight-header">
+    <p class="tonight-kicker">Shortlist · prêtes en cave</p>
+    <h1>À boire ce soir</h1>
+    <p class="tonight-lead">
+        Les bouteilles prêtes, classées des plus anciennes aux plus jeunes — avec une raison claire pour chacune.
+    </p>
+</header>
 
-<div class="toolbar">
+<div class="toolbar tonight-toolbar">
     <span class="chip-label">Filtrer</span>
     <div class="chip-row" style="margin:0">
         <button type="button" class="chip @(_colorFilter is null ? "active" : null)" @onclick="() => SetColor(null)">Tous</button>
@@ -21,7 +26,7 @@
         <button type="button" class="chip @(_colorFilter == Color.Rose ? "active" : null)" @onclick="() => SetColor(Color.Rose)">Rosé</button>
         <button type="button" class="chip @(_colorFilter == Color.Sparkling ? "active" : null)" @onclick="() => SetColor(Color.Sparkling)">Effervescent</button>
     </div>
-    <a class="btn btn-link" href="cellar">← Cave</a>
+    <a class="btn btn-link" href="cellar">← Catalogue</a>
 </div>
 
 @if (!string.IsNullOrEmpty(_message))
@@ -39,40 +44,41 @@
 }
 else if (_cellarEmpty)
 {
-    <div class="empty-state card">
+    <div class="empty-state empty-state--prestige card">
         <div class="empty-state-visual" aria-hidden="true">
             <img class="bottle-silhouette" src="img/bottles/empty.svg" alt="" width="36" height="90" />
         </div>
         <h3>Cave vide</h3>
-        <p>Ajoutez des bouteilles pour obtenir des suggestions.</p>
+        <p>Ajoutez des bouteilles au catalogue pour obtenir des suggestions.</p>
         <div class="empty-actions">
-            <a class="btn" href="cellar">Ajouter une bouteille</a>
+            <a class="btn" href="cellar">Explorer le catalogue</a>
         </div>
     </div>
 }
 else if (_list.Count == 0 && _colorFilter is not null)
 {
-    <div class="empty-state card">
+    <div class="empty-state empty-state--prestige empty-state--filter card">
         <div class="empty-state-visual" aria-hidden="true">
             <img class="bottle-silhouette" src="img/bottles/empty.svg" alt="" width="36" height="90" />
         </div>
         <h3>Aucun résultat</h3>
-        <p>Élargissez la couleur ou la région.</p>
+        <p>Élargissez la couleur — rien de prêt avec ce filtre.</p>
         <div class="empty-actions">
             <button type="button" class="btn" @onclick="() => SetColor(null)">Réinitialiser les filtres</button>
+            <a class="btn btn-secondary" href="cellar">Catalogue</a>
         </div>
     </div>
 }
 else if (_list.Count == 0)
 {
-    <div class="empty-state card">
+    <div class="empty-state empty-state--prestige card">
         <div class="empty-state-visual" aria-hidden="true">
             <img class="bottle-silhouette" src="img/bottles/empty.svg" alt="" width="36" height="90" />
         </div>
-        <h3>Rien de prêt ce soir</h3>
-        <p>Les bouteilles en cave ne sont pas encore dans leur fenêtre, ou la cave est vide.</p>
+        <h3>Rien de prêt</h3>
+        <p>Les bouteilles en cave ne sont pas encore dans leur fenêtre — ou la cave est vide.</p>
         <div class="empty-actions">
-            <a class="btn" href="cellar">Voir la cave</a>
+            <a class="btn" href="cellar">Voir le catalogue</a>
             <a class="btn btn-secondary" href="cellar">Ajouter une bouteille</a>
         </div>
     </div>
@@ -86,11 +92,12 @@ else
             var rank = i + 1;
             var idx = i;
             <li>
-                <BottleCard Bottle="b" AsOfYear="_asOfYear" Rank="rank" EnterIndex="idx"
-                            Why="@WhyFor(b)">
-                    <button type="button" class="btn-tiny" @onclick="() => MarkDrunkAsync(b)" disabled="@_busy">Marquer bu</button>
-                    <a class="btn-tiny" href="cellar">Détail</a>
-                </BottleCard>
+                <BottleCard Bottle="b"
+                            AsOfYear="_asOfYear"
+                            Rank="rank"
+                            EnterIndex="idx"
+                            Why="@WhyFor(b)"
+                            OnMarkDrunk="() => MarkDrunkAsync(b)" />
             </li>
         }
     </ol>
@@ -182,6 +189,11 @@ else
 
     private async Task MarkDrunkAsync(Bottle b)
     {
+        if (_busy)
+        {
+            return;
+        }
+
         _busy = true;
         try
         {
