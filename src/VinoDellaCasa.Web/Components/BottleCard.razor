@@ -52,7 +52,19 @@
 
             @if (!string.IsNullOrWhiteSpace(Why))
             {
-                <p class="bottle-why">@Why</p>
+                <div class="bottle-why bottle-why--lettre" role="note">
+                    <span class="bottle-why-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 3c-2.2 2.4-4 4.8-4 7.2a4 4 0 0 0 8 0C16 7.8 14.2 5.4 12 3Z" />
+                            <path d="M9 14.5c.8 1.2 1.8 2 3 2s2.2-.8 3-2" />
+                            <path d="M8 20h8" />
+                        </svg>
+                    </span>
+                    <div class="bottle-why-text">
+                        <strong>Pourquoi</strong>
+                        <span>@Why</span>
+                    </div>
+                </div>
             }
 
             @if (Variant == BottleCardVariant.Featured && OnFeaturedCta.HasDelegate)
@@ -62,7 +74,7 @@
                 </div>
             }
 
-            @if (Variant == BottleCardVariant.Grid && HasManageMenu)
+            @if (HasManageMenu && (Variant == BottleCardVariant.Grid || Variant == BottleCardVariant.Default))
             {
                 <div class="bottle-card-menu" @onclick:stopPropagation="true">
                     <button type="button"
@@ -152,7 +164,7 @@
 
     private async Task OnCardClick()
     {
-        if (Variant == BottleCardVariant.Grid && _menuOpen)
+        if (_menuOpen && (Variant == BottleCardVariant.Grid || Variant == BottleCardVariant.Default))
         {
             _menuOpen = false;
             return;

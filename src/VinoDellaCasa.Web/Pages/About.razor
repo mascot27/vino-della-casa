@@ -2,61 +2,68 @@
 
 <PageTitle>À propos — Vino della casa</PageTitle>
 
-<section class="about-hero hero">
-    <h1>À propos</h1>
-    <p class="tagline">
-        Une cave locale-first : inventaire soigné, casiers, et une suggestion « À boire ce soir »
-        fondée sur des règles de maturité déterministes.
-    </p>
-    <p>
-        <strong>Vino della casa</strong> montre un produit utilisable tout de suite —
-        hors-ligne dans le navigateur, sans mur de compte — avec une UI claire pour choisir
-        une bouteille ce soir ou suivre ce qui attend encore en cave.
-    </p>
-</section>
+<article class="about-page">
+    <header class="about-soft-hero" aria-labelledby="about-title">
+        <div class="about-soft-hero-media" aria-hidden="true">
+            <img src="img/hero/hero-cellar.jpg"
+                 alt=""
+                 width="800"
+                 height="500"
+                 loading="lazy"
+                 decoding="async" />
+            <div class="about-soft-hero-veil"></div>
+        </div>
+        <div class="about-soft-hero-copy">
+            <p class="about-kicker">Cave numérique · locale-first</p>
+            <h1 id="about-title">À propos</h1>
+            <p class="about-lead">
+                Vino della casa, c’est une cave numérique locale-first&nbsp;: explorer un catalogue soigné,
+                comprendre pourquoi une bouteille est prête, et garder ce que tu as vraiment en stock —
+                sans compte obligatoire.
+            </p>
+        </div>
+    </header>
 
-<section class="card about-look">
-    <h2>Ce que vous voyez</h2>
-    <div class="feature-grid">
-        <article class="feature-card">
-            <h3>Cave</h3>
-            <p>Cartes bouteille avec couleur, maturité, millésime et casier — pas un tableau admin.</p>
-        </article>
-        <article class="feature-card">
-            <h3>À boire ce soir</h3>
-            <p>Shortlist classée : prêts d’abord, puis millésimes plus anciens, avec filtres et actions.</p>
-        </article>
-        <article class="feature-card">
-            <h3>Hors-ligne</h3>
-            <p>Données dans le navigateur. Chargez un échantillon ou ajoutez vos propres bouteilles.</p>
-        </article>
-    </div>
-    <div class="swatch-row" aria-hidden="true">
-        <span class="pill pill-rouge">Rouge</span>
-        <span class="pill pill-blanc">Blanc</span>
-        <span class="pill pill-rose">Rosé</span>
-        <span class="pill pill-effervescent">Effervescent</span>
-        <span class="badge-maturity badge-pret">Prêt</span>
-        <span class="badge-maturity badge-attendre">À attendre</span>
-    </div>
-    <p class="muted" style="margin-top:1rem">
-        Démo :
-        <a href="https://mascot27.github.io/vino-della-casa/" target="_blank" rel="noopener noreferrer">
-            mascot27.github.io/vino-della-casa
-        </a>
-    </p>
-</section>
+    <section class="about-letter" aria-label="Produit">
+        <h2 class="about-section-title">Le produit</h2>
+        <ul class="about-bullets">
+            <li>
+                <strong>Inventaire offline</strong>
+                <span>Tes bouteilles restent dans le navigateur — même hors ligne.</span>
+            </li>
+            <li>
+                <strong>Maturité claire</strong>
+                <span>Prêt ou à attendre, avec des règles déterministes, pas de boîte noire.</span>
+            </li>
+            <li>
+                <strong>Fiches catalogue</strong>
+                <span>Une lettre pour chaque référence&nbsp;: couleur, millésime, appellation, pourquoi.</span>
+            </li>
+            <li>
+                <strong>«&nbsp;À boire ce soir&nbsp;»</strong>
+                <span>Une shortlist des bouteilles prêtes, les plus anciennes d’abord.</span>
+            </li>
+        </ul>
 
-<section class="card about-credits">
-    <h2>Crédits photos</h2>
-    <p class="muted">
-        Accueil — photos Unsplash (licence Unsplash), hébergées en local :
-        Bob Brewer (domaine / vignobles),
-        Jennifer Yung (cave),
-        Gonzalo Facello (fûts).
-        Liens :
-        <a href="https://unsplash.com/photos/BIB4DT9rwo0" target="_blank" rel="noopener noreferrer">estate</a>,
-        <a href="https://unsplash.com/photos/uSF8kGIeDMw" target="_blank" rel="noopener noreferrer">cave</a>,
-        <a href="https://unsplash.com/photos/20F3U-emCbA" target="_blank" rel="noopener noreferrer">fûts</a>.
-    </p>
-</section>
+        <p class="about-cta-row">
+            <a class="btn" href="cellar">Explorer le catalogue</a>
+            <a class="btn btn-secondary" href="drink-tonight">À boire ce soir</a>
+        </p>
+    </section>
+
+    <section class="about-letter about-letter--tech" aria-label="Technique">
+        <h2 class="about-section-title">Sous le capot</h2>
+        <p class="about-tech">
+            Blazor WASM · IndexedDB · tests + CI · hébergé sur GitHub Pages
+        </p>
+    </section>
+
+    <section class="about-letter about-letter--credits" aria-label="Crédits">
+        <h2 class="about-section-title">Crédits</h2>
+        <p class="about-credits-text">
+            Photos
+            <a href="img/hero/ATTRIBUTION.md" target="_blank" rel="noopener noreferrer">Unsplash</a>
+            (copies locales) · données catalogue anonymisées
+        </p>
+    </section>
+</article>
