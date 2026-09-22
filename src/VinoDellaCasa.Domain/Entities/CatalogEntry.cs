@@ -61,4 +61,10 @@ public sealed class CatalogEntry
 
     /// <summary>Computed for asOfYear when seed is built; UI may refresh via MaturityRules.</summary>
     public bool ReadyToDrink { get; set; }
+
+    /// <summary>Optional style tags (e.g. chablis-style, mineral) for pairing affinity.</summary>
+    public IReadOnlyList<string> StyleTags { get; set; } = [];
+
+    /// <summary>Optional structured taste for <c>PairingEngine</c>; null → inferred.</summary>
+    public WineTaste? Taste { get; set; }
 }

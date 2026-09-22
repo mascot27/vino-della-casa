@@ -26,6 +26,7 @@ Produit-only. Aligné cartes + discovery.
 | Mark drunk | Marquer bu |
 | Add bottle | Ajouter une bouteille |
 | Filter | Filtrer |
+| Pairings | Accords |
 
 ## Tokens couleur app
 

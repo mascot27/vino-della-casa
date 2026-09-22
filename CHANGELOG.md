@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Accords mets ↔ bouteille (#73): `PairingEngine` (couleur × body/tannin/acidity + région + hints), docs `PAIRING-RULES.md`, suggestions sur fiche catalogue + page `/accords` (plat → bouteilles), 10 fixtures xUnit.
+
 - Catalogue détail assemblage: chips `%` via `blendsByVintage` (prefer fiche millésime); fallback plain Blend list when absent (#68).
 
 - Catalogue Bourgogne (+100 anonymous fiches) wired into `CatalogSeedData` (~153 total); null `imageKey` → local `img/catalog/estate-*.jpg`; map filter hotspot Bourgogne (#63).
