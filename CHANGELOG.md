@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Comparateur « Dans le même esprit » (#74): `SimilarityEngine` (couleur × structure × région × styleTags), docs `SIMILARITY-RULES.md`, section sur fiche catalogue, fixtures xUnit.
+
 - Accords mets ↔ bouteille (#73): `PairingEngine` (couleur × body/tannin/acidity + région + hints), docs `PAIRING-RULES.md`, suggestions sur fiche catalogue + page `/accords` (plat → bouteilles), 10 fixtures xUnit.
 
 - Catalogue détail assemblage: chips `%` via `blendsByVintage` (prefer fiche millésime); fallback plain Blend list when absent (#68).

@@ -23,6 +23,7 @@ public static class PairingProfileBuilder
                 Region = entry.Appellation,
                 Style = entry.Style,
                 Blend = entry.Blend,
+                Vintage = entry.Vintage,
                 ReadyToDrink = entry.ReadyToDrink,
                 Body = taste.Body ?? InferBody(entry.Color, entry.Appellation, entry.Style, entry.Blend),
                 Tannin = taste.Tannin ?? InferTannin(entry.Color, entry.Appellation, entry.Style, entry.Blend),
@@ -43,7 +44,8 @@ public static class PairingProfileBuilder
             entry.Classification,
             entry.Pairing,
             entry.ReadyToDrink,
-            entry.StyleTags);
+            entry.StyleTags,
+            entry.Vintage);
     }
 
     public static WinePairingProfile FromBottle(Bottle bottle, string? style = null, string? pairing = null)
@@ -59,7 +61,8 @@ public static class PairingProfileBuilder
             classification: null,
             pairing,
             bottle.ReadyToDrink,
-            styleTags: []);
+            styleTags: [],
+            vintage: bottle.Vintage);
     }
 
     public static WinePairingProfile InferFrom(
@@ -72,7 +75,8 @@ public static class PairingProfileBuilder
         string? classification,
         string? pairing,
         bool readyToDrink,
-        IReadOnlyList<string>? styleTags)
+        IReadOnlyList<string>? styleTags,
+        int? vintage = null)
     {
         return new WinePairingProfile
         {
@@ -82,6 +86,7 @@ public static class PairingProfileBuilder
             Region = region,
             Style = style,
             Blend = blend,
+            Vintage = vintage,
             ReadyToDrink = readyToDrink,
             Body = InferBody(color, region, style, blend),
             Tannin = InferTannin(color, region, style, blend),

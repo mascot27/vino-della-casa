@@ -8,3 +8,9 @@ public sealed record BottlePairingMatch(
     WinePairingProfile Profile,
     int Score,
     string Why);
+
+/// <summary>Scored similar bottle for « Dans le même esprit ».</summary>
+public sealed record SimilarityMatch(
+    WinePairingProfile Profile,
+    int Score,
+    string Why);

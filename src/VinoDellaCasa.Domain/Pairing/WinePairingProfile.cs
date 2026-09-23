@@ -3,7 +3,7 @@ using VinoDellaCasa.Domain.Enums;
 namespace VinoDellaCasa.Domain.Pairing;
 
 /// <summary>
-/// Input snapshot for <see cref="PairingEngine"/> — catalog or cellar bottle.
+/// Input snapshot for <see cref="PairingEngine"/> / <see cref="SimilarityEngine"/> — catalog or cellar bottle.
 /// </summary>
 public sealed class WinePairingProfile
 {
@@ -13,6 +13,7 @@ public sealed class WinePairingProfile
     public string? Region { get; init; }
     public string? Style { get; init; }
     public string? Blend { get; init; }
+    public int? Vintage { get; init; }
     public bool ReadyToDrink { get; init; }
 
     public TasteBody Body { get; init; } = TasteBody.Medium;
