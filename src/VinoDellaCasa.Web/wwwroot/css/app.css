@@ -2202,6 +2202,27 @@ textarea.form-input:focus-visible {
   line-height: 1.35;
 }
 
+.fiche-assemblage-vintages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.fiche-assemblage-vintage-row {
+  padding: 0.45rem 0.55rem;
+  background: #FFFCF7;
+  border: 1px solid #E8DCCE;
+  border-radius: 10px;
+}
+
+.fiche-assemblage-vintage-row.is-fiche-vintage {
+  background: #F7F0E6;
+  border-color: #E0D2C0;
+}
+
 .fiche-assemblage-chips {
   list-style: none;
   margin: 0;
@@ -2219,24 +2240,49 @@ textarea.form-input:focus-visible {
   border-color: #E0D2C0;
 }
 
+.fiche-assemblage-vintage-row.is-fiche-vintage .fiche-assemblage-chip {
+  background: #FFFCF7;
+}
+
 .fiche-assemblage-vintage {
-  margin: 0.4rem 0 0;
+  margin: 0 0 0.35rem;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #7A7168;
 }
 
 .fiche-detail-scores {
-
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem 0.85rem;
+  gap: 0.4rem;
 }
 
-.fiche-detail-scores li {
+.fiche-score-chip {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-variant-numeric: tabular-nums;
+  gap: 0.35rem;
+  color: #3A322C;
+  background: #F7F0E6;
+  border-color: #E0D2C0;
+}
+
+.fiche-score-source {
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #7A7168;
+}
+
+.fiche-score-value {
+  font-weight: 600;
+  color: #4A1C24;
 }
 
 .fiche-detail-notes {

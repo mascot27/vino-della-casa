@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Catalogue fiche densité (#76): chips assemblage `%` pour **tous** les millésimes `blendsByVintage` (demo scrub), scores structurés RP/JS/WS/Hachette en chips prestige; fallback plain Blend / omit si absent.
+
 - Comparateur « Dans le même esprit » (#74): `SimilarityEngine` (couleur × structure × région × styleTags), docs `SIMILARITY-RULES.md`, section sur fiche catalogue, fixtures xUnit.
 
 - Accords mets ↔ bouteille (#73): `PairingEngine` (couleur × body/tannin/acidity + région + hints), docs `PAIRING-RULES.md`, suggestions sur fiche catalogue + page `/accords` (plat → bouteilles), 10 fixtures xUnit.

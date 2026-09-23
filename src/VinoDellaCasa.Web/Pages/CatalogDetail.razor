@@ -69,23 +69,33 @@ else
             @if (HasExtraBlocks)
             {
                 <dl class="fiche-detail-facts">
-                    @if (PreferredBlend is { } preferred)
+                    @if (AssemblageRows.Count > 0)
                     {
                         <div class="fiche-detail-fact">
                             <dt>Assemblage</dt>
                             <dd>
-                                <ul class="fiche-assemblage-chips" aria-label="Assemblage">
-                                    @foreach (var component in preferred.Components)
+                                <ul class="fiche-assemblage-vintages" aria-label="Assemblage par millésime">
+                                    @foreach (var row in AssemblageRows)
                                     {
-                                        var chip = CatalogAssemblage.FormatChip(component);
-                                        if (string.IsNullOrEmpty(chip))
-                                        {
-                                            continue;
-                                        }
-                                        <li class="meta-chip fiche-assemblage-chip">@chip</li>
+                                        var isFicheVintage = Entry.Vintage is int fv && row.Vintage == fv;
+                                        <li class="fiche-assemblage-vintage-row @(isFicheVintage ? "is-fiche-vintage" : null)">
+                                            <p class="fiche-assemblage-vintage muted">
+                                                millésime @row.Vintage@(isFicheVintage ? " · fiche" : "")
+                                            </p>
+                                            <ul class="fiche-assemblage-chips" aria-label="Assemblage @row.Vintage">
+                                                @foreach (var component in row.Components)
+                                                {
+                                                    var chip = CatalogAssemblage.FormatChip(component);
+                                                    if (string.IsNullOrEmpty(chip))
+                                                    {
+                                                        continue;
+                                                    }
+                                                    <li class="meta-chip fiche-assemblage-chip">@chip</li>
+                                                }
+                                            </ul>
+                                        </li>
                                     }
                                 </ul>
-                                <p class="fiche-assemblage-vintage muted">millésime @preferred.Vintage</p>
                             </dd>
                         </div>
                     }
@@ -110,27 +120,18 @@ else
                             <dd>@Entry.DrinkWindow</dd>
                         </div>
                     }
-                    @if (HasScores)
+                    @if (ScoreChips.Count > 0)
                     {
                         <div class="fiche-detail-fact">
                             <dt>Scores</dt>
                             <dd>
-                                <ul class="fiche-detail-scores">
-                                    @if (Entry.ScoreRp is int rp)
+                                <ul class="fiche-detail-scores" aria-label="Scores critiques">
+                                    @foreach (var chip in ScoreChips)
                                     {
-                                        <li>RP @rp</li>
-                                    }
-                                    @if (Entry.ScoreJs is int js)
-                                    {
-                                        <li>JS @js</li>
-                                    }
-                                    @if (!string.IsNullOrWhiteSpace(Entry.ScoreHachette))
-                                    {
-                                        <li>Hachette @Entry.ScoreHachette</li>
-                                    }
-                                    @if (Entry.Stars is int stars)
-                                    {
-                                        <li>@stars★</li>
+                                        <li class="meta-chip fiche-score-chip" title="@chip.Source">
+                                            <span class="fiche-score-source">@chip.Source</span>
+                                            <span class="fiche-score-value">@chip.Value</span>
+                                        </li>
                                     }
                                 </ul>
                             </dd>
@@ -287,25 +288,21 @@ else
         }
     }
 
-    private bool HasScores =>
-        Entry is not null
-        && (Entry.ScoreRp is not null
-            || Entry.ScoreJs is not null
-            || !string.IsNullOrWhiteSpace(Entry.ScoreHachette)
-            || Entry.Stars is not null);
-
-    private BlendByVintage? PreferredBlend =>
+    private IReadOnlyList<BlendByVintage> AssemblageRows =>
         Entry is null
-            ? null
-            : CatalogAssemblage.PreferForFiche(Entry.BlendsByVintage, Entry.Vintage);
+            ? []
+            : CatalogAssemblage.ListForFiche(Entry.BlendsByVintage, Entry.Vintage);
+
+    private IReadOnlyList<CriticScoreChip> ScoreChips =>
+        CatalogScores.ForEntry(Entry);
 
     private bool HasExtraBlocks =>
         Entry is not null
-        && (PreferredBlend is not null
+        && (AssemblageRows.Count > 0
             || !string.IsNullOrWhiteSpace(Entry.Blend)
             || !string.IsNullOrWhiteSpace(Entry.Classification)
             || !string.IsNullOrWhiteSpace(Entry.DrinkWindow)
-            || HasScores
+            || ScoreChips.Count > 0
             || !string.IsNullOrWhiteSpace(Entry.PriceRangeChf));
 
     protected override async Task OnParametersSetAsync() => await LoadAsync();

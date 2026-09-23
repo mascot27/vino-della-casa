@@ -11,23 +11,13 @@ public static partial class CatalogAssemblage
     /// <summary>
     /// Prefer the blend matching <paramref name="ficheVintage"/>; if absent and exactly one
     /// vintage row has components, use that. Multi-vintage without a fiche match → null
-    /// (UI falls back to the plain Blend string; « autres années » later).
+    /// (UI uses <see cref="ListForFiche"/> to show every millésime).
     /// </summary>
     public static BlendByVintage? PreferForFiche(
         IReadOnlyList<BlendByVintage>? blends,
         int? ficheVintage)
     {
-        if (blends is null || blends.Count == 0)
-        {
-            return null;
-        }
-
-        var usable = blends
-            .Where(b => b.Components.Count > 0)
-            .Select(Normalize)
-            .Where(b => b.Components.Count > 0)
-            .ToList();
-
+        var usable = ListForFiche(blends, ficheVintage);
         if (usable.Count == 0)
         {
             return null;
@@ -43,6 +33,36 @@ public static partial class CatalogAssemblage
         }
 
         return usable.Count == 1 ? usable[0] : null;
+    }
+
+    /// <summary>
+    /// All usable <c>blendsByVintage</c> rows for the fiche: matching millésime first,
+    /// then remaining by vintage descending. Empty when absent (plain Blend fallback).
+    /// </summary>
+    public static IReadOnlyList<BlendByVintage> ListForFiche(
+        IReadOnlyList<BlendByVintage>? blends,
+        int? ficheVintage)
+    {
+        if (blends is null || blends.Count == 0)
+        {
+            return [];
+        }
+
+        var usable = blends
+            .Where(b => b.Components.Count > 0)
+            .Select(Normalize)
+            .Where(b => b.Components.Count > 0)
+            .ToList();
+
+        if (usable.Count == 0)
+        {
+            return [];
+        }
+
+        return usable
+            .OrderByDescending(b => ficheVintage is int v && b.Vintage == v)
+            .ThenByDescending(b => b.Vintage)
+            .ToList();
     }
 
     /// <summary>Chip text e.g. <c>Merlot 60%</c> or grape alone when percent missing.</summary>
