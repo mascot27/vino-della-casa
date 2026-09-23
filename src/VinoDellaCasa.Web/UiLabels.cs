@@ -57,6 +57,9 @@ public static class UiLabels
         _ => "sans-millesime"
     };
 
+    public const string AccordsNav = "Accords";
+    public const string AccordsSection = "Accords";
+
     public static string VintageLine(int? vintage, int asOfYear)
     {
         if (vintage is null)

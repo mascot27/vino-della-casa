@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using VinoDellaCasa.Domain.Entities;
 using VinoDellaCasa.Domain.Enums;
 using VinoDellaCasa.Domain.Maturity;
+using VinoDellaCasa.Domain.Pairing;
 
 namespace VinoDellaCasa.Domain.Seed;
 
@@ -80,7 +81,9 @@ public static class CatalogSeedData
                 ScoreJs = null,
                 ScoreHachette = null,
                 PriceRangeChf = b.PriceChf is decimal p ? $"{p:0.##}" : null,
-                ReadyToDrink = b.ReadyToDrink
+                ReadyToDrink = b.ReadyToDrink,
+                StyleTags = [],
+                Taste = null
             });
         }
 
@@ -180,7 +183,9 @@ public static class CatalogSeedData
             ScoreJs = dto.Scores?.Js,
             ScoreHachette = FormatHachette(dto.Scores?.HachetteStars),
             PriceRangeChf = dto.PriceChf is decimal p ? $"{p:0.##}" : null,
-            ReadyToDrink = ready
+            ReadyToDrink = ready,
+            StyleTags = MapStyleTags(dto.StyleTags),
+            Taste = MapTaste(dto.Taste)
         };
     }
 
@@ -521,6 +526,54 @@ public static class CatalogSeedData
         return false;
     }
 
+
+    private static IReadOnlyList<string> MapStyleTags(IReadOnlyList<string>? tags)
+    {
+        if (tags is null || tags.Count == 0)
+        {
+            return [];
+        }
+
+        return tags
+            .Where(t => !string.IsNullOrWhiteSpace(t))
+            .Select(t => t.Trim())
+            .ToList();
+    }
+
+    private static WineTaste? MapTaste(BourgogneTasteDto? dto)
+    {
+        if (dto is null)
+        {
+            return null;
+        }
+
+        var hints = dto.PairingHints?
+            .Where(h => !string.IsNullOrWhiteSpace(h))
+            .Select(h => h.Trim())
+            .ToList() ?? [];
+
+        return new WineTaste
+        {
+            Body = ParseBody(dto.Body),
+            Tannin = ParseTannin(dto.Tannin),
+            Acidity = ParseAcidity(dto.Acidity),
+            Oak = ParseOak(dto.Oak),
+            PairingHints = hints
+        };
+    }
+
+    private static TasteBody? ParseBody(string? value) =>
+        Enum.TryParse<TasteBody>(value, ignoreCase: true, out var v) ? v : null;
+
+    private static TasteTannin? ParseTannin(string? value) =>
+        Enum.TryParse<TasteTannin>(value, ignoreCase: true, out var v) ? v : null;
+
+    private static TasteAcidity? ParseAcidity(string? value) =>
+        Enum.TryParse<TasteAcidity>(value, ignoreCase: true, out var v) ? v : null;
+
+    private static TasteOak? ParseOak(string? value) =>
+        Enum.TryParse<TasteOak>(value, ignoreCase: true, out var v) ? v : null;
+
     private static IReadOnlyList<BlendByVintage> MapBlendsByVintage(
         IReadOnlyList<BlendByVintageDto>? dtos)
     {
@@ -598,6 +651,7 @@ public static class CatalogSeedData
         /// <summary>Optional wine-knowledge blends (% by vintage); empty until data exists.</summary>
         public List<BlendByVintageDto>? BlendsByVintage { get; set; }
         public string? ImageKey { get; set; }
+        public List<string>? StyleTags { get; set; }
         public BourgogneScoresDto? Scores { get; set; }
         public BourgogneTasteDto? Taste { get; set; }
     }
@@ -612,6 +666,10 @@ public static class CatalogSeedData
 
     private sealed class BourgogneTasteDto
     {
+        public string? Body { get; set; }
+        public string? Tannin { get; set; }
+        public string? Acidity { get; set; }
+        public string? Oak { get; set; }
         public DrinkWindowYearsDto? DrinkWindowYears { get; set; }
         public List<string>? PairingHints { get; set; }
     }

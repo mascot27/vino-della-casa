@@ -2277,3 +2277,207 @@ textarea.form-input:focus-visible {
   backdrop-filter: blur(6px);
   margin-top: auto;
 }
+
+/* --- Accords mets (fiche + page) --- */
+.fiche-accords {
+  margin-top: 0.85rem;
+  padding: 0.85rem 0.95rem;
+  background: #FFFCF7;
+  border: 1px solid #E8DCCE;
+  border-radius: 12px;
+}
+
+.fiche-accords-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+
+.fiche-accords-title {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #7A7168;
+  font-weight: 600;
+}
+
+.fiche-accords-link {
+  font-size: 0.8rem;
+  color: #4A1C24;
+  text-decoration: none;
+}
+
+.fiche-accords-link:hover {
+  text-decoration: underline;
+}
+
+.fiche-accords-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.fiche-accords-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 0.65rem;
+  row-gap: 0.1rem;
+  padding: 0.45rem 0.55rem;
+  background: #F7F0E6;
+  border-radius: 8px;
+  border: 1px solid #E0D2C0;
+}
+
+.fiche-accords-dish {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1rem;
+  color: #3A322C;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.fiche-accords-score {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4A1C24;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+}
+
+.fiche-accords-why {
+  font-size: 0.8rem;
+  color: #6B635C;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.accords-header {
+  margin: 0 0 var(--space-5);
+  max-width: 40rem;
+}
+
+.accords-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7A7168;
+}
+
+.accords-header h1 {
+  margin: 0 0 0.45rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  color: #4A1C24;
+}
+
+.accords-lead {
+  margin: 0;
+  color: #5A5048;
+  line-height: 1.45;
+}
+
+.accords-picker {
+  padding: 1rem 1.1rem;
+  margin-bottom: var(--space-5);
+}
+
+.accords-chip-row {
+  margin-top: 0.55rem;
+}
+
+.accords-result-meta {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+}
+
+.accords-bottle-list {
+  list-style: none;
+  margin: 0 0 var(--space-8);
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  max-width: 42rem;
+}
+
+.accords-bottle-card {
+  margin: 0;
+}
+
+.accords-bottle-link {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 1rem 1.1rem;
+  background: #F3EBDD;
+  border: 1px solid #E2D6C4;
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.accords-bottle-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(31, 26, 23, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accords-bottle-link {
+    transition: none;
+  }
+
+  .accords-bottle-link:hover {
+    transform: none;
+  }
+}
+
+.accords-bottle-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.accords-bottle-score {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #4A1C24;
+}
+
+.accords-bottle-name {
+  margin: 0 0 0.25rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.2rem;
+  color: #4A1C24;
+  font-weight: 600;
+}
+
+.accords-bottle-meta {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+  color: #5A5048;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.accords-bottle-why {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #6B635C;
+  line-height: 1.35;
+}

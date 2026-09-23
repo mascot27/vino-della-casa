@@ -1,0 +1,124 @@
+@page "/accords"
+@using VinoDellaCasa.Domain.Entities
+@using VinoDellaCasa.Domain.Pairing
+@using VinoDellaCasa.Domain.Seed
+@using VinoDellaCasa.Web
+@inject NavigationManager Nav
+
+<PageTitle>Accords — Vino della casa</PageTitle>
+
+<header class="accords-header">
+    <p class="accords-kicker">Mets ↔ bouteilles · déterministe</p>
+    <h1>Accords</h1>
+    <p class="accords-lead">
+        Choisissez un plat — le catalogue propose des bouteilles compatibles, sans prose critique.
+    </p>
+</header>
+
+<section class="accords-picker card" aria-label="Choisir un plat">
+    <span class="chip-label">Plat</span>
+    <div class="chip-row accords-chip-row">
+        @foreach (var dish in _dishChoices)
+        {
+            <button type="button"
+                    class="chip @(_selectedDish == dish ? "active" : null)"
+                    @onclick="() => SelectDish(dish)">
+                @dish
+            </button>
+        }
+    </div>
+</section>
+
+@if (string.IsNullOrEmpty(_selectedDish))
+{
+    <div class="empty-state empty-state--prestige card">
+        <h3>Choisissez un plat</h3>
+        <p>Les suggestions viennent du moteur d’accords (couleur × style × région).</p>
+    </div>
+}
+else if (_matches.Count == 0)
+{
+    <div class="empty-state empty-state--prestige empty-state--filter card">
+        <h3>Aucune suggestion</h3>
+        <p>Essayez un autre plat — le seed catalogue n’a pas de match fort.</p>
+    </div>
+}
+else
+{
+    <p class="accords-result-meta muted">
+        @_matches.Count suggestion@(_matches.Count > 1 ? "s" : "") pour « @_selectedDish »
+    </p>
+    <ol class="accords-bottle-list">
+        @foreach (var m in _matches)
+        {
+            var entry = FindEntry(m.Profile.Id);
+            <li class="accords-bottle-card">
+                <button type="button"
+                        class="accords-bottle-link"
+                        @onclick="() => OpenEntry(entry)">
+                    <div class="accords-bottle-top">
+                        <span class="pill pill-@(entry is null ? "autre" : UiLabels.ColorCss(entry.Color))">
+                            @(entry is null ? "—" : UiLabels.Color(entry.Color))
+                        </span>
+                        <span class="accords-bottle-score">@m.Score</span>
+                    </div>
+                    <h2 class="accords-bottle-name">@(m.Profile.Name ?? "—")</h2>
+                    <p class="accords-bottle-meta">
+                        @(m.Profile.Region ?? "—")
+                        @if (m.Profile.ReadyToDrink)
+                        {
+                            <span class="badge-maturity badge-pret">Prêt</span>
+                        }
+                    </p>
+                    <p class="accords-bottle-why">@m.Why</p>
+                </button>
+            </li>
+        }
+    </ol>
+}
+
+@code {
+    private static readonly string[] _dishChoices =
+    [
+        "huîtres",
+        "fruits de mer",
+        "agneau",
+        "bœuf grillé",
+        "gibier",
+        "volaille rôtie",
+        "charcuterie",
+        "foie gras",
+        "apéritif",
+        "salades",
+        "homard",
+        "comté"
+    ];
+
+    private readonly int _asOfYear = DateTimeOffset.Now.Year;
+    private IReadOnlyList<CatalogEntry> _catalog = [];
+    private string? _selectedDish;
+    private List<BottlePairingMatch> _matches = [];
+
+    protected override void OnInitialized()
+    {
+        _catalog = CatalogSeedData.CreateEntries(_asOfYear);
+    }
+
+    private void SelectDish(string dish)
+    {
+        _selectedDish = dish;
+        var profiles = _catalog.Select(PairingProfileBuilder.FromCatalog);
+        _matches = PairingEngine.SuggestBottles(dish, profiles, topN: 8).ToList();
+    }
+
+    private CatalogEntry? FindEntry(Guid? id) =>
+        id is Guid g ? _catalog.FirstOrDefault(e => e.Id == g) : null;
+
+    private void OpenEntry(CatalogEntry? entry)
+    {
+        if (entry is not null)
+        {
+            Nav.NavigateTo($"catalogue/{entry.Id}");
+        }
+    }
+}
