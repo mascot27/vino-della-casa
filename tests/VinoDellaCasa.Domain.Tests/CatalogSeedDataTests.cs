@@ -78,6 +78,14 @@ public class CatalogSeedDataTests
             Assert.DoesNotContain("<", e.Pourquoi, StringComparison.Ordinal);
             Assert.DoesNotContain("<", e.Style, StringComparison.Ordinal);
             Assert.DoesNotContain("<", e.Pairing ?? string.Empty, StringComparison.Ordinal);
+            Assert.All(e.BlendsByVintage, row =>
+            {
+                Assert.All(row.Components, c =>
+                {
+                    Assert.False(CatalogScrub.ContainsPersonalMarker(c.Grape));
+                    Assert.DoesNotContain("<", c.Grape, StringComparison.Ordinal);
+                });
+            });
         });
     }
 
@@ -114,6 +122,7 @@ public class CatalogSeedDataTests
             Assert.Null(e.ScoreJs);
         });
         Assert.Contains(entries.Skip(CatalogSeedData.DemoCount), e => e.ScoreRp is not null || e.ScoreJs is not null);
+        Assert.Contains(entries.Skip(CatalogSeedData.DemoCount), e => e.ScoreWs is not null);
     }
 
     [Fact]
@@ -159,18 +168,22 @@ public class CatalogSeedDataTests
     }
 
     [Fact]
-    public void CreateEntries_BlendsByVintageOptional_EmptyUntilDataExists()
+    public void CreateEntries_BlendsByVintage_ScrubbedDemoWhereAvailable()
     {
         var entries = CatalogSeedData.CreateEntries(2026);
 
-        Assert.All(entries, e =>
-        {
-            Assert.NotNull(e.BlendsByVintage);
-            Assert.Empty(e.BlendsByVintage);
-        });
+        Assert.All(entries, e => Assert.NotNull(e.BlendsByVintage));
 
-        // Fallback path still has plain Blend / cépage list for many fiches.
-        Assert.Contains(entries, e => !string.IsNullOrWhiteSpace(e.Blend));
+        var cheval = entries.Single(e => e.Name == "Château Cheval Blanc");
+        Assert.Equal(3, cheval.BlendsByVintage.Count);
+        Assert.Contains(cheval.BlendsByVintage, b => b.Vintage == 2022 && b.Components.Count == 3);
+
+        var leoville = entries.Single(e => e.Name == "Château Léoville Barton");
+        Assert.Equal(2, leoville.BlendsByVintage.Count);
+
+        // Most fiches still omit blendsByVintage → plain Blend fallback.
+        Assert.Contains(entries, e => e.BlendsByVintage.Count == 0 && !string.IsNullOrWhiteSpace(e.Blend));
+        Assert.True(entries.Count(e => e.BlendsByVintage.Count > 0) >= 5);
     }
 
     [Fact]

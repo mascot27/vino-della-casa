@@ -129,4 +129,48 @@ public class CatalogAssemblageTests
         Assert.Equal("Merlot", mapped[0].Components[0].Grape);
         Assert.Equal("CF", mapped[0].Components[1].Grape);
     }
+
+    [Fact]
+    public void ListForFiche_ReturnsAllVintages_MatchFirstThenDesc()
+    {
+        var blends = new List<BlendByVintage>
+        {
+            new()
+            {
+                Vintage = 2018,
+                Components = [new BlendComponent { Grape = "Merlot", Percent = 70 }]
+            },
+            new()
+            {
+                Vintage = 2019,
+                Components =
+                [
+                    new BlendComponent { Grape = "Merlot", Percent = 60 },
+                    new BlendComponent { Grape = "CF", Percent = 40 }
+                ]
+            },
+            new()
+            {
+                Vintage = 2020,
+                Components = [new BlendComponent { Grape = "Merlot", Percent = 55 }]
+            }
+        };
+
+        var rows = CatalogAssemblage.ListForFiche(blends, ficheVintage: 2019);
+        Assert.Equal(3, rows.Count);
+        Assert.Equal(2019, rows[0].Vintage);
+        Assert.Equal(2020, rows[1].Vintage);
+        Assert.Equal(2018, rows[2].Vintage);
+    }
+
+    [Fact]
+    public void ListForFiche_EmptyWhenAbsent()
+    {
+        Assert.Empty(CatalogAssemblage.ListForFiche(null, 2019));
+        Assert.Empty(CatalogAssemblage.ListForFiche([], 2019));
+        Assert.Empty(CatalogAssemblage.ListForFiche(
+        [
+            new BlendByVintage { Vintage = 2019, Components = [] }
+        ], 2019));
+    }
 }

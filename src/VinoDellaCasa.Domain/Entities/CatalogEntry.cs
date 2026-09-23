@@ -53,6 +53,9 @@ public sealed class CatalogEntry
     /// <summary>James Suckling score when known as a number (no prose).</summary>
     public int? ScoreJs { get; set; }
 
+    /// <summary>Wine Spectator score when known as a number (no prose).</summary>
+    public int? ScoreWs { get; set; }
+
     /// <summary>Hachette mark when known (e.g. « ♥ », « ** »), facts only.</summary>
     public string? ScoreHachette { get; set; }
 
