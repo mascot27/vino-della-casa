@@ -166,6 +166,28 @@ else
                 </section>
             }
 
+            @if (_similarMatches.Count > 0)
+            {
+                <section class="fiche-similar" aria-label="Dans le même esprit">
+                    <div class="fiche-similar-head">
+                        <h2 class="fiche-similar-title">Dans le même esprit</h2>
+                    </div>
+                    <ul class="fiche-similar-list">
+                        @foreach (var m in _similarMatches)
+                        {
+                            var href = m.Profile.Id is Guid sid ? $"catalogue/{sid}" : "cellar";
+                            <li class="fiche-similar-item">
+                                <a class="fiche-similar-link" href="@href">
+                                    <span class="fiche-similar-name">@(m.Profile.Name ?? "Fiche")</span>
+                                    <span class="fiche-similar-meta">@(string.IsNullOrWhiteSpace(m.Profile.Region) ? "—" : m.Profile.Region)</span>
+                                    <span class="fiche-similar-why">@m.Why</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </section>
+            }
+
             @if (!string.IsNullOrWhiteSpace(_cellarNotes))
             {
                 <section class="fiche-detail-notes" aria-label="Notes cave">
@@ -226,6 +248,7 @@ else
     private string? _message;
     private bool _messageIsError;
     private List<DishSuggestion> _dishSuggestions = [];
+    private List<SimilarityMatch> _similarMatches = [];
 
     private string ColorCss => Entry is null ? "autre" : UiLabels.ColorCss(Entry.Color);
 
@@ -301,9 +324,19 @@ else
             }
 
             Entry = entry;
-            _dishSuggestions = entry is null
-                ? []
-                : PairingEngine.SuggestDishes(PairingProfileBuilder.FromCatalog(entry), topN: 5).ToList();
+            if (entry is null)
+            {
+                _dishSuggestions = [];
+                _similarMatches = [];
+            }
+            else
+            {
+                var profile = PairingProfileBuilder.FromCatalog(entry);
+                _dishSuggestions = PairingEngine.SuggestDishes(profile, topN: 5).ToList();
+                var pool = CatalogSeedData.CreateEntries(_asOfYear)
+                    .Select(PairingProfileBuilder.FromCatalog);
+                _similarMatches = SimilarityEngine.FindSimilar(profile, pool, topN: 5).ToList();
+            }
             await RefreshCellarAsync();
         }
         finally
